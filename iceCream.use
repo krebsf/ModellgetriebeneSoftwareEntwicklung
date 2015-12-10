@@ -1,0 +1,177 @@
+model IceCream
+
+-- Classes and associations
+
+@StartingPoint(NameToDisplay="Station", ImageToDisplay="")
+@list(stationID="1")
+@creation(stationID="1",entry="2")
+@display(stationID="1",entry="2")
+@unique(stationID="1")
+@domain()
+class Station
+
+attributes
+
+	stationID 	: String
+	record		: Entry
+  
+end --Station
+
+---------------------------------------------------------------------------------------
+@StartingPoint(NameToDisplay="Entry", ImageToDisplay="")
+@list()
+@creation(date="1",target="2",actual="3")
+@display(date="1",target="2",actual="3")
+@unique(date="1")
+@domain()
+class Entry
+
+attributes
+
+	date : CalendarDate
+	target : Integer
+	actual : Integer
+  
+operations
+
+	variance() : Integer = actual - target
+  
+end --Entry
+
+--------------------------------------------------------------
+-- Library types
+--------------------------------------------------------------
+
+@list()
+@creation(year="1",month="2",day="3")
+@display(year="1",month="2",day="3")
+@unique(year="1",month="2",day="3")
+@domain()
+	class CalendarDate
+
+		attributes
+
+			now: CalendarDate
+			day: Integer
+			month: Integer
+			year: Integer
+
+		operations
+
+			today():CalendarDate = now
+
+			init(day: Integer, month: Integer, year: Integer)
+				begin
+					self.day:= day;
+					self.month:= month;
+					self.year:= year
+				end
+				
+			-- date format: yyyy-mm-dd
+			initS(date: String)
+				begin
+					self.year:= date.substring(1,4).toInteger();
+					self.month:= date.substring(6,7).toInteger();
+					self.day:= date.substring(9,10).toInteger()
+				end
+
+			stringToDate(date: String): CalendarDate
+				begin
+				  declare 
+						date_year : String,
+						date_month : String,
+						date_day : String;
+						
+					date_year:= date.substring(1,4);
+					date_month:= date.substring(6,7);
+					date_day:= date.substring(9,10);
+					result:= CalendarDate.allInstances-> select(cd |
+						cd.year=date_year.toInteger() and
+						cd.month=date_month.toInteger() and 
+						cd.day=date_day.toInteger())->asSequence()->first();
+					if result.isUndefined() then
+						result:= new CalendarDate('D'+date_year+date_month+date_day);
+					  result.initS(date)
+					end
+				end
+				
+			isBefore(t: CalendarDate):Boolean = 
+				if self.year = t.year then
+					if self.month = t.month then
+					self.day < t.day
+					 else
+					self.month < t.month
+					 endif
+				else 
+					self.year < t.year
+				endif
+
+			isAfter(t: CalendarDate):Boolean =
+				if self.year = t.year then
+					if self.month = t.month then
+						self.day > t.day
+					 else
+						self.month > t.month
+					endif
+				else 
+					self.year > t.year
+				endif
+
+			isEqual(t: CalendarDate):Boolean =
+				self.year  = t.year and
+				self.month = t.month and
+				self.day   = t.day
+
+			yearsSince(t: CalendarDate):Integer =
+				if self.month < t.month or
+				   self.month = t.month and self.day < t.day then
+						self.year - t.year -1
+				else
+					self.year - t.year
+				endif
+
+			isDivisible(x: Integer, y: Integer): Boolean = x div y * y = x
+			
+			isLeap(): Boolean =
+				if isDivisible(self.year, 400) or isDivisible(self.year, 4) then
+					true
+				else
+					if isDivisible(self.year, 100) then
+						 false
+					else
+						if isDivisible(self.year, 4) then
+							true
+						else
+							false
+						endif
+					endif
+				endif
+				
+			valid(): Boolean =
+					self.month>=1 and self.month<=12 and self.day>=1 and
+					if self.isLeap() then
+						self.day<=Sequence{31,29,31,30,31,30,31,31,30,31,30,31}->at(self.month)
+					else 
+						self.day<=Sequence{31,28,31,30,31,30,31,31,30,31,30,31}->at(self.month)
+					endif
+
+		constraints
+		
+			@DateIsValid(rationale="The current date must be a valid one")
+			inv DateIsValid: self.valid()
+			
+			@CalendarDateObjectsContainDistinctDates(rationale="CalendarDate objects contain distinct dates")
+			inv CalendarDateObjectsContainDistinctDates:
+				CalendarDate.allInstances->
+					isUnique(year.toString().concat('/').concat(month.toString()).concat('/').concat(day.toString()))
+			
+	end --CalendarDate
+
+------------------------------------------------------------------------
+-- ASSOCIATIONS
+------------------------------------------------------------------------
+	
+association Station_Entry between
+	Station[ 1 ]
+	Entry[ * ]
+end
