@@ -3,21 +3,45 @@ model IceCream
 -- Classes and associations
 
 @StartingPoint(NameToDisplay="Station", ImageToDisplay="")
-@list(stationID="1")
-@creation(stationID="1",entry="2")
-@display(stationID="1",entry="2")
-@unique(stationID="1")
+@list()
+@creation(stationID="1",name="2",place="3")
+@display(stationID="1",name="2",place="3")
+@unique(stationID="1",name="2",place="3")
 @domain()
 class Station
 
 attributes
 
 	stationID 	: String
+	name		: String
+	/* entries and place are provided via associations 
 	record		: Entry
+	place		: Address
+	*/
+	meanActualValues :Float
+	meanVarianceValues :Float
   
 end --Station
 
 ---------------------------------------------------------------------------------------
+@StartingPoint(NameToDisplay="Address", ImageToDisplay="")
+@list()
+@creation(addressID="1")
+@display(addressID="1")
+@unique(addressID="1")
+@domain()
+class Address
+
+attributes
+
+	addressID 	: String
+	street		: String
+	postCode	: Integer
+  
+end --Address
+
+---------------------------------------------------------------------------------------
+
 @StartingPoint(NameToDisplay="Entry", ImageToDisplay="")
 @list()
 @creation(date="1",target="2",actual="3")
@@ -174,4 +198,9 @@ end --Entry
 association Station_Entry between
 	Station[ 1 ]
 	Entry[ * ]
+end
+
+association Station_Address between
+	Station[ 1 ]
+	Address[ 1 ] role place
 end
