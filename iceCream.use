@@ -22,12 +22,12 @@ end --Station
 @list()
 @creation(date="1",target="2",actual="3")
 @display(date="1",target="2",actual="3")
-@unique(date="1")
+@unique(entryID="1")
 @domain()
 class Entry
 
 attributes
-
+	entryID : String
 	date : CalendarDate
 	target : Integer
 	actual : Integer
