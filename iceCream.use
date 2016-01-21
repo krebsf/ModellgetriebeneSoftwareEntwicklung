@@ -228,5 +228,5 @@ end
 
 association Station_Address between
 	Station[ 1 ] 
-	Address[ 1 ] role place
+	Address[ 0..1 ] role place
 end
