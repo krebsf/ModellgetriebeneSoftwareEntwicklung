@@ -4,8 +4,8 @@ model IceCream
 
 -- description: Modified and extended version of the example for monitoring our ice-cream health,
 -- 		see "GUI Architectures", by Martin Fowler (http://martinfowler.com/eaaDev/uiArchs.html)
--- author: Franziska Krebs, Tobias Franz, Jano Espenhahn, FH Brandenburg
--- last update: 14 January 2016
+-- author: Franziska Krebs, Tobias Franz, Jano Espenhahn; FH Brandenburg
+-- last update: 21 January 2016
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
@@ -14,54 +14,44 @@ model IceCream
 ------------------------------------------------------------------------
 
 @StartingPoint(NameToDisplay="Station", ImageToDisplay="")
-@list()
-@creation(stationID="1",name="2",place="3")
-@display(stationID="1",name="2",place="3")
-@unique(stationID="1",name="2",place="3")
+@list(name="1")
+@creation(name="1")
+@display(name="1")
+@unique(name="1")
 @domain()
 class Station
 
 	attributes
 
-	stationID 	: String
-	name		: String
-	place		: Address
-	
-	/* entries are provided via associations 
-	record		: Entry
-	*/
+		name		: String
 
 	operations
 	
-	entries(): Set(Entry) = self.records->asSet
-  
-	summedActualValues() : Real = 
-		entries()->iterate(iterator : Entry; res : Real = 0 | res + iterator.actual);
-	
-	/* assumes that there is exactly one actual value per entry */
-	meanActualValue() : Real =
-		summedActualValues().div(entries()->size())
-	
+		entries(): Set(Entry) = self.records->asSet
+	  
+		summedActualValues() : Real = entries()->iterate(iterator : Entry; res : Real = 0 | res + iterator.actual);
+		
+		/* assumes that there is exactly one actual value per entry */
+		/* meanActualValue() : Real = summedActualValues().div(entries()->size()) */
 
-	meanVarianceValue() : Real =
-		entries()->iterate(iterator; result : Real = 0 | result + iterator.variance).div(entries()->size())
+		/* meanVarianceValue() : Real = entries()->iterate(iterator; result : Real = 0 | result + iterator.variance).div(entries()->size()) */
 		
 end --Station
 
 ---------------------------------------------------------------------------------------
+
 @StartingPoint(NameToDisplay="Address", ImageToDisplay="")
-@list()
-@creation(addressID="1")
-@display(addressID="1")
-@unique(addressID="1")
+@list(street="1", postCode="2")
+@creation(street="1", postCode="2")
+@display(street="1", postCode="2")
+@unique(street="1", postCode="2")
 @domain()
 class Address
 
-attributes
+	attributes
 
-	addressID 	: String
-	street		: String
-	postCode	: Integer
+		street		: String
+		postCode	: Integer
   
 end --Address
 
@@ -87,6 +77,7 @@ class Entry
 		variance(): Integer = actual - target
   
 	constraints
+	
 		@ActualValueCannotBeNegative(rationale="The actual value measured at a station cannot be smaller than 0")
 		inv ActualValueCannotBeNegative:
 			actual>=0
@@ -235,4 +226,7 @@ association Station_Entry between
 	Entry[ * ] role records
 end
 
-
+association Station_Address between
+	Station[ 1 ] 
+	Address[ 1 ] role place
+end
