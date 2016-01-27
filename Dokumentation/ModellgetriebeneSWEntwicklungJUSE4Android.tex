@@ -15,7 +15,15 @@
 \usepackage{epstopdf}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman,english]{babel}
-\usepackage{graphicx}
+\usepackage{listings}
+
+\lstdefinestyle{myCustomUseStyle}{
+  stepnumber=1,
+  numbersep=10pt,
+  tabsize=3,
+  showspaces=false,
+  showstringspaces=false
+}
 
 \subfigtopskip=0pt
 \subfigcapskip=0pt
@@ -43,6 +51,7 @@
 \subsection{Motivation}
 \noindent Zitat Test
 \cite{SilvaMasterThesis}
+
 \subsection{Ziel}
 \noindent 
 
@@ -59,10 +68,27 @@
 
 UML based Specifiation Environment (USE) wird zur Spezifikation von Informationssystemen verwendet. Es basiert auf einer Teilmenge der Unified Modeling Language (UML). Eine USE-Spezifikation besteht aus einer textuellen Beschreibung eines Modells, bei der Eigenschaften aus UML-Diagramm verwendet werden. Um eine Spezifikation auf nicht-formale Anforderungen zu validieren, kann ein Modell mithilfe des USE-Tools animiert werden. Weitere Integritätsausdrücke für ein Modell können durch die Object Constraint Language (OCL) definiert werden. Die OCL wird im späteren Kapitel (TODO) vorgestellt. Die nachfolgende Abbildung veranschaulicht den Workflow für eine USE-Spezifikation.
 
-\begin{figure}
+\begin{figure}[h]
 	\includegraphics[scale=.7]{pics/USE_workflow.jpg}
-	\caption{Workflow einer USE-Spezifikation}
+	\caption{Workflow einer USE-Spezifikation \cite{Data07}}
 \end{figure}
+
+Die textuelle Beschreibung eines Modells mit USE beginnt immer mit der Definition eines Modell-Namens. Im Anschluss folgen Klassen mit ihren jeweiligen Attributen und Methoden.
+
+\lstset{basicstyle=\tiny,style=myCustomUseStyle}
+
+\begin{lstlisting}
+model IceCream
+
+class Station
+	attributes
+		name		: String
+	operations
+		entries(): Set(Entry) = self.records->asSet
+end
+\end{lstlisting}
+
+
 
 \subsection{Syntax}
 

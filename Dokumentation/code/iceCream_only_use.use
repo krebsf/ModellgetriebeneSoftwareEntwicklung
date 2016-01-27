@@ -1,0 +1,53 @@
+model IceCream
+
+------------------------------------------------------------------------
+-- CLASSES
+------------------------------------------------------------------------
+class Station
+
+	attributes
+
+		name		: String
+
+	operations
+	
+		entries(): Set(Entry) = self.records->asSet
+		
+end
+---------------------------------------------------------------------------------------
+class Address
+
+	attributes
+
+		street		: String
+		postCode	: Integer
+  
+end
+---------------------------------------------------------------------------------------
+class Entry
+
+	attributes
+
+		date		: CalendarDate
+		target		: Integer
+		actual		: Integer
+		variance	: Integer
+	  
+	operations
+
+		variance(): Integer = actual - target	
+			
+end
+------------------------------------------------------------------------
+-- ASSOCIATIONS
+------------------------------------------------------------------------
+	
+association Station_Entry between
+	Station[ 1 ] 
+	Entry[ * ] role records
+end
+
+association Station_Address between
+	Station[ 1 ] 
+	Address[ 0..1 ] role place
+end
