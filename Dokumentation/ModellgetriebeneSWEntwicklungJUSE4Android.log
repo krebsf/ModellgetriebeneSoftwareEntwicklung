@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.7.6)  28 JAN 2016 10:26
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.7.6)  28 JAN 2016 13:29
 entering extended mode
 **ModellgetriebeneSWEntwicklungJUSE4Android.tex
 
@@ -656,150 +656,153 @@ Underfull \hbox (badness 10000) in paragraph at lines 46--46
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 48.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 51.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 67.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 55.
 
-LaTeX Warning: Citation `Use07' on page 1 undefined on input line 67.
+LaTeX Warning: Citation `Use07' on page 1 undefined on input line 55.
 
 
-Underfull \hbox (badness 2073) in paragraph at lines 67--68
-\OT1/ptm/m/n/10 straint Lan-guage (OCL). Eine USE-Spezifikation
+Underfull \hbox (badness 2237) in paragraph at lines 55--56
+\OT1/ptm/m/n/10 ver-sity of Lis-bon einge-setzt. USE basiert auf
  []
 
 
-LaTeX Warning: Citation `Smith98' on page 1 undefined on input line 70.
+Underfull \hbox (badness 1325) in paragraph at lines 55--56
+\OT1/ptm/m/n/10 einer Teil-menge der Uni-fied Mod-el-ing Lan-guage
+ []
 
 <pics/USE_workflow.jpg, id=1, 300.3722pt x 150.5625pt>
 File: pics/USE_workflow.jpg Graphic file (type jpg)
 
 <use pics/USE_workflow.jpg>
-Package pdftex.def Info: pics/USE_workflow.jpg used on input line 73.
+Package pdftex.def Info: pics/USE_workflow.jpg used on input line 58.
 (pdftex.def)             Requested size: 210.2591pt x 105.39302pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 75.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 60.
 
 
-LaTeX Warning: Citation `Data07' on page 1 undefined on input line 75.
+LaTeX Warning: Citation `Data07' on page 1 undefined on input line 60.
 
 
-LaTeX Warning: Citation `Data07' on page 1 undefined on input line 75.
+LaTeX Warning: Citation `Data07' on page 1 undefined on input line 60.
 
 
-Underfull \hbox (badness 1400) in paragraph at lines 78--79
-\OT1/ptm/m/n/10 OCL-Ausdr[]ucke. Mithilfe von USE ist es ihm
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 4726) in paragraph at lines 63--64
+[]\OT1/ptm/m/n/10 Ein En-twick-ler spez-i-fiziert ein USE-Modell,
  []
 
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
 
-Underfull \hbox (badness 3118) in paragraph at lines 78--79
-\OT1/ptm/m/n/10 m[]oglich zu va-li-dieren, ob die bes-timmten An-
- []
-
-
-Underfull \hbox (badness 1668) in paragraph at lines 82--83
+Underfull \hbox (badness 1668) in paragraph at lines 67--68
 \OT1/ptm/m/n/10 be-ginnt im-mer mit der Def-i-ni-tion eines Modell-
  []
 
-[1{C:/Users/Jano/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
-
-
-
-
- <C:/Users/Jano/Desktop/MDD/Dokumentation/pics/USE_workflow.jpg>]
-LaTeX Font Info:    Try loading font information for OT1+ptmcm on input line 92
+LaTeX Font Info:    Try loading font information for OT1+ptmcm on input line 77
 .
-
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptmcm.fd"
 File: ot1ptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ptmcm.
 )
-LaTeX Font Info:    Try loading font information for OML+ptmcm on input line 92
+LaTeX Font Info:    Try loading font information for OML+ptmcm on input line 77
 .
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omlptmcm.fd"
 File: omlptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ptmcm.
 )
-LaTeX Font Info:    Try loading font information for OMX+psycm on input line 92
+LaTeX Font Info:    Try loading font information for OMX+psycm on input line 77
 .
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omxpsycm.fd"
 File: omxpsycm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/psycm.
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 92.
+LaTeX Font Info:    Try loading font information for U+msa on input line 77.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 92.
+LaTeX Font Info:    Try loading font information for U+msb on input line 77.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 92.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 77.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 92.
-LaTeX Font Info:    Try loading font information for OML+ptm on input line 92.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 77.
+LaTeX Font Info:    Try loading font information for OML+ptm on input line 77.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omlptm.fd"
 File: omlptm.fd 
 )
 LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <6> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 92.
-
-Underfull \hbox (badness 2253) in paragraph at lines 115--116
-[]\OT1/ptm/m/it/10 Station[]Address \OT1/ptm/m/n/10 ist dabei der Name der As-
- []
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 77.
+ [1{C:/Users/Jano/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
-Underfull \hbox (badness 2744) in paragraph at lines 115--116
-\OT1/ptm/m/n/10 sozi-a-tion und das At-tribut \OT1/ptm/m/it/10 place \OT1/ptm/m
-/n/10 nimmt in der
- []
 
 
-Underfull \hbox (badness 2384) in paragraph at lines 115--116
-\OT1/ptm/m/n/10 das gesamte Mod-ell zu ver-vollst[]andi-gen, fehlen
- []
-
-
-Underfull \hbox (badness 1320) in paragraph at lines 115--116
-\OT1/ptm/m/n/10 noch die Klasse \OT1/ptm/m/it/10 En-try \OT1/ptm/m/n/10 und die
- As-sozi-a-tion \OT1/ptm/m/it/10 Sta-
- []
-
+ <C:/Users/Jano/Desktop/MDD/Dokumentation/pics/USE_workflow.jpg>]
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <6> not available
-(Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 130.
+(Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 115.
+
+
+Underfull \hbox (badness 1107) in paragraph at lines 123--124
+\OT1/ptm/m/n/10 gen zu va-li-dieren, kann ein Mod-ell mithilfe des
+ []
+
+
+Underfull \hbox (badness 2150) in paragraph at lines 123--124
+\OT1/ptm/m/n/10 USE-Tools an-i-miert wer-den. Di-rekt nach dem
+ []
+
+
+Underfull \hbox (badness 1789) in paragraph at lines 123--124
+\OT1/ptm/m/n/10 Im-port eines Mod-ells erh[]alt man vom Tool ein
+ []
+
+<pics/USE_class_diagramm.pdf, id=11, 538.01pt x 474.77374pt>
+File: pics/USE_class_diagramm.pdf Graphic file (type pdf)
+
+<use pics/USE_class_diagramm.pdf>
+Package pdftex.def Info: pics/USE_class_diagramm.pdf used on input line 126.
+(pdftex.def)             Requested size: 242.10226pt x 213.64621pt.
+
+Overfull \hbox (28.68784pt too wide) in paragraph at lines 126--128
+[][] 
+ []
 
 
 (C:\Users\Jano\Desktop\MDD\Dokumentation\ModellgetriebeneSWEntwicklungJUSE4Andr
 oid.bbl)
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 149.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 144.
 LaTeX Font Info:    Font shape `OMS/ptm/m/it' in size <10> not available
-(Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 149.
+(Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 144.
 
- [2]
+ [2 <C:/Users/Jano/Desktop/MDD/Dokumentation/pics/USE_class_diagramm.pdf>]
 (C:\Users\Jano\Desktop\MDD\Dokumentation\ModellgetriebeneSWEntwicklungJUSE4Andr
 oid.aux) ) 
 Here is how much of TeX's memory you used:
- 6331 strings out of 493921
- 89428 string characters out of 3144880
- 155938 words of memory out of 3000000
- 9481 multiletter control sequences out of 15000+200000
+ 6335 strings out of 493921
+ 89568 string characters out of 3144880
+ 150938 words of memory out of 3000000
+ 9484 multiletter control sequences out of 15000+200000
  39093 words of font info for 79 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 42i,6n,42p,821b,1531s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,6n,42p,867b,1530s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C
 :/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/P
 rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Pro
 gram Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files 
 (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTe
 X 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ModellgetriebeneSWEntwicklungJUSE4Android.pdf (2 pages, 81527
+Output written on ModellgetriebeneSWEntwicklungJUSE4Android.pdf (2 pages, 83653
  bytes).
 PDF statistics:
- 31 PDF objects out of 1000 (max. 8388607)
+ 34 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
