@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.7.6)  28 JAN 2016 13:29
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.7.6)  28 JAN 2016 16:16
 entering extended mode
 **ModellgetriebeneSWEntwicklungJUSE4Android.tex
 
@@ -575,12 +575,6 @@ File: babel.def 2008/07/08 v3.8m Babel common definitions
 \l@naustrian = a dialect from \language\l@ngerman 
 \l@nswissgerman = a dialect from \language\l@ngerman 
 Package babel Info: Making " an active character on input line 88.
-)
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\babel-english\english.ldf"
-Language: english 2012/08/20 v3.3p English support from the babel system
-\l@canadian = a dialect from \language\l@american 
-\l@australian = a dialect from \language\l@british 
-\l@newzealand = a dialect from \language\l@british 
 ))
 (C:\Users\Jano\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.sty
 \lst@mode=\count118
@@ -656,89 +650,95 @@ Underfull \hbox (badness 10000) in paragraph at lines 46--46
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 48.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 55.
 
-LaTeX Warning: Citation `Use07' on page 1 undefined on input line 55.
-
-
-Underfull \hbox (badness 2237) in paragraph at lines 55--56
-\OT1/ptm/m/n/10 ver-sity of Lis-bon einge-setzt. USE basiert auf
+Underfull \hbox (badness 3199) in paragraph at lines 55--57
+[]\OT1/ptm/m/n/10 UML ba-sed Spe-ci-fia-ti-on En-vi-ron-ment (USE)
  []
 
 
-Underfull \hbox (badness 1325) in paragraph at lines 55--56
-\OT1/ptm/m/n/10 einer Teil-menge der Uni-fied Mod-el-ing Lan-guage
+Underfull \hbox (badness 1838) in paragraph at lines 55--57
+\OT1/ptm/m/n/10 wird zur Spe-zi-fi-ka-ti-on von In-for-ma-ti-ons-sys-te-men
+ []
+
+
+Underfull \hbox (badness 1038) in paragraph at lines 55--57
+\OT1/ptm/m/n/10 Uni-ver-si-ty of Lis-bon ein-ge-setzt. USE ba-siert auf
+ []
+
+
+Underfull \hbox (badness 1325) in paragraph at lines 55--57
+\OT1/ptm/m/n/10 ei-ner Teil-men-ge der Uni-fied Mo-de-ling Lan-gua-ge
+ []
+
+
+Underfull \hbox (badness 2460) in paragraph at lines 55--57
+\OT1/ptm/m/n/10 aus UML-Diagramm ver-wen-det wer-den. Wei-te-re
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--57
+
  []
 
 <pics/USE_workflow.jpg, id=1, 300.3722pt x 150.5625pt>
 File: pics/USE_workflow.jpg Graphic file (type jpg)
 
 <use pics/USE_workflow.jpg>
-Package pdftex.def Info: pics/USE_workflow.jpg used on input line 58.
+Package pdftex.def Info: pics/USE_workflow.jpg used on input line 61.
 (pdftex.def)             Requested size: 210.2591pt x 105.39302pt.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 60.
-
-
-LaTeX Warning: Citation `Data07' on page 1 undefined on input line 60.
-
-
-LaTeX Warning: Citation `Data07' on page 1 undefined on input line 60.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-Underfull \hbox (badness 4726) in paragraph at lines 63--64
-[]\OT1/ptm/m/n/10 Ein En-twick-ler spez-i-fiziert ein USE-Modell,
- []
-
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 66.
 
-Underfull \hbox (badness 1668) in paragraph at lines 67--68
-\OT1/ptm/m/n/10 be-ginnt im-mer mit der Def-i-ni-tion eines Modell-
+Underfull \hbox (badness 1668) in paragraph at lines 69--70
+\OT1/ptm/m/n/10 be-ginnt im-mer mit der De-fi-ni-ti-on ei-nes Modell-
  []
 
-LaTeX Font Info:    Try loading font information for OT1+ptmcm on input line 77
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Font Info:    Try loading font information for OT1+ptmcm on input line 80
 .
+
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptmcm.fd"
 File: ot1ptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ptmcm.
 )
-LaTeX Font Info:    Try loading font information for OML+ptmcm on input line 77
+LaTeX Font Info:    Try loading font information for OML+ptmcm on input line 80
 .
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omlptmcm.fd"
 File: omlptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ptmcm.
 )
-LaTeX Font Info:    Try loading font information for OMX+psycm on input line 77
+LaTeX Font Info:    Try loading font information for OMX+psycm on input line 80
 .
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omxpsycm.fd"
 File: omxpsycm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/psycm.
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 77.
+LaTeX Font Info:    Try loading font information for U+msa on input line 80.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 77.
+LaTeX Font Info:    Try loading font information for U+msb on input line 80.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 77.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 80.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 77.
-LaTeX Font Info:    Try loading font information for OML+ptm on input line 77.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 80.
+LaTeX Font Info:    Try loading font information for OML+ptm on input line 80.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omlptm.fd"
 File: omlptm.fd 
 )
 LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <6> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 77.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 80.
  [1{C:/Users/Jano/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
@@ -746,63 +746,66 @@ LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <6> not available
 
  <C:/Users/Jano/Desktop/MDD/Dokumentation/pics/USE_workflow.jpg>]
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <6> not available
-(Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 115.
+(Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 117.
 
 
-Underfull \hbox (badness 1107) in paragraph at lines 123--124
-\OT1/ptm/m/n/10 gen zu va-li-dieren, kann ein Mod-ell mithilfe des
- []
-
-
-Underfull \hbox (badness 2150) in paragraph at lines 123--124
-\OT1/ptm/m/n/10 USE-Tools an-i-miert wer-den. Di-rekt nach dem
- []
-
-
-Underfull \hbox (badness 1789) in paragraph at lines 123--124
-\OT1/ptm/m/n/10 Im-port eines Mod-ells erh[]alt man vom Tool ein
- []
-
-<pics/USE_class_diagramm.pdf, id=11, 538.01pt x 474.77374pt>
+<pics/USE_class_diagramm.pdf, id=11, 557.08125pt x 435.6275pt>
 File: pics/USE_class_diagramm.pdf Graphic file (type pdf)
 
 <use pics/USE_class_diagramm.pdf>
-Package pdftex.def Info: pics/USE_class_diagramm.pdf used on input line 126.
-(pdftex.def)             Requested size: 242.10226pt x 213.64621pt.
+Package pdftex.def Info: pics/USE_class_diagramm.pdf used on input line 128.
+(pdftex.def)             Requested size: 222.82855pt x 174.24791pt.
 
-Overfull \hbox (28.68784pt too wide) in paragraph at lines 126--128
+Overfull \hbox (9.41412pt too wide) in paragraph at lines 128--129
 [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 135--137
+
+ []
+
+
+Underfull \hbox (badness 1371) in paragraph at lines 138--139
+\OT1/ptm/m/n/10 l[]oschen. Au-er-dem gibt es die M[]oglichkeit ei-ne
  []
 
 
 (C:\Users\Jano\Desktop\MDD\Dokumentation\ModellgetriebeneSWEntwicklungJUSE4Andr
 oid.bbl)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 151.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 144.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 151.
 LaTeX Font Info:    Font shape `OMS/ptm/m/it' in size <10> not available
-(Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 144.
+(Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 151.
 
- [2 <C:/Users/Jano/Desktop/MDD/Dokumentation/pics/USE_class_diagramm.pdf>]
+ [2 <C:/Users/Jano/Desktop/MDD/Dokumentation/pics/USE_class_diagramm.pdf>] [3
+
+]
 (C:\Users\Jano\Desktop\MDD\Dokumentation\ModellgetriebeneSWEntwicklungJUSE4Andr
 oid.aux) ) 
 Here is how much of TeX's memory you used:
- 6335 strings out of 493921
- 89568 string characters out of 3144880
- 150938 words of memory out of 3000000
- 9484 multiletter control sequences out of 15000+200000
- 39093 words of font info for 79 fonts, out of 3000000 for 9000
+ 6323 strings out of 493921
+ 89271 string characters out of 3144880
+ 155619 words of memory out of 3000000
+ 9478 multiletter control sequences out of 15000+200000
+ 36360 words of font info for 76 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 42i,6n,42p,867b,1530s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,6n,38p,783b,1546s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C
 :/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/P
 rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Pro
 gram Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files 
 (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTe
 X 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ModellgetriebeneSWEntwicklungJUSE4Android.pdf (2 pages, 83653
+Output written on ModellgetriebeneSWEntwicklungJUSE4Android.pdf (3 pages, 86422
  bytes).
 PDF statistics:
- 34 PDF objects out of 1000 (max. 8388607)
+ 37 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

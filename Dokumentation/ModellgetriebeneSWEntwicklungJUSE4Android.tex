@@ -14,7 +14,7 @@
 \usepackage[small]{caption}
 \usepackage{epstopdf}
 \usepackage[utf8]{inputenc}
-\usepackage[ngerman,english]{babel}
+\usepackage[ngerman]{babel}
 \usepackage{listings}
 
 \lstdefinestyle{myCustomUseStyle}{
@@ -52,17 +52,19 @@
 
 \section{\uppercase{Vorstellung USE}}
 
-UML based Specifiation Environment (USE) wird zur Spezifikation von Informationssystemen verwendet und wurde an der Universität Bremen entwickelt. Neben dem Einsatz für Fallstudien, wird USE vor allem in der Lehre an Hochschule wie z. B. MIT, Cambridge, University of Edinburgh und University of Lisbon eingesetzt.  USE basiert auf einer Teilmenge der Unified Modeling Language (UML) und der Object Constraint Language (OCL). Eine USE-Spezifikation besteht aus einer textuellen Beschreibung eines Modells, bei der Eigenschaften aus UML-Diagramm verwendet werden. Weitere Integritätsausdrücke für ein Modell können durch die OCL definiert werden. \cite{Use07} Die OCL wird im späteren Kapitel (TODO) vorgestellt. Die nachfolgende Abbildung veranschaulicht den Workflow für eine USE-Spezifikation.
+UML based Specifiation Environment (USE) wird zur Spezifikation von Informationssystemen verwendet und wurde an der Universität Bremen entwickelt. Neben dem Einsatz für Fallstudien, wird USE vor allem in der Lehre an Hochschule wie z. B. MIT, Cambridge, University of Edinburgh und University of Lisbon eingesetzt.  USE basiert auf einer Teilmenge der Unified Modeling Language (UML) und der Object Constraint Language (OCL). Eine USE-Spezifikation besteht aus einer textuellen Beschreibung eines Modells, bei der Eigenschaften aus UML-Diagramm verwendet werden. Weitere Integritätsausdrücke für ein Modell können durch die OCL definiert werden. \cite{Use07} Die OCL wird im späteren Kapitel (TODO) vorgestellt. 
+\\
+
+Die Abbildung~\ref{fig:Grafik1} veranschaulicht den Workflow für eine USE-Spezifikation. Ein Entwickler spezifiziert ein USE-Modell, welches ein System beschreibt und nutzt dafür UML- und OCL-Ausdrücke. Mithilfe von USE ist es ihm möglich die bestimmten Anforderungen an sein System auf Erfüllung mit dem Modell zu validieren.
 
 \begin{figure}[!h]
 	\includegraphics[scale=.7]{pics/USE_workflow.jpg}
-	\captionsetup{labelformat=empty}
 	\caption{Workflow einer USE-Spezifikation \cite{Data07}}
+	\label{fig:Grafik1}
 \end{figure}
 
-Ein Entwickler spezifiziert ein USE-Modell, welches ein System beschreibt und nutzt dafür UML- und OCL-Ausdrücke. Mithilfe von USE ist es ihm möglich die bestimmten Anforderungen an sein System auf Erfüllung mit dem Modell zu validieren.
-
-\subsection{Spezifikation}
+\subsection{Spezifikation} 
+\label{ssec:specification}
 
 Die textuelle Beschreibung eines Modells mit USE beginnt immer mit der Definition eines Modell-Namens. In diesem Fall ist das \textit{IceCream}. Im Anschluss folgen Klassendefinitionen mit ihren jeweiligen Attributen und Methoden. Im Beispiel hat die Klasse \textit{Station} das Attribut \textit{name} und die Operation \textit{entries} ohne Übergabeparameter. Die nachfolgenden Code-Ausschnitte verwenden lediglich UML.
 
@@ -73,6 +75,7 @@ model IceCream
 class Station
 	attributes
 		name			: String
+		target		: Integer
 	operations
 		entries()	: Set(Entry) = self.records->asSet
 end
@@ -103,15 +106,14 @@ end
 class Entry
 	attributes
 		date		: CalendarDate
-		target		: Integer
-		actual		: Integer
+		actual	: Integer
 		variance	: Integer
 	operations
-		variance(): Integer = actual - target	
+		variance(): Integer = actual - station.target	
 end
 
 association Station_Entry between
-	Station[ 1 ] 
+	Station[ 1 ] role station
 	Entry[ * ] role records
 end
 \end{lstlisting}
@@ -120,15 +122,20 @@ Zur Vervollständigung des Modells gehört außerdem eine aus der Arbeit \cite{S
 
 \subsection{Tool}
 
-Um eine Spezifikation auf nicht-formale Anforderungen zu validieren, kann ein Modell mithilfe des USE-Tools animiert werden. Direkt nach dem Import eines Modells erhält man vom Tool ein Feedback über die Validität der UML- und OCL-Definitionen. Neben der Validierung bietet das Tool weitere Möglichkeiten, wie z. B. die Visualisierung eines Klassen-, Sequenz- oder Objektdiagramms.
+Um eine Spezifikation auf nicht-formale Anforderungen zu validieren, kann ein Modell mithilfe des USE-Tools animiert werden. Direkt nach dem Import eines Modells erhält man vom Tool ein Feedback über die Validität der UML- und OCL-Definitionen. Neben der Validierung bietet das Tool weitere Möglichkeiten, wie z. B. die Visualisierung eines Klassen-, Sequenz- oder Objektdiagramms. In der Abbildung~\ref{fig:Grafik2} finden sich die im Kapitel~\ref{ssec:specification} definierten Klassen und Assoziationen als Klassendiagramm wieder.
 
 \begin{figure}[!h]
-	\includegraphics[scale=.45]{pics/USE_class_diagramm.pdf}
-	\captionsetup{labelformat=empty}
+	\includegraphics[scale=.4]{pics/USE_class_diagramm.pdf}
 	\caption{Klassendiagramm für das Beispiel}
+	\label{fig:Grafik2}
 \end{figure}
 
-\section{\uppercase{Vorstellung OCL}}
+\section{\uppercase{Beschreibung der Anwendung}}
+
+Das Beispiel wurde aus dem Artikel \cite{Gui06} entnommen. Es handelt sich um ein fiktives Programm der Regierung zur Kontrolle der Eispartikel in der Luft. Wenn die Konzentration zu niedrig ist, bedeutet das, dass die Bevölkerung zu wenig Eiscreme isst, was eine Menge an Risiken für die Umwelt und die öffentliche Ordnung darstellt. Um die Eispartikel in der Luft zu überwachen, hat der Staat Kontrollstationen im gesamten Land verteilt aufgestellt. Für jede Station gibt es einen festgelegten Zielwert der Eispartikel. Der aktuelle Wert weicht in der Regel vom Zielwert ab. 
+\\
+
+Die Anwendung ermöglicht es neue Stationen mit Zielwerten aufzunehmen und alte Stationen zu löschen. Außerdem gibt es die Möglichkeit eine Adresse zu einer Station anzugeben. Eine Adresse ist im Nachhinein auch wieder entfernbar. Die Erfassung von beliebig vielen Einträgen zu einer Station ist ebenfalls möglich. Auch Einträge lassen sich im Nachhinein wieder entfernen. Zudem wird für jeden Eintrag, nach Eingabe des aktuellen Wertes die Abweichung zum Zielwert angezeigt.
 
 \section{\uppercase{JUSE4Android}}
 
