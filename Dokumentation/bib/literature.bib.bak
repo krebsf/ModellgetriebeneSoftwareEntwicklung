@@ -5,9 +5,21 @@
 @Manual{Data07,
   Title                    = {USE - A UML based Speciﬁcation Environment},
   Author                   = {Database Systems Group, Bremen University},
+  Month                    = {May},
   Year                     = {2007},
 
+  Owner                    = {Jano},
+  Timestamp                = {2016.01.27},
   Url                      = {http://www.db.informatik.uni-bremen.de/projects/USE/use-documentation.pdf}
+}
+
+@Article{MartinGogollaArticle,
+  Title                    = {USE: A UML-based speciﬁcation environment for validating UML and OCL},
+  Author                   = {Martin Gogolla, Fabian Buttner, Mark Richters},
+  Year                     = {2007},
+
+  Owner                    = {Jano},
+  Timestamp                = {2016.01.27}
 }
 
 @InProceedings{Moore99,

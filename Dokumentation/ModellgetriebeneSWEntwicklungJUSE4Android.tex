@@ -62,37 +62,77 @@
 
 \subsection{Ergebnis}
 
-\section{\uppercase{JUSE4Android}}
-
 \section{\uppercase{Vorstellung USE}}
 
-UML based Specifiation Environment (USE) wird zur Spezifikation von Informationssystemen verwendet. Es basiert auf einer Teilmenge der Unified Modeling Language (UML). Eine USE-Spezifikation besteht aus einer textuellen Beschreibung eines Modells, bei der Eigenschaften aus UML-Diagramm verwendet werden. Um eine Spezifikation auf nicht-formale Anforderungen zu validieren, kann ein Modell mithilfe des USE-Tools animiert werden. Weitere Integritätsausdrücke für ein Modell können durch die Object Constraint Language (OCL) definiert werden. Die OCL wird im späteren Kapitel (TODO) vorgestellt. Die nachfolgende Abbildung veranschaulicht den Workflow für eine USE-Spezifikation.
+UML based Specifiation Environment (USE) wird zur Spezifikation von Informationssystemen verwendet und wurde an der Universität Bremen entwickelt. Es basiert auf einer Teilmenge der Unified Modeling Language (UML) und der Object Constraint Language (OCL). Eine USE-Spezifikation besteht aus einer textuellen Beschreibung eines Modells, bei der Eigenschaften aus UML-Diagramm verwendet werden. Um eine Spezifikation auf nicht-formale Anforderungen zu validieren, kann ein Modell mithilfe des USE-Tools animiert werden. Weitere Integritätsausdrücke für ein Modell können durch die OCL definiert werden. \cite{Use07} Die OCL wird im späteren Kapitel (TODO) vorgestellt. Die nachfolgende Abbildung veranschaulicht den Workflow für eine USE-Spezifikation.
 
 \begin{figure}[h]
 	\includegraphics[scale=.7]{pics/USE_workflow.jpg}
+	\captionsetup{labelformat=empty}
 	\caption{Workflow einer USE-Spezifikation \cite{Data07}}
 \end{figure}
 
-Die textuelle Beschreibung eines Modells mit USE beginnt immer mit der Definition eines Modell-Namens. Im Anschluss folgen Klassen mit ihren jeweiligen Attributen und Methoden.
+Ein Entwickler spezifiziert ein USE-Modell, dass ein System beschreibt und nutzt dabei UML- und OCL-Ausdrücke. Mithilfe von USE ist es ihm möglich zu validieren, ob die bestimmten Anforderungen an sein System mit dem Modell erfüllt sind.
+
+\subsection{Syntax}
+
+Die textuelle Beschreibung eines Modells mit USE beginnt immer mit der Definition eines Modell-Namens. In diesem Fall ist das \textit{IceCream}. Im Anschluss folgen Klassendefinitionen mit ihren jeweiligen Attributen und Methoden. Im Beispiel hat die Klasse \textit{Station} das Attribut \textit{name} und die Operation \textit{entries} ohne Übergabeparameter. Das folgende Beispiel basiert lediglich auf UML. OCL-Ausdrücke werden später vorgestellt.
 
 \lstset{basicstyle=\tiny,style=myCustomUseStyle}
-
 \begin{lstlisting}
 model IceCream
 
 class Station
 	attributes
-		name		: String
+		name			: String
 	operations
-		entries(): Set(Entry) = self.records->asSet
+		entries()	: Set(Entry) = self.records->asSet
 end
 \end{lstlisting}
 
+Klassen können untereinander in Abhängigkeit stehen. Für diese Abhängigkeiten sind Assoziationen vorgesehen. Um eine Assoziation auszudrücken, wird zuerst eine weitere Klasse \textit{Address} eingeführt.
 
+\begin{lstlisting}
+class Address
+	attributes
+		street	: String
+		postCode	: Integer
+end
+\end{lstlisting}
 
-\subsection{Syntax}
+Für das dem Artikel zugrunde liegende Beispiel kann eine Station entweder eine oder keine Adresse haben.
+
+\begin{lstlisting}
+association Station_Address between
+	Station[ 1 ] 
+	Address[ 0..1 ] role place
+end
+\end{lstlisting}
+
+\textit{Station\_Address} ist dabei der Name der Assoziation und das Attribut \textit{place} nimmt in der Klasse \textit{Station} die Rolle für die Adresse ein. Um das gesamte Modell zu vervollständigen, fehlen noch die Klasse \textit{Entry} und die Assoziation \textit{Station\_Address}\textit{Station\_Entry}.
+
+\begin{lstlisting}
+class Entry
+	attributes
+		date		: CalendarDate
+		target		: Integer
+		actual		: Integer
+		variance	: Integer
+	operations
+		variance(): Integer = actual - target	
+end
+
+association Station_Entry between
+	Station[ 1 ] 
+	Entry[ * ] role records
+end
+\end{lstlisting}
 
 \subsection{Tool}
+
+\section{\uppercase{Vorstellung OCL}}
+
+\section{\uppercase{JUSE4Android}}
 
 \vfill
 \bibliographystyle{apalike}
