@@ -15,7 +15,7 @@ model IceCream
 
 @StartingPoint(NameToDisplay="Station", ImageToDisplay="")
 @list(name="1")
-@creation(name="1")
+@creation(name="1", target="2")
 @display(name="1")
 @unique(name="1")
 @domain()
@@ -24,6 +24,7 @@ class Station
 	attributes
 
 		name		: String
+		target		: Integer
 
 	operations
 	
@@ -35,6 +36,12 @@ class Station
 		/* meanActualValue() : Real = summedActualValues().div(entries()->size()) */
 
 		/* meanVarianceValue() : Real = entries()->iterate(iterator; result : Real = 0 | result + iterator.variance).div(entries()->size()) */
+		
+	constraints
+	
+		@TargetValueCannotBeNegative(rationale="The defined target value of a station cannot be smaller than 0")
+		inv TargetValueCannotBeNegative:
+			target>=0
 		
 end --Station
 
@@ -59,8 +66,8 @@ end --Address
 
 @StartingPoint(NameToDisplay="Entry", ImageToDisplay="")
 @list(date="1")
-@creation(date="1",target="2",actual="3")
-@display(date="1",target="2",actual="3",variance="4")
+@creation(date="1",actual="2")
+@display(date="1",actual="2",variance="3")
 @unique(date="1")
 @domain()
 class Entry
@@ -68,23 +75,18 @@ class Entry
 	attributes
 
 		date		: CalendarDate
-		target		: Integer
 		actual		: Integer
 		variance	: Integer
 	  
 	operations
 
-		variance(): Integer = actual - target
+		variance(): Integer = actual - station.target
   
 	constraints
 	
 		@ActualValueCannotBeNegative(rationale="The actual value measured at a station cannot be smaller than 0")
 		inv ActualValueCannotBeNegative:
-			actual>=0
-		
-		@TargetValueCannotBeNegative(rationale="The defined target value of a station cannot be smaller than 0")
-		inv TargetValueCannotBeNegative:
-			target>=0		
+			actual>=0		
 			
 end --Entry
 
@@ -222,7 +224,7 @@ end --CalendarDate
 ------------------------------------------------------------------------
 	
 association Station_Entry between
-	Station[ 1 ] 
+	Station[ 1 ] role station
 	Entry[ * ] role records
 end
 
