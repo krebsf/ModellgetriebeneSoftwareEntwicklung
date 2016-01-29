@@ -15,14 +15,19 @@
 \usepackage{epstopdf}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
+\usepackage{url}
+\usepackage{hyperref}
 \usepackage{listings}
+
 
 \lstdefinestyle{myCustomUseStyle}{
   stepnumber=1,
   numbersep=10pt,
+  basicstyle=\footnotesize\ttfamily,
   tabsize=3,
   showspaces=false,
-  showstringspaces=false
+  showstringspaces=false,
+  breaklines=true
 }
 
 \subfigtopskip=0pt
@@ -40,7 +45,7 @@
 
 \keywords{MDA, UML, USE, OCL, Android}
 
-\abstract{ein deutsches Abstract}{ein englisches Abstract}
+\abstract{ein deutsches Abstract: Entwicklung einer Applikation, USE-Spezifikation zur Definition eines Klassendiagramms; OCL-Constraints oben drauf;Im Anschluss Generierung der Anwendung mit Hilfe von JUSE4Android. Untersuchung der Anwendung anhand bestimmter Fragestellungen   }{ein englisches Abstract}
 
 
 \onecolumn \maketitle \normalsize \vfill
@@ -50,12 +55,20 @@
 \noindent Zitat Test
 \cite{SilvaMasterThesis}
 
-\section{\uppercase{Vorstellung USE}}
+\section{\uppercase{Beschreibung der Anwendung}}
+\noindent
+Das Beispiel wurde aus dem Artikel \cite{Gui06} entnommen. Es handelt sich um ein fiktives Programm der Regierung zur Kontrolle der Eispartikel in der Luft. Wenn die Konzentration zu niedrig ist, bedeutet das, dass die Bevölkerung zu wenig Eiscreme isst, was eine Menge an Risiken für die Umwelt und die öffentliche Ordnung darstellt. Um die Eispartikel in der Luft zu überwachen, hat der Staat Kontrollstationen im gesamten Land verteilt aufgestellt. Für jede Station gibt es einen festgelegten Zielwert der Eispartikel. Der aktuelle Wert weicht in der Regel vom Zielwert ab. 
+\\
+Die Anwendung ermöglicht es neue Stationen mit Zielwerten aufzunehmen und alte Stationen zu löschen. Außerdem gibt es die Möglichkeit eine Adresse zu einer Station anzugeben. Eine Adresse ist im Nachhinein auch wieder entfernbar. Die Erfassung von beliebig vielen Einträgen zu einer Station ist ebenfalls möglich. Auch Einträge lassen sich im Nachhinein wieder entfernen. Zudem wird für jeden Eintrag, nach Eingabe des aktuellen Wertes die Abweichung zum Zielwert angezeigt.
 
-UML based Specifiation Environment (USE) wird zur Spezifikation von Informationssystemen verwendet und wurde an der Universität Bremen entwickelt. Neben dem Einsatz für Fallstudien, wird USE vor allem in der Lehre an Hochschule wie z. B. MIT, Cambridge, University of Edinburgh und University of Lisbon eingesetzt.  USE basiert auf einer Teilmenge der Unified Modeling Language (UML) und der Object Constraint Language (OCL). Eine USE-Spezifikation besteht aus einer textuellen Beschreibung eines Modells, bei der Eigenschaften aus UML-Diagramm verwendet werden. Weitere Integritätsausdrücke für ein Modell können durch die OCL definiert werden. \cite{Use07} Die OCL wird im späteren Kapitel (TODO) vorgestellt. 
+
+\section{\uppercase{Vorstellung USE}}
+\noindent
+UML based Specifiation Environment (USE) wird zur Spezifikation von Informationssystemen verwendet und wurde an der Universität Bremen entwickelt. Neben dem Einsatz für Fallstudien, wird USE vor allem in der Lehre an Hochschule wie z. B. MIT, Cambridge, University of Edinburgh und University of Lisbon eingesetzt.  USE basiert auf einer Teilmenge der Unified Modeling Language (UML) und der Object Constraint Language (OCL). Eine USE-Spezifikation besteht aus einer textuellen Beschreibung eines Modells, bei der Eigenschaften aus UML-Diagramm verwendet werden. Weitere Integritätsausdrücke für ein Modell können durch die OCL definiert werden. \cite{Use07}
+%Die OCL wird im späteren Kapitel (TODO) vorgestellt. 
 \\
 
-Die Abbildung~\ref{fig:Grafik1} veranschaulicht den Workflow für eine USE-Spezifikation. Ein Entwickler spezifiziert ein USE-Modell, welches ein System beschreibt und nutzt dafür UML- und OCL-Ausdrücke. Mithilfe von USE ist es ihm möglich die bestimmten Anforderungen an sein System auf Erfüllung mit dem Modell zu validieren.
+Die Abbildung~\ref{fig:Grafik1} veranschaulicht den Workflow für eine USE-Spezifikation. Ein Entwickler spezifiziert ein plattformunabhängiges USE-Modell, welches ein System beschreibt und nutzt dafür UML- und OCL-Ausdrücke. Mithilfe von USE ist es ihm möglich, die bestimmten Anforderungen an sein System auf Erfüllung mit dem Modell zu validieren.
 
 \begin{figure}[!h]
 	\includegraphics[scale=.7]{pics/USE_workflow.jpg}
@@ -120,7 +133,29 @@ end
 
 Zur Vervollständigung des Modells gehört außerdem eine aus der Arbeit \cite{SilvaMasterThesis} entnommene Klasse \textit{CalendarDate}.
 
-\subsection{Tool}
+\subsection{Erweiterung durch OCL} 
+\label{ssec:ocl}
+Als Bestandteil der UML ist die OCL ebenfalls als Spezifikation zur Modellierung von Softwareartefakten zu verstehen. Die Entwicklung der OCL wurde angetrieben durch den Wunsch, zusätzliche Modelleigenschaften - welche nicht mithilfe grafischer Elemente ausgedrückt werden können - festlegen zu können. \cite[S.5ff]{OCLFormal} Da diese Aspekte eindeutig und für alle Akteure verständlich sein sollen, wurde die OCL als eine formale und dennoch gut lesbare Sprache konzipiert. Das Vokabular der aktuell in Version 2.4. bereitgestellten Spezifikation ist sehr umfänglich und wird u.a. für die folgenden Zwecke genutzt: \begin{itemize}
+\item als Abfragesprache
+\item zur Definition von Invarianten
+\item zur Beschreibung von Vor- und Nachbedingungen von Operationen 
+\item zur Definition von Ableitungsregeln für Attribute
+\item zur Definition von Restriktionen für Operationen
+\end{itemize} 
+Im Folgenden werden die OCL-Konstrukte erläutert, welche zur textuellen Beschreibung von Bedingungen im IceCream Beispiel verwendet wurden.  HINWEIS: keine context Schlüsselwort, da die Aussagen innerhalb der Klassen spezifiziert werden. Annotationen sind JUSE4Android spezifisch und nicht Bestandteil der OCL
+Für die Klassen Station und Entry wurden die Invarianten \textit{TargetValueCannotBeNegative} und \textit{ActualValueCannotBeNegative} definiert. Diese repräsentieren Aussagen, welche für die Instanzen der jeweiligen Klasse zu jeder Zeit wahr sein müssen. \cite[S.188]{OCLFormal}
+\begin{lstlisting}
+@TargetValueCannotBeNegative(rationale="The defined target value of a station cannot be smaller than 0")
+		inv TargetValueCannotBeNegative:
+			target>=0
+			
+@ActualValueCannotBeNegative(rationale="The actual value measured at a station cannot be smaller than 0")
+		inv ActualValueCannotBeNegative:
+			actual>=0
+\end{lstlisting}
+
+Die Annotation bietet die Möglichkeit, die Invariante zu bezeichnen und näher zu erläutern. Nach dem Schlüsselwort \textit{inv} folgt erneut der Bezeichner. 
+\subsection{USE-Tool}
 
 Um eine Spezifikation auf nicht-formale Anforderungen zu validieren, kann ein Modell mithilfe des USE-Tools animiert werden. Direkt nach dem Import eines Modells erhält man vom Tool ein Feedback über die Validität der UML- und OCL-Definitionen. Neben der Validierung bietet das Tool weitere Möglichkeiten, wie z. B. die Visualisierung eines Klassen-, Sequenz- oder Objektdiagramms. In der Abbildung~\ref{fig:Grafik2} finden sich die im Kapitel~\ref{ssec:specification} definierten Klassen und Assoziationen als Klassendiagramm wieder.
 
@@ -130,15 +165,10 @@ Um eine Spezifikation auf nicht-formale Anforderungen zu validieren, kann ein Mo
 	\label{fig:Grafik2}
 \end{figure}
 
-\section{\uppercase{Beschreibung der Anwendung}}
-
-Das Beispiel wurde aus dem Artikel \cite{Gui06} entnommen. Es handelt sich um ein fiktives Programm der Regierung zur Kontrolle der Eispartikel in der Luft. Wenn die Konzentration zu niedrig ist, bedeutet das, dass die Bevölkerung zu wenig Eiscreme isst, was eine Menge an Risiken für die Umwelt und die öffentliche Ordnung darstellt. Um die Eispartikel in der Luft zu überwachen, hat der Staat Kontrollstationen im gesamten Land verteilt aufgestellt. Für jede Station gibt es einen festgelegten Zielwert der Eispartikel. Der aktuelle Wert weicht in der Regel vom Zielwert ab. 
-\\
-
-Die Anwendung ermöglicht es neue Stationen mit Zielwerten aufzunehmen und alte Stationen zu löschen. Außerdem gibt es die Möglichkeit eine Adresse zu einer Station anzugeben. Eine Adresse ist im Nachhinein auch wieder entfernbar. Die Erfassung von beliebig vielen Einträgen zu einer Station ist ebenfalls möglich. Auch Einträge lassen sich im Nachhinein wieder entfernen. Zudem wird für jeden Eintrag, nach Eingabe des aktuellen Wertes die Abweichung zum Zielwert angezeigt.
 
 \section{\uppercase{JUSE4Android}}
 
+Annotationen 
 \vfill
 \bibliographystyle{apalike}
 {\small
@@ -146,8 +176,9 @@ Die Anwendung ermöglicht es neue Stationen mit Zielwerten aufzunehmen und alte 
 
 \section*{\uppercase{Anhang}}
 
-\noindent If any, the appendix should appear directly after the
-references without numbering, and not on a new page. To do so please use the following command:
+\noindent 
+USE-Spezifikation, welche zur Generierung genutzt wird
+
 \textit{$\backslash$section*\{APPENDIX\}}
 
 

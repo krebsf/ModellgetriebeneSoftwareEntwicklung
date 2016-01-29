@@ -25,23 +25,26 @@ class Station
 
 		name		: String
 		target		: Integer
-
+		numberOfEntries :Integer derive:entries()->size()
+		
 	operations
 	
 		entries(): Set(Entry) = self.records->asSet
 	  
-		summedActualValues() : Real = entries()->iterate(iterator : Entry; res : Real = 0 | res + iterator.actual);
-		
 		/* assumes that there is exactly one actual value per entry */
-		/* meanActualValue() : Real = summedActualValues().div(entries()->size()) */
+		meanActualValue() : Real = entries()->iterate(iterator : Entry; result : Real = 0 | result + iterator.actual)/(numberOfEntries) 
+		pre:numberOfEntries>0
 
-		/* meanVarianceValue() : Real = entries()->iterate(iterator; result : Real = 0 | result + iterator.variance).div(entries()->size()) */
+		meanVarianceValue() : Real = entries()->iterate(iterator :Entry; result : Real = 0 | result + iterator.variance)/(numberOfEntries) 
+		pre:numberOfEntries>0
 		
 	constraints
 	
 		@TargetValueCannotBeNegative(rationale="The defined target value of a station cannot be smaller than 0")
 		inv TargetValueCannotBeNegative:
 			target>=0
+		
+		
 		
 end --Station
 
@@ -92,6 +95,7 @@ end --Entry
 
 --------------------------------------------------------------
 -- Library types
+-- The below described class was taken from "Model-Driven Generative Programming for BIS Mobile Applications", da Silva, L. (2014)
 --------------------------------------------------------------
 
 @list()
