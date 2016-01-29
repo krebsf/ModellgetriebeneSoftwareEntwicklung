@@ -5,4 +5,17 @@ da~Silva, L. (2014).
 \newblock Model-driven generative programming for bis mobile applications.
 \newblock Master's thesis, ISCTE IUL University of Lisbon.
 
+\bibitem[Database Systems~Group, 2007]{Data07}
+Database Systems~Group, B.~U. (2007).
+\newblock {\em USE - A UML based Specification Environment}.
+
+\bibitem[Fowler, 2006]{Gui06}
+Fowler, M. (2006).
+\newblock Gui architectures.
+
+\bibitem[Martin~Gogolla, 2007]{Use07}
+Martin~Gogolla, Fabian~Buttner, M.~R. (2007).
+\newblock Use: A uml-based specification environment for validating uml and
+  ocl.
+
 \end{thebibliography}

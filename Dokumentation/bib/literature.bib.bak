@@ -3,7 +3,7 @@
 
 
 @Manual{Data07,
-  Title                    = {USE - A UML based Speciﬁcation Environment},
+  Title                    = {USE - A UML based Specification Environment},
   Author                   = {Database Systems Group, Bremen University},
   Month                    = {May},
   Year                     = {2007},
@@ -13,13 +13,33 @@
   Url                      = {http://www.db.informatik.uni-bremen.de/projects/USE/use-documentation.pdf}
 }
 
+@Misc{Gui06,
+  Title                    = {GUI Architectures},
+
+  Author                   = {Martin Fowler},
+  Month                    = {July},
+  Year                     = {2006},
+
+  Owner                    = {Jano},
+  Timestamp                = {2016.01.28},
+  Url                      = {http://martinfowler.com/eaaDev/uiArchs.html}
+}
+
 @Article{Use07,
-  Title                    = {{USE: A UML-based specification environment for validating UML and OCL}},
+  Title                    = {USE: A UML-based speciï¬�cation environment for validating UML and OCL},
   Author                   = {Martin Gogolla, Fabian Buttner, Mark Richters},
   Year                     = {2007},
 
   Owner                    = {Jano},
   Timestamp                = {2016.01.27}
+}
+
+@InProceedings{Moore99,
+  Title                    = {Paper templates},
+  Author                   = {R. Moore and J. Lopes},
+  Booktitle                = {TEMPLATE'06, 1st International Conference on Template Production},
+  Year                     = {1999},
+  Publisher                = {SciTePress}
 }
 
 @MastersThesis{SilvaMasterThesis,
