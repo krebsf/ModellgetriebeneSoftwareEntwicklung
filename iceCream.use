@@ -25,7 +25,8 @@ class Station
 
 		name		: String
 		target		: Integer
-		numberOfEntries :Integer derive:entries()->size()
+		numberOfEntries : Integer 
+		/*derive:entries()->size()*/
 		
 	operations
 	
@@ -83,8 +84,9 @@ class Entry
 	  
 	operations
 
-		variance(): Integer = actual - station.target
-  
+		calculateVariance(): Integer = actual - station.target
+		pre:station <> null 
+		
 	constraints
 	
 		@ActualValueCannotBeNegative(rationale="The actual value measured at a station cannot be smaller than 0")
