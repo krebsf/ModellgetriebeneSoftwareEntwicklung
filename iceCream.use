@@ -26,15 +26,17 @@ class Station
 		name		: String
 		target		: Integer
 		numberOfEntries : Integer derive:entries()->size()
+		meanActualValue : Real derive:calculateMeanActualValue()
+		meanVarianceValue :Real derive:calculateMeanVarianceValue()
 		
 	operations
 	
 		entries(): Set(Entry) = self.records->asSet
 	  
-		meanActualValue() : Real = entries()->iterate(iterator : Entry; result : Real = 0 | result + iterator.actual)/(numberOfEntries) 
+		calculateMeanActualValue() : Real = entries()->iterate(iterator : Entry; result : Real = 0 | result + iterator.actual)/(numberOfEntries) 
 		pre:numberOfEntries>0
 
-		meanVarianceValue() : Real = entries()->iterate(iterator :Entry; result : Real = 0 | result + iterator.variance)/(numberOfEntries) 
+		calculateMeanVarianceValue() : Real = entries()->iterate(iterator :Entry; result : Real = 0 | result + iterator.variance)/(numberOfEntries) 
 		pre:numberOfEntries>0
 		
 	constraints
@@ -78,7 +80,7 @@ class Entry
 
 		date		: CalendarDate
 		actual		: Integer
-		variance	: Integer
+		variance	: Integer derive:calculateVariance()
 	  
 	operations
 
