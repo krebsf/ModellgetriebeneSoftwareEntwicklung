@@ -84,7 +84,7 @@ Die Abbildung~\ref{fig:Grafik1} veranschaulicht den Workflow für eine USE-Spezi
 Die textuelle Beschreibung eines Modells mit USE beginnt immer mit der Definition eines Modell-Namens. In diesem Fall ist das \textit{IceCream}. Im Anschluss folgen Klassendefinitionen mit ihren jeweiligen Attributen und Methoden. Im Beispiel hat die Klasse \textit{Station} das Attribut \textit{name} und die Operation \textit{entries} ohne Übergabeparameter. Die nachfolgenden Code-Ausschnitte verwenden lediglich UML.
 
 \lstset{basicstyle=\tiny,style=myCustomUseStyle}
-\begin{lstlisting}
+\begin{lstlisting}[caption={USE-Spezifikation der Klasse Station im Modell IceCream},label=lst:use1]
 model IceCream
 
 class Station
@@ -92,17 +92,19 @@ class Station
 		name			: String
 		target		: Integer
 		numberOfEntries : Integer
+		meanActualValue : Real 
+		meanVarianceValue :Real
 	operations
-		entries()	: Set(Entry) = self.records->asSet
-		meanActualValue() : Real
-		meanVarianceValue() : Real
+		entries()	: Set(Entry) 
+		calculateMeanActualValue() : Real
+		calculateMeanVarianceValue() : Real
 		
 end
 \end{lstlisting}
 
 Klassen können untereinander in Abhängigkeit stehen. Für diese Abhängigkeiten sind Assoziationen vorgesehen. Um eine Assoziation auszudrücken, wird zuerst eine weitere Klasse \textit{Address} eingeführt.
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={USE-Spezifikation der Klasse Adresse},label=lst:use2]
 class Address
 	attributes
 		street	: String
@@ -112,7 +114,7 @@ end
 
 Für das dem Artikel zugrunde liegende Beispiel kann eine Station entweder eine oder keine Adresse haben.
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={USE-Spezifikation der Assoziation zwischen einer Station und einer Adresse},label=lst:assocs1]
 association Station_Address between
 	Station[ 1 ] 
 	Address[ 0..1 ] role place
@@ -121,14 +123,14 @@ end
 
 \textit{Station\_Address} ist dabei der Name der Assoziation und das Attribut \textit{place} nimmt in der Klasse \textit{Station} die Rolle für die Adresse ein. Zum gesamten USE-Modell gehören weiterhin noch die Klasse \textit{Entry} und die Assoziation \textit{Station\_Entry}.
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={USE-Spezifikation der Klasse Entry und der Assoziation zwischen einer Station und deren Entries},label=lst:assocs2]
 class Entry
 	attributes
 		date		: CalendarDate
 		actual	: Integer
 		variance	: Integer
 	operations
-		calculateVariance(): Integer = actual - station.target	
+		calculateVariance(): Integer 
 end
 
 association Station_Entry between
@@ -141,29 +143,43 @@ Zur Vervollständigung des Modells gehört außerdem eine aus der Arbeit \cite{S
 
 \subsection{Erweiterung durch OCL} 
 \label{ssec:ocl}
-Als Bestandteil der UML ist die OCL ebenfalls als Spezifikation zur Modellierung von Softwareartefakten zu verstehen. Die Entwicklung der OCL wurde angetrieben durch den Wunsch, zusätzliche Modelleigenschaften - welche nicht mithilfe grafischer Elemente ausgedrückt werden können - festlegen zu können. \cite[S.5ff]{OCLFormal} Da diese Aspekte eindeutig und für alle Akteure verständlich sein sollen, wurde die OCL als eine formale und dennoch gut lesbare Sprache konzipiert. Das Vokabular der aktuell in Version 2.4. bereitgestellten Spezifikation ist sehr umfänglich und wird u.a. für die folgenden Zwecke genutzt: \begin{itemize}
-\item als Abfragesprache
-\item zur Definition von Invarianten
-\item zur Beschreibung von Vor- und Nachbedingungen von Operationen 
-\item zur Definition von Ableitungsregeln für Attribute
+Als Bestandteil der UML ist die OCL ebenfalls als Spezifikation zur Modellierung von Softwareartefakten zu verstehen. Die Entwicklung der OCL wurde angetrieben durch den Wunsch, zusätzliche Modelleigenschaften - welche nicht mithilfe grafischer Elemente ausgedrückt werden können - festlegen zu können. \cite[S.5f]{OCLFormal} Da diese Aspekte eindeutig und für alle Akteure verständlich sein sollen, wurde die OCL als eine formale und dennoch gut lesbare Sprache konzipiert. Das Vokabular der aktuell in Version 2.4. bereitgestellten Spezifikation ist sehr umfänglich und wird u.a. für die folgenden Zwecke genutzt: \begin{itemize}
 \item zur Definition von Restriktionen für Operationen
+\item zur Beschreibung von Vor- und Nachbedingungen von Operationen 
+\item zur Definition von Invarianten
+\item zur Definition von Ableitungsregeln für Attribute
 \end{itemize} 
-Im Folgenden werden die OCL-Konstrukte erläutert, welche zur textuellen Beschreibung von Bedingungen im IceCream Beispiel verwendet wurden. Da diese innerhalb der Klassen spezifiziert werden, kann auf die Einleitung durch das Schlüsselwort \textit{context} verzichtet werden.  
+Im Folgenden werden die OCL-Konstrukte erläutert, welche zur textuellen Beschreibung von Bedingungen im IceCream Beispiel verwendet wurden. Da diese innerhalb der Klassen spezifiziert werden, kann auf die Einleitung durch das Schlüsselwort \textit{context} verzichtet werden.  \\
+Zunächst werden die in den Klassen Station und Entry deklarierten Operationen näher durch die OCL definiert und es werden Vorbedingungen festgelegt. Listing \ref{lst:operations} zeigt, wie die Einträge zu einer Station durch die Methode \textit{entries()} gesammelt werden und wie einfache Berechnung des Mittelwerts für gemessene Werte (\textit{calculateMeanActualValue()} erfolgt.  
+\begin{lstlisting}[caption={OCL-erweiterte Operationen der Klasse Station},label=lst:operations]
+entries(): Set(Entry) = self.records->asSet
 
-Für die Klassen Station und Entry wurden die Invarianten \textit{TargetValueCannotBeNegative}, \textit{ActualValueCannotBeNegative} und \textit{SelectedDateCannotBeInTheFuture} definiert. Diese repräsentieren Aussagen, welche für die Instanzen der jeweiligen Klasse zu jeder Zeit wahr sein müssen. \cite[S.188]{OCLFormal}
+calculateMeanActualValue() : Real = entries()->iterate(iterator : Entry; result : Real = 0 | result + iterator.actual)/(numberOfEntries) 
+	pre:numberOfEntries>0
+\end{lstlisting}
+Das Schlüsselwort \textit{self} wird genutzt, um auf eine Instanz der Klasse Bezug zu nehmen. Die Einträge eines Objektes der Klasse Station werden über den Rollennamen \textit{records} referenziert. Die Kollektionsoperatoren \textit{asSet} und \textit{iterate} überführen die Einträge in eine Menge bzw. iterieren über diese, um die jeweiligen gemessenen Werte zu addieren. Um sicherzustellen, dass keine Teilung durch Null erfolgt, wird innerhalb einer Vorbedingung (eingeleitet durch \textit{pre}) festgelegt, dass mindestens ein Eintrag vorhanden sein muss. 
 
-\begin{lstlisting}[caption={Invariante in der Klasse Station}]
+Für die Klassen Station und Entry werden die Invarianten \textit{TargetValueCannotBeNegative} (siehe Listing \ref{lst:invariantsStation}), \textit{ActualValueCannotBeNegative} und \textit{SelectedDateCannotBeInTheFuture} (siehe Listing \ref{lst:invariantsEntry}) definiert. Diese repräsentieren Aussagen, welche für die Instanzen der jeweiligen Klasse zu jeder Zeit wahr sein müssen. \cite[S.188]{OCLFormal}
+
+\begin{lstlisting}[caption={Invariante in der Klasse Station},label=lst:invariantsStation]
 inv TargetValueCannotBeNegative:
 	target>=0
 \end{lstlisting}
-\begin{lstlisting}[caption={Invarianten in der Klasse Entry}]
+\begin{lstlisting}[caption={Invarianten in der Klasse Entry},label=lst:invariantsEntry]
 inv ActualValueCannotBeNegative:
 	actual>=0
 inv SelectedDateCannotBeInTheFuture:
 	date.isBefore(date.today()) or date.isEqual(date.today())
 \end{lstlisting}
 
-Die Annotation bietet die Möglichkeit, die Invariante zu bezeichnen und näher zu erläutern. Nach dem Schlüsselwort \textit{inv} folgt erneut der Bezeichner. 
+Nach dem Schlüsselwort \textit{inv} folgt der Bezeichner der Invariante und anschließend der OCL-Ausdruck. Auf diese Art und Weise kann formuliert werden, dass der Zielwert einer Station (\textit{target}) sowie der tatsächlich gemessene Wert (\textit{actual}) stets im positiven Zahlenbereich liegen sollen. Ebenfalls kann spezifiziert werden, dass ein Eintrag niemals in der Zukunft vorgenommen werden kann. Da OCL Sichtbarkeiten ignoriert, können problemlos Zugriffe auf Methoden anderer Klassen oder deren Objekte (in Listing \ref{lst:invariantsEntry} beispielsweise die Methoden der Klasse CalendarDate) definiert werden. \cite[S.71]{OCLFormal}\\
+Mit Hilfe des \textit{derive}-Konstruktes können Ableitungen für Attribute formalisiert werden. Listing \ref{lst:derivedAttributes} zeigt, wie sich die Attributwerte \textit{numberOfEntries} und \textit{meanActualValue} entweder aus dem Rückgabewert einer Methode oder durch darauf angewandte Operationen ergeben.
+\begin{lstlisting}[caption={Abgeleitete Attribute der Klasse Station},label=lst:derivedAttributes]
+numberOfEntries : Integer derive:entries()->size()
+meanActualValue : Real derive:calculateMeanActualValue()
+\end{lstlisting}
+
+Die vollständige USE-Spezifikation kann in Anhang REFERENZ eingesehen werden.
 \subsection{USE-Tool}
 
 Um eine Spezifikation auf nicht-formale Anforderungen zu validieren, kann ein Modell mithilfe des USE-Tools animiert werden. Direkt nach dem Import eines Modells erhält man vom Tool ein Feedback über die Validität der UML- und OCL-Definitionen. Neben der Validierung bietet das Tool weitere Möglichkeiten, wie z. B. die Visualisierung eines Klassen-, Sequenz- oder Objektdiagramms. In der Abbildung~\ref{fig:Grafik2} finden sich die im Kapitel~\ref{ssec:specification} definierten Klassen und Assoziationen als Klassendiagramm wieder.
@@ -237,6 +253,10 @@ JUSE4Anroid zu starr; möglicherweise geht es in die Richtung der Generierung vo
 
 \noindent 
 USE-Spezifikation, welche zur Validierung durch das USE-Tool genutzt wird 
+
+
+
+
 Diese weicht ab von der tatsächlich zur Generierung verwendeten USE-Spezifikation 
  Annotationen sind JUSE4Android spezifisch und nicht Bestandteil der OCL
 \textit{$\backslash$section*\{APPENDIX\}}
