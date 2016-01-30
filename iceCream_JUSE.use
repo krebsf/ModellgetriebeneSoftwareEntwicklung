@@ -25,7 +25,8 @@ class Station
 
 		name		: String
 		target		: Integer
-		numberOfEntries : Integer derive:entries()->size()
+		numberOfEntries : Integer 
+		/*derive:entries()->size()*/
 		
 	operations
 	

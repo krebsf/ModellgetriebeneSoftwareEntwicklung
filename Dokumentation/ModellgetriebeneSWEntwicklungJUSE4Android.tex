@@ -91,8 +91,12 @@ class Station
 	attributes
 		name			: String
 		target		: Integer
+		numberOfEntries : Integer
 	operations
 		entries()	: Set(Entry) = self.records->asSet
+		meanActualValue() : Real
+		meanVarianceValue() : Real
+		
 end
 \end{lstlisting}
 
@@ -124,7 +128,7 @@ class Entry
 		actual	: Integer
 		variance	: Integer
 	operations
-		variance(): Integer = actual - station.target	
+		calculateVariance(): Integer = actual - station.target	
 end
 
 association Station_Entry between
@@ -144,16 +148,19 @@ Als Bestandteil der UML ist die OCL ebenfalls als Spezifikation zur Modellierung
 \item zur Definition von Ableitungsregeln für Attribute
 \item zur Definition von Restriktionen für Operationen
 \end{itemize} 
-Im Folgenden werden die OCL-Konstrukte erläutert, welche zur textuellen Beschreibung von Bedingungen im IceCream Beispiel verwendet wurden.  HINWEIS: keine context Schlüsselwort, da die Aussagen innerhalb der Klassen spezifiziert werden. Annotationen sind JUSE4Android spezifisch und nicht Bestandteil der OCL
-Für die Klassen Station und Entry wurden die Invarianten \textit{TargetValueCannotBeNegative} und \textit{ActualValueCannotBeNegative} definiert. Diese repräsentieren Aussagen, welche für die Instanzen der jeweiligen Klasse zu jeder Zeit wahr sein müssen. \cite[S.188]{OCLFormal}
-\begin{lstlisting}
-@TargetValueCannotBeNegative(rationale="The defined target value of a station cannot be smaller than 0")
-		inv TargetValueCannotBeNegative:
-			target>=0
-			
-@ActualValueCannotBeNegative(rationale="The actual value measured at a station cannot be smaller than 0")
-		inv ActualValueCannotBeNegative:
-			actual>=0
+Im Folgenden werden die OCL-Konstrukte erläutert, welche zur textuellen Beschreibung von Bedingungen im IceCream Beispiel verwendet wurden. Da diese innerhalb der Klassen spezifiziert werden, kann auf die Einleitung durch das Schlüsselwort \textit{context} verzichtet werden.  
+
+Für die Klassen Station und Entry wurden die Invarianten \textit{TargetValueCannotBeNegative}, \textit{ActualValueCannotBeNegative} und \textit{SelectedDateCannotBeInTheFuture} definiert. Diese repräsentieren Aussagen, welche für die Instanzen der jeweiligen Klasse zu jeder Zeit wahr sein müssen. \cite[S.188]{OCLFormal}
+
+\begin{lstlisting}[caption={Invariante in der Klasse Station}]
+inv TargetValueCannotBeNegative:
+	target>=0
+\end{lstlisting}
+\begin{lstlisting}[caption={Invarianten in der Klasse Entry}]
+inv ActualValueCannotBeNegative:
+	actual>=0
+inv SelectedDateCannotBeInTheFuture:
+	date.isBefore(date.today()) or date.isEqual(date.today())
 \end{lstlisting}
 
 Die Annotation bietet die Möglichkeit, die Invariante zu bezeichnen und näher zu erläutern. Nach dem Schlüsselwort \textit{inv} folgt erneut der Bezeichner. 
@@ -183,18 +190,23 @@ Das vorherrschende Architekturmuster ist das Naked-Object-Pattern. Dieses defini
 Der Programmfluss wird über die 4 grundlegenden Datenbankoperationen \textbf{C}reate \textbf{R}ead \textbf{U}pdate \textbf{D}elete gesteuert. Dabei werden neue Objekte sowohl in der Datenbank als auch der View verändert oder neu erstellt.\\
 Master-Detail
 
-\subsection{Generierter Code und zusätzliche Funktionalität}
-Der aus der USE-Definition generierte Code ist in einer Paketstruktur gegliedert und hält die gängigen Code-Konventionen ein. Negativ muss erwähnt werden, dass dieser nur geringfügig kommentiert wurde und teilweise verschiedene Sprachen für die Kommentare verwendet wurden. Alles in allem ist der Code für einen Fortgeschrittenen Java/Android Entwickler nachvollziehbar und verständlich. Negativ ist zu betrachten, dass nur nach der Generierung manuelle Anpassungen oder zusätzliche Funktionalitäten vorgenommen werden können. Diese werden dementsprechend bei einer erneuten Generierung wieder überschrieben. Ebenfalls ist keine Möglichkeit vorgesehen, geschützte Bereiche zu definieren. Auch das Auslagern von manuellem Code in separate Dateien kann nicht vorgenommen werden, da der gesamte Code, mit Ausnahme von wenigen vordefinierten Standardklassen dynamisch durch die Applikation generiert wird. Somit ist eine Trennung von generiertem Code und manuellem Code nicht möglich. 
+\subsubsection{Abbildung von Assoziationen und OCL-Constraints}
+Wie bilden sich Assoziationen ab?
+Wie bilden sich Constraints ab?
+\subsubsection{Generierter Code und zusätzliche Funktionalität}
+Der aus der USE-Definition generierte Code bedarf in den meisten Fällen einer manuellen Nachbearbeitung, um syntaktische Fehler der Generierung zu beheben. Diese äußern sich u.a. durch den Aufruf nicht deklarierter Variablen oder durch eine fehlerhafte Kommasetzung in Parameterlisten. 
+Ebenfalls zeigten sich Probleme bei der Konfiguration des Build Paths in Form von nicht hinzugefügten Libraries.\\
+da  ist in einer Paketstruktur gegliedert \textbf{Bild} und hält die gängigen Code-Konventionen ein. \textbf{Einige Konventionen nennen und Oracle zitieren} Negativ muss erwähnt werden, dass dieser nur geringfügig kommentiert wurde und teilweise verschiedene Sprachen für die Kommentare verwendet wurden. Alles in allem ist der Code für einen Fortgeschrittenen Java/Android Entwickler nachvollziehbar und verständlich. Negativ ist zu betrachten, dass nur nach der Generierung manuelle Anpassungen oder zusätzliche Funktionalitäten vorgenommen werden können. Diese werden dementsprechend bei einer erneuten Generierung wieder überschrieben. Ebenfalls ist keine Möglichkeit vorgesehen, geschützte Bereiche zu definieren. Auch das Auslagern von manuellem Code in separate Dateien kann nicht vorgenommen werden, da der gesamte Code, mit Ausnahme von wenigen vordefinierten Standardklassen dynamisch durch die Applikation generiert wird. Somit ist eine Trennung von generiertem Code und manuellem Code nicht möglich. 
 
 To Do: Bremen Tool sagt, das Modell sei valide; JUSE4Anroid: keine Generierung aufgrund der Definition von abgeleiteten Attributen
 
-\subsection{Veränderungen der Benutzeroberfläche}
+\subsubsection{Veränderungen der Benutzeroberfläche}
 Durch die Verwendung des MVVM Musters ist die Veränderung oder der Austausch der Benutzeroberfläche theoretisch möglich. Dabei ist aber zu unterscheiden zwischen dem Austausch der gesamten oder einem Teil der Oberfläche und dem Anpassen und Verändern des Designs.\\
 Die Anpassung des Designs ist schon durch die Gestaltungsmechanismen des Betriebssystems Android ohne Probleme möglich. Ebenfalls können verwendete Grafiken einfach ausgetauscht werden. Dies ist sogar vor der Generierung möglich.\\
 i.	Einfügen einer alternativen View für die Varianz-Abweichung
 
+JUSE4Android bietet Annotationen an, welche im USE-File verankert sind und durch welche geringfügig auf die View Einfluss genommen werden kann. SIEHE MASTERARBEIT Seite
 
-Annotationen 
 
 \section{Zusammenfassung und Fazit}
 JUSE4Anroid zu starr; möglicherweise geht es in die Richtung der Generierung von Softwarekomponenten, im Gegensatz zur Generierung einer vollständigen Applikation
@@ -206,8 +218,9 @@ JUSE4Anroid zu starr; möglicherweise geht es in die Richtung der Generierung vo
 \section*{\uppercase{Anhang}}
 
 \noindent 
-USE-Spezifikation, welche zur Generierung genutzt wird
-
+USE-Spezifikation, welche zur Validierung durch das USE-Tool genutzt wird 
+Diese weicht ab von der tatsächlich zur Generierung verwendeten USE-Spezifikation 
+ Annotationen sind JUSE4Android spezifisch und nicht Bestandteil der OCL
 \textit{$\backslash$section*\{APPENDIX\}}
 
 
