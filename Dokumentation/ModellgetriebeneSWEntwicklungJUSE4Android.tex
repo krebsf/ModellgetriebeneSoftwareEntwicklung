@@ -168,20 +168,6 @@ Um eine Spezifikation auf nicht-formale Anforderungen zu validieren, kann ein Mo
 
 \section{\uppercase{JUSE4Android}}
 
-\section{Erstellte Android Applikation}
-
-\subsection{Untersuchung der erstellten Applikation}
-Das Tool Juse4Android erstellt aus dem Use-File eine Android-Applikation, welche sich durch folgende Schichten definiert: \textbf{Persistenz-Schicht, Presentations-Schicht, Model-Schicht(Buisiness Logik)}. Dabei wurde konsequent das Model-View-View-Model Entwurfsmuster verwendet. Somit ist das Austauschen der Oberfläche theoretisch möglich.\\
-Das vorherrschende Architekturmuster ist das Nacked-Object-Pattern. Dieses definiert 3 Prinzipien. 1.) Die gesamte Geschäftslogik wird in Domänen Objekten gekapselt, 2.) Die Benutzeroberfläche ist eine direkte Repräsentation dieser Objekte und 3.) die Benutzeroberfläche kann oder wird direkt aus der Definition dieser Objekte erstellt. Diese 3 Prinzipien, werden von Juse4Android vollständig umgesetzt. Zudem werden die Domänen Objekte direkt in eine Objekt Orientierte Datenbank gespeichert.\\
-Der Programmfluss wird über die 4 grundlegenden Datenbankoperationen(\textbf{C}reate \textbf{R}ead \textbf{U}pdate \textbf{D}elete) gesteuert. Dabei werden neue Objekte sowohl in der Datenbank, als auch der View verändert oder neu erstellt.\\
-
-\subsection{Generierter Code und zusätzliche Funktionalität}
-Der aus der USE-Definition generierte Code ist in einer aussagekräftigen Paketstruktur gegliedert und hält die gängigen Code-Konventionen ein. Negativ muss erwähnt werden, dass dieser nur geringfügig kommentiert wurde und teilweise verschiedene Sprachen für die Kommentare verwendet wurden. Alles in allem ist der Code für einen Fortgeschrittenen Java/Android Entwickler nachvollziehbar und verständlich. Negativ ist zu betrachten, das nur nach der Generierung, manuelle Anpassungen oder zusätzliche Funktionalitäten vorgenommen werden können. Diese werden dementsprechend bei einer erneuten Generierung wieder überschrieben. Ebenfalls ist kein Möglichkeit vorgesehen, geschützte Bereiche zu definieren. Auch das auslagern von Manuellem Code in separate Dateien kann nicht vorgenommen werden, da der gesamte Code, mit Ausnahme von wenigen vordefinierten Standardklassen dynamisch durch die Applikation generiert wird. Somit ist eine Trennung von generiertem Code und Manuellem Code nicht möglich. 
-
-\subsection{Veränderungen der Benutzeroberfläche}
-Durch die Verwendung des MVVM Musters, ist die Veränderung oder der Austausch der Benutzeroberfläche theoretisch möglich. Dabei ist aber zu Unterscheiden zwischen dem Austausch der gesamten oder einem Teil der Oberfläche und dem Anpassen und Verändern des Designs.\\
-Die Anpassung des Designs ist schon durch die Gestaltungsmechanismen des Betriebssystems Android ohne Probleme möglich. Ebenfalls können verwendete Grafiken einfach Ausgetauscht werden. Dies ist sogar vor der Generierung möglich.\\
-
 Annotationen 
 \vfill
 \bibliographystyle{apalike}
