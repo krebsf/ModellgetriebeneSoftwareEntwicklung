@@ -83,14 +83,18 @@ class Entry
 	  
 	operations
 
-		variance(): Integer = actual - station.target
-  
+		calculateVariance(): Integer = actual - station.target
+		pre:station <> null
+		
 	constraints
 	
 		@ActualValueCannotBeNegative(rationale="The actual value measured at a station cannot be smaller than 0")
 		inv ActualValueCannotBeNegative:
 			actual>=0		
-			
+	
+		@SelectedDateCannotBeInTheFuture(rationale="The selected date cannot be in the future.")
+		inv SelectedDateCannotBeInTheFuture:
+			date.isBefore(date.today()) or date.isEqual(date.today())
 end --Entry
 
 --------------------------------------------------------------
