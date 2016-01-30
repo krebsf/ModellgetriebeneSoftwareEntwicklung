@@ -25,7 +25,8 @@ class Station
 
 		name		: String
 		target		: Integer
-		numberOfEntries :Integer derive:entries()->size()
+		numberOfEntries : Integer 
+		/*derive:entries()->size()*/
 		
 	operations
 	
@@ -84,7 +85,7 @@ class Entry
 	operations
 
 		calculateVariance(): Integer = actual - station.target
-		pre:station <> null
+		pre:station <> null 
 		
 	constraints
 	
