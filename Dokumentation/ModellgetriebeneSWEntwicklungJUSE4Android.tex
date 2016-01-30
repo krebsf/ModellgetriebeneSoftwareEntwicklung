@@ -18,7 +18,7 @@
 \usepackage{url}
 \usepackage{hyperref}
 \usepackage{listings}
-
+\usepackage{enumerate}
 
 \lstdefinestyle{myCustomUseStyle}{
   stepnumber=1,
@@ -176,34 +176,52 @@ Um eine Spezifikation auf nicht-formale Anforderungen zu validieren, kann ein Mo
 
 
 \section{\uppercase{JUSE4Android}}
-Dieser Abschnitt 
+Dieser Abschnitt befasst sich mit der Anwendung Juse4Android und untersucht die erstellte Anwendung, sowie dessen Quellcode. 
+
+%\begin{enumerate}[I]
+%\item Wird das MVVM-Pattern berücksichtig?
+%\item Kann einfache Berechnungslogik eventuell durch OCL-Constraints eingefügt werden?
+%\item Ist der generierte Code kommentiert und wurden gängige Code-Konventionen eingehalten?
+%\item Ist die Generierung nachvollziehbar und würde ein Entwickler ebenfalls so entwickeln?
+%\item Wie anspruchsvoll gestaltet sich das anpassen oder das Ersetzen der Oberfläche 
+%\item Gehen bei einer erneuten Generierung, manuelle Veränderungen am Code verloren?
+%\begin{enumerate}[a]
+%\item exestiert eine Möglichkeit für Geschützte Bereiche?\\
+%\item Kann manueller Code von generiertem Code getrennt werden?
+%\end{enumerate}
+%\item Können unterschiedliche Berechnungslogiken definiert werden? Z.b. mittels \textit{Strategy} Entwurfsmuster 
+%\end{enumerate}
+
 
 \subsection{Vorstellung}
-Entstanden in Masterarbeit von ... 
-db4o ist scheiße
-Api-Level 17
+Das Tool Juse4Android ist im Rahmen der Master-Arbeit \textit{Model-Driven Generative Programming for BIS Mobile Applications} von Luís Miguel Pires Teixeira da Silva entstanden und ermöglicht die Erstellung eine Mobilen BIS(Business Information System) Anwendung für das Betriebssystem Android aus einer Use-Datei. Zum persistieren von Daten wird das Objekt-Orientierte Datenbank-Framework \textit{db40} verwendet. Dieses wird nur bis zur Java-Version 1.6 unterstützt und erfordert stellt dementsprechend spezielle Anforderungen an das \textit{Android Software Development Kit}. Konkret bedeutet das, dass die generierte BIS-Apps nur bis zum Android API-Level 17 lauffähig sind und mit der Betriebssystemversion Android 4.2 (\textit{Jelly Bean}) betrieben werden müssen. Da somit eine Menge moderne Mobilen Geräte mit den generierten BIS-Apps nicht betrieben werden können, ist dies als erheblicher Nachteil ein zu schätzen.
+
+To Do: Bremen Tool sagt, das Modell sei valide; JUSE4Anroid: keine Generierung aufgrund der Definition von abgeleiteten Attributen
 
 
 \subsection{Untersuchung der erstellten Applikation}
-Das Tool JUSE4Android erstellt aus dem Use-File eine Android-Applikation, welche sich durch folgende Schichten definiert: \textbf{Persistenz-Schicht, Presentations-Schicht, Model-Schicht(Business Logik)}. Dabei wurde konsequent das Model-View-View-Model Entwurfsmuster verwendet. Somit ist das Austauschen der Oberfläche theoretisch möglich.\\
-Das vorherrschende Architekturmuster ist das Naked-Object-Pattern. Dieses definiert 3 Prinzipien. 1.) Die gesamte Geschäftslogik wird in Domänen Objekten gekapselt, 2.) Die Benutzeroberfläche ist eine direkte Repräsentation dieser Objekte und 3.) die Benutzeroberfläche kann oder wird direkt aus der Definition dieser Objekte erstellt. Diese 3 Prinzipien, werden von JUSE4Android vollständig umgesetzt. Zudem werden die Domänen Objekte direkt in eine Objekt Orientierte Datenbank gespeichert.\\
-Der Programmfluss wird über die 4 grundlegenden Datenbankoperationen \textbf{C}reate \textbf{R}ead \textbf{U}pdate \textbf{D}elete gesteuert. Dabei werden neue Objekte sowohl in der Datenbank als auch der View verändert oder neu erstellt.\\
-Master-Detail
+\label{untApp}
+Die generierte Anwendung wird durch die Folgenden Schichten definiert: \textbf{Persistenz-Schicht, Präsentations-Schicht, Model-Schicht(Business Logik)}. Laut des Entwicklers wird konsequent das Model-View-View-Model Entwurfsmuster verwendet. Jedoch ist dies bei genauer Betrachtung nicht komplett Richtig. Zwar wird dies Business-Logik und die View getrennt, jedoch werden die \textit{Activity Klassen\footnote{Klassen, die vom Typ Activity erben, Übernehmen die Interaktionslogik für die Oberfläche und sind vergleichbar mit den sog. CodeBehind Klassen, der xaml-Oberflächendefinitionen in Microsofts WPF-Framework }} als ViewModel verwendet. Diese beherbergen allerdings die Interaktionslogik für die korrespondierenden XML-Oberflächen Definitionen, genannt Layouts. Somit sind die, vom Entwickler gewählten Viewmodels teil der Presentationsschicht, was im engeren sinne, nicht in die MVVM Definition passt.
+Dennoch wird eine lose Kopplung zwischen der eigentlichen Oberfläche und dem Model geschaffen, welche die Möglichkeit eröffnet, teile der Oberfläche zu ändern oder auszutauschen.\\
+Das vorherrschende Architekturmuster ist das Naked-Object-Pattern. Dieses definiert 3 Prinzipien. 1.) Die gesamte Geschäftslogik wird in Domänen Objekten gekapselt, 2.) Die Benutzeroberfläche ist eine direkte Repräsentation dieser Objekte und 3.) die Benutzeroberfläche kann oder wird direkt aus der Definition dieser Objekte erstellt. Diese 3 Prinzipien, werden in JUSE4Android vollständig umgesetzt. Zudem werden die Domänen Objekte direkt in eine Objekt Orientierte Datenbank gespeichert.\\
+Der Programmfluss wird über die 4 grundlegenden Datenbankoperationen \textbf{C}reate \textbf{R}ead \textbf{U}pdate \textbf{D}elete gesteuert. Dabei werden neue Objekte sowohl in der Datenbank als auch der View verändert oder neu erstellt.\\ 
+Die generierten Oberflächen, verwenden das\textit{Master/Detail Flow} Layout, welches in der Lage ist eine Liste von Items auf dem sogenannten \textit{Master} anzuzeigen. Und bei Berührung eines Items in die sogenannten \textit{Detail} Ansicht umschaltet, in der Daten zu dem dazugehörigen Item präsentiert werden.\\
+In der generierten Anwendung sind die Oberflächen eine Eins-zu-eins Repräsentation der Business-Objekte, so wie es das Naked-Object-Pattern fordert.
+
 
 \subsubsection{Abbildung von Assoziationen und OCL-Constraints}
 Wie bilden sich Assoziationen ab?
 Wie bilden sich Constraints ab?
+
 \subsubsection{Generierter Code und zusätzliche Funktionalität}
 Der aus der USE-Definition generierte Code bedarf in den meisten Fällen einer manuellen Nachbearbeitung, um syntaktische Fehler der Generierung zu beheben. Diese äußern sich u.a. durch den Aufruf nicht deklarierter Variablen oder durch eine fehlerhafte Kommasetzung in Parameterlisten. 
 Ebenfalls zeigten sich Probleme bei der Konfiguration des Build Paths in Form von nicht hinzugefügten Libraries.\\
-da  ist in einer Paketstruktur gegliedert \textbf{Bild} und hält die gängigen Code-Konventionen ein. \textbf{Einige Konventionen nennen und Oracle zitieren} Negativ muss erwähnt werden, dass dieser nur geringfügig kommentiert wurde und teilweise verschiedene Sprachen für die Kommentare verwendet wurden. Alles in allem ist der Code für einen Fortgeschrittenen Java/Android Entwickler nachvollziehbar und verständlich. Negativ ist zu betrachten, dass nur nach der Generierung manuelle Anpassungen oder zusätzliche Funktionalitäten vorgenommen werden können. Diese werden dementsprechend bei einer erneuten Generierung wieder überschrieben. Ebenfalls ist keine Möglichkeit vorgesehen, geschützte Bereiche zu definieren. Auch das Auslagern von manuellem Code in separate Dateien kann nicht vorgenommen werden, da der gesamte Code, mit Ausnahme von wenigen vordefinierten Standardklassen dynamisch durch die Applikation generiert wird. Somit ist eine Trennung von generiertem Code und manuellem Code nicht möglich. 
+Die Anwendung ist in aussagekräftigen Paketstruktur gegliedert \textbf{Bild} und hält die gängigen Code-Konventionen, wie beispielsweise \textit{camelcase} ein. Dabei bilden die Getter-Methoden eine Ausnahme, diese besitzen nicht das Get-Präfix.\textbf{Oracle zitieren} Negativ muss ebenfalls erwähnt werden, dass der Code nur geringfügig kommentiert wurde und teilweise verschiedene Sprachen für die Kommentare verwendet wurden. Alles in allem ist der Code für einen Fortgeschrittenen Java/Android Entwickler nachvollziehbar und verständlich. Nur nach der Generierung sind manuelle Anpassungen oder das Hinzufügen komplexerer Funktionalität möglich. Diese werden dementsprechend bei einer erneuten Generierung wieder überschrieben. Ebenfalls ist keine Möglichkeit vorgesehen, geschützte Bereiche zu definieren. Auch das Auslagern von manuellem Code in separate Dateien kann nicht vorgenommen werden, da der gesamte Code, mit Ausnahme von wenigen vordefinierten Standardklassen dynamisch durch die Applikation generiert wird. Somit ist eine Trennung von generiertem Code und manuellem Code nicht möglich. 
 
-To Do: Bremen Tool sagt, das Modell sei valide; JUSE4Anroid: keine Generierung aufgrund der Definition von abgeleiteten Attributen
 
 \subsubsection{Veränderungen der Benutzeroberfläche}
-Durch die Verwendung des MVVM Musters ist die Veränderung oder der Austausch der Benutzeroberfläche theoretisch möglich. Dabei ist aber zu unterscheiden zwischen dem Austausch der gesamten oder einem Teil der Oberfläche und dem Anpassen und Verändern des Designs.\\
-Die Anpassung des Designs ist schon durch die Gestaltungsmechanismen des Betriebssystems Android ohne Probleme möglich. Ebenfalls können verwendete Grafiken einfach ausgetauscht werden. Dies ist sogar vor der Generierung möglich.\\
-i.	Einfügen einer alternativen View für die Varianz-Abweichung
+Wie bereits in Abschnitt \ref{untApp} beschrieben, ist das verwendetet Entwurfsmuster MVVM nicht vollständig erfüllt, dennoch wurde festgestellt, dass es eine lose Kopplung zwischen der Business-Schicht und der Präsentations-Schicht gibt. Damit ist der Austausch vereinzelter Oberflächenkomponenten gewährleistet. Die Anpassung des Designs ist schon durch die Gestaltungsmechanismen des Betriebssystems Android ohne Probleme möglich. Ebenfalls können verwendete Grafiken einfach ausgetauscht werden. Theoretisch wäre der Austausch der gesamten Oberfläche auch möglich, jedoch entsteht dort ein Mehraufwand, durch die nicht konsequente Verwendung des MVVM Architekturmusters. Bei der Auswechselung der Oberfläche, müssten zum einen die die definierten in XML definierten Layout-Datein verändert oder ausgetauscht werden, zum anderen müssten auch die \textit{Activity-Klassen} mindestens angepasst werden. Durch die Verwendung des Master/Detail Flow Layouts, gehören zu jeder Oberflächenrepräsentation eines Objektes drei Klassen, welche die Anzeige steuern. Somit ist es nicht auszuschließen, dass es zu Inkonsistenzen im Programmfluss kommen könnte. Das Adaptieren einer neuen Oberflächengestaltung für eine durch Juse4Android generierte Applikation, ist demzufolge mit einem erheblichen Aufwand verbunden.\\
+Im Rahmen dieser Arbeit wurde exemplarisch gezeigt, wie die Anpassung der Oberfläche möglich ist. Dabei wurde die Darstellung für die Darstellung der Varianz leicht verändert. Wenn diese Außerhalb des tolerablen Bereichs ist, wird die das angezeigte Feld Rot eingefärbt, innerhalb des tolerablen Bereiches erscheint sie grün. Um dies umzusetzen bedarf es einen manuellen Eingriffes in die \textit{EntryDetailFragment-Klasse}. Es wurde lediglich  die Varianz mit dem Grenzwert verglichen und dann die Änderung der Textfarbe der Anzeigekomponente vorgenommen. Die Anpassung des ViewModel-Codes für die Umsetzung dieses Beispiels, zeigt ebenfalls, dass hier das MVVM-Muster verletzt wurde.
 
 JUSE4Android bietet Annotationen an, welche im USE-File verankert sind und durch welche geringfügig auf die View Einfluss genommen werden kann. SIEHE MASTERARBEIT Seite
 
