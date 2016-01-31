@@ -5,7 +5,7 @@ model IceCream
 -- description: Modified and extended version of the example for monitoring our ice-cream health,
 -- 		see "GUI Architectures", by Martin Fowler (http://martinfowler.com/eaaDev/uiArchs.html)
 -- author: Franziska Krebs, Tobias Franz, Jano Espenhahn; FH Brandenburg
--- last update: 21 January 2016
+-- last update: 31 January 2016
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
@@ -16,7 +16,7 @@ model IceCream
 @StartingPoint(NameToDisplay="Station", ImageToDisplay="")
 @list(name="1")
 @creation(name="1", target="2")
-@display(name="1")
+@display(name="1",meanActualValue="2", meanVarianceValue="3",numberOfEntries="4",target="5")
 @unique(name="1")
 @domain()
 class Station
