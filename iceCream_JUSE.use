@@ -16,7 +16,7 @@ model IceCream
 @StartingPoint(NameToDisplay="Station", ImageToDisplay="")
 @list(name="1")
 @creation(name="1", target="2")
-@display(name="1")
+@display(name="1",meanActualValue="2", meanVarianceValue="3",numberOfEntries="4",target="5")
 @unique(name="1")
 @domain()
 class Station
