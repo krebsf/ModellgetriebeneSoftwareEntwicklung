@@ -149,12 +149,13 @@ Als Bestandteil der UML ist die OCL ebenfalls als Spezifikation zur Modellierung
 \item zur Definition von Invarianten
 \item zur Definition von Ableitungsregeln für Attribute
 \end{itemize} 
-Im Folgenden wird ein Teil derjenigen OCL-Konstrukte erläutert, welche zur textuellen Beschreibung von Bedingungen im IceCream Beispiel verwendet wurden. Da diese innerhalb der Klassen spezifiziert werden, kann auf die Einleitung durch das Schlüsselwort \textit{context} verzichtet werden.  \\
-Zunächst werden die in den Klassen Station und Entry deklarierten Operationen näher durch die OCL definiert und es werden Vorbedingungen festgelegt. Listing \ref{lst:operations} zeigt, wie die Einträge zu einer Station durch die Methode \textit{entries()} gesammelt werden und wie einfache Berechnung des Mittelwerts für gemessene Werte (\textit{calculateMeanActualValue()}) erfolgt.  
+Im Folgenden werden die OCL-Konstrukte erläutert, welche zur textuellen Beschreibung von Bedingungen im IceCream Beispiel verwendet wurden. Da diese innerhalb der Klassen spezifiziert werden, kann auf die Einleitung durch das Schlüsselwort \textit{context} verzichtet werden.  \\
+Zunächst werden die in den Klassen Station und Entry deklarierten Operationen näher durch die OCL definiert und es werden Vorbedingungen festgelegt. Listing \ref{lst:operations} zeigt, wie die Einträge zu einer Station durch die Methode \textit{entries()} gesammelt werden und wie einfache Berechnung des Mittelwerts für gemessene Werte (\textit{calculateMeanActualValue()} erfolgt.  
 \begin{lstlisting}[caption={OCL-erweiterte Operationen der Klasse Station},label=lst:operations]
 entries(): Set(Entry) = self.records->asSet
 
-calculateMeanActualValue() : Real = entries()->iterate(iterator : Entry; result : Real = 0 | result + iterator.actual)/(self.numberOfEntries) 			pre:self.numberOfEntries>0
+calculateMeanActualValue() : Real = entries()->iterate(iterator : Entry; result : Real = 0 | result + iterator.actual)/(numberOfEntries) 
+	pre:numberOfEntries>0
 \end{lstlisting}
 Das Schlüsselwort \textit{self} wird genutzt, um auf eine Instanz der Klasse Bezug zu nehmen. Die Einträge eines Objektes der Klasse Station werden über den Rollennamen \textit{records} referenziert. Die Kollektionsoperatoren \textit{asSet} und \textit{iterate} überführen die Einträge in eine Menge bzw. iterieren über diese, um die jeweiligen gemessenen Werte zu addieren. Um sicherzustellen, dass keine Teilung durch Null erfolgt, wird innerhalb einer Vorbedingung (eingeleitet durch \textit{pre}) festgelegt, dass mindestens ein Eintrag vorhanden sein muss. 
 
@@ -162,13 +163,13 @@ Für die Klassen Station und Entry werden die Invarianten \textit{TargetValueCan
 
 \begin{lstlisting}[caption={Invariante in der Klasse Station},label=lst:invariantsStation]
 inv TargetValueCannotBeNegative:
-	self.target>=0
+	target>=0
 \end{lstlisting}
 \begin{lstlisting}[caption={Invarianten in der Klasse Entry},label=lst:invariantsEntry]
 inv ActualValueCannotBeNegative:
-	self.actual>=0	
+	actual>=0
 inv SelectedDateCannotBeInTheFuture:
-	self.date.isBefore(date.today()) or self.date.isEqual(date.today())
+	date.isBefore(date.today()) or date.isEqual(date.today())
 \end{lstlisting}
 
 Nach dem Schlüsselwort \textit{inv} folgt der Bezeichner der Invariante und anschließend der OCL-Ausdruck. Auf diese Art und Weise kann formuliert werden, dass der Zielwert einer Station (\textit{target}) sowie der tatsächlich gemessene Wert (\textit{actual}) stets im positiven Zahlenbereich liegen sollen. Ebenfalls kann spezifiziert werden, dass ein Eintrag niemals in der Zukunft vorgenommen werden kann. Da OCL Sichtbarkeiten ignoriert, können problemlos Zugriffe auf Methoden anderer Klassen oder deren Objekte (in Listing \ref{lst:invariantsEntry} beispielsweise die Methoden der Klasse CalendarDate) definiert werden. \cite[S.71]{OCLFormal}\\
@@ -209,20 +210,27 @@ Dieser Abschnitt befasst sich mit der Anwendung Juse4Android und untersucht die 
 
 
 \subsection{Vorstellung}
-Das Tool Juse4Android ist im Rahmen der Master-Arbeit \textit{Model-Driven Generative Programming for BIS Mobile Applications} von Luís Miguel Pires Teixeira da Silva entstanden und ermöglicht die Erstellung eine Mobilen BIS(Business Information System) Anwendung für das Betriebssystem Android aus einer Use-Datei. Zum persistieren von Daten wird das Objekt-Orientierte Datenbank-Framework \textit{db40} verwendet. Dieses wird nur bis zur Java-Version 1.6 unterstützt und erfordert stellt dementsprechend spezielle Anforderungen an das \textit{Android Software Development Kit}. Konkret bedeutet das, dass die generierte BIS-Apps nur bis zum Android API-Level 17 lauffähig sind und mit der Betriebssystemversion Android 4.2 (\textit{Jelly Bean}) betrieben werden müssen. Da somit eine Menge moderne Mobilen Geräte mit den generierten BIS-Apps nicht betrieben werden können, ist dies als erheblicher Nachteil ein zu schätzen.
+Das Tool Juse4Android ist im Rahmen der Master-Arbeit \textit{Model-Driven Generative Programming for BIS Mobile Applications} von Luís Miguel Pires Teixeira da Silva entstanden und ermöglicht die Erstellung eine Mobilen BIS(Business Information System) Anwendung für das Betriebssystem Android aus einer Use-Datei. Zum persistieren von Daten wird das Objekt-Orientierte Datenbank-Framework \textit{db40} verwendet. Dieses wird nur bis zur Java-Version 1.6 unterstützt stellt dementsprechend spezielle Anforderungen an das \textit{Android Software Development Kit}. Konkret bedeutet das, dass die generierte BIS-Apps nur bis zum Android API-Level 17 lauffähig sind und mit der Betriebssystemversion Android 4.2 (\textit{Jelly Bean}) betrieben werden müssen.
 
-To Do: Bremen Tool sagt, das Modell sei valide; JUSE4Anroid: keine Generierung aufgrund der Definition von abgeleiteten Attributen
+\textbf{To Do: Bremen Tool sagt, das Modell sei valide; JUSE4Anroid: keine Generierung aufgrund der Definition von abgeleiteten Attributen}
 
 
 \subsection{Untersuchung der erstellten Applikation}
 \label{untApp}
-Die generierte Anwendung wird durch die Folgenden Schichten definiert: \textbf{Persistenz-Schicht, Präsentations-Schicht, Model-Schicht(Business Logik)}. Laut des Entwicklers wird konsequent das Model-View-View-Model Entwurfsmuster verwendet. Jedoch ist dies bei genauer Betrachtung nicht komplett Richtig. Zwar wird dies Business-Logik und die View getrennt, jedoch werden die \textit{Activity Klassen\footnote{Klassen, die vom Typ Activity erben, Übernehmen die Interaktionslogik für die Oberfläche und sind vergleichbar mit den sog. CodeBehind Klassen, der xaml-Oberflächendefinitionen in Microsofts WPF-Framework }} als ViewModel verwendet. Diese beherbergen allerdings die Interaktionslogik für die korrespondierenden XML-Oberflächen Definitionen, genannt Layouts. Somit sind die, vom Entwickler gewählten Viewmodels teil der Presentationsschicht, was im engeren sinne, nicht in die MVVM Definition passt.
+Die generierte Anwendung wird durch die Folgenden Schichten definiert: \textbf{Persistenz-Schicht, Präsentations-Schicht, Model-Schicht(Business Logik)}. Wie eine tiefere Analyse des Codes zeigte, wurden die Funktionen der Schichten nicht durchgängig eingehalten, was zu Brüchen der Schichtenarchitektur führt. So sind die eigentlichen Datenhaltungsobjekte (POJOs\footcite{POJO = Plain Old Java Object}) selbst für das Speichern und Löschen ihrer Daten aus der Datenbank verantwortlich und greifen dafür auf entsprechende Zugriffsobjekte zu. Bei einem lesenden Zugriff wird gänzlich auf die De­le­gie­rung an Zugriffsobjekte verzichtet und die Datenbank direkt angesprochen. Das einbringen einer zusätzlichen Datenzugriffsschicht, sowie die Verwendung des Fabrikmethoden-Entwurfsmuster zur Erstellung der POJOs würde die Lesbarkeit deutlich erhöhen. \textbf{Ein entwickler hätte es anders gemacht???}
+Laut des Entwicklers wird konsequent das Model-View-View-Model Entwurfsmuster verwendet. Jedoch ist dies bei genauer Betrachtung nicht komplett Richtig. Zwar wird dies Business-Logik und die View getrennt, jedoch werden die \textit{Activity Klassen\footnote{Kssen, die vom Typ Activity erben, Übernehmen die Interaktionslogik für die Oberfläche und sind vergleichbar mit den sog. CodeBehind Klassen, der xaml-Oberflächendefinitionen in Microsofts WPF-Framework }} als ViewModel verwendet. Diese beherbergen allerdings die Interaktionslogik für die korrespondierenden XML-Oberflächen Definitionen, genannt Layouts. Somit sind die, vom Entwickler gewählten Viewmodels teil der Presentationsschicht, was im engeren sinne, nicht in die MVVM Definition passt.
 Dennoch wird eine lose Kopplung zwischen der eigentlichen Oberfläche und dem Model geschaffen, welche die Möglichkeit eröffnet, teile der Oberfläche zu ändern oder auszutauschen.\\
-Das vorherrschende Architekturmuster ist das Naked-Object-Pattern. Dieses definiert 3 Prinzipien. 1.) Die gesamte Geschäftslogik wird in Domänen Objekten gekapselt, 2.) Die Benutzeroberfläche ist eine direkte Repräsentation dieser Objekte und 3.) die Benutzeroberfläche kann oder wird direkt aus der Definition dieser Objekte erstellt. Diese 3 Prinzipien, werden in JUSE4Android vollständig umgesetzt. Zudem werden die Domänen Objekte direkt in eine Objekt Orientierte Datenbank gespeichert.\\
+Das vorherrschende Architekturmuster ist das Naked-Object-Pattern. Dieses definiert 3 Prinzipien. 1.) Die gesamte Geschäftslogik wird in Domänen Objekten gekapselt, 2.) Die Benutzeroberfläche ist eine direkte Repräsentation dieser Objekte und 3.) die Benutzeroberfläche kann oder wird direkt aus der Definition dieser Objekte erstellt. Diese 3 Prinzipien, werden in JUSE4Android vollständig umgesetzt. Zudem werden die Domänen Objekte direkt in eine Objekt Orientierte Datenbank gespeichert. Die Abbildung \ref{fig:Grafik3} verdeutlicht die Grundarchitektur des Naked-Objects-Patterns.\\
 Der Programmfluss wird über die 4 grundlegenden Datenbankoperationen \textbf{C}reate \textbf{R}ead \textbf{U}pdate \textbf{D}elete gesteuert. Dabei werden neue Objekte sowohl in der Datenbank als auch der View verändert oder neu erstellt.\\ 
-Die generierten Oberflächen, verwenden das\textit{Master/Detail Flow} Layout, welches in der Lage ist eine Liste von Items auf dem sogenannten \textit{Master} anzuzeigen. Und bei Berührung eines Items in die sogenannten \textit{Detail} Ansicht umschaltet, in der Daten zu dem dazugehörigen Item präsentiert werden.\\
+Die generierten Oberflächen, verwenden das\textit{Master/Detail Flow} Layout, welches in der Lage ist eine Liste von Items auf dem sogenannten \textit{Master} anzuzeigen. Und bei Berührung eines Items in die sogenannten \textit{Detail} Ansicht umschaltet, in der Daten zu dem dazugehörigen Item präsentiert werden. Dieses Layout ermöglicht eine Anpassung der Oberfläche an verschiedene  Display-Größen.\\
 In der generierten Anwendung sind die Oberflächen eine Eins-zu-eins Repräsentation der Business-Objekte, so wie es das Naked-Object-Pattern fordert.
 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[scale=.5]{pics/NakedObjectPattern.png}
+	\caption[Naked-Object-Pattern Architektur nach Richard Pawson,University of Dublin, Trinity College]{ Richard Pawson  \emph{\glqq Naked objects\grqq{}}; University of Dublin, Trinity College; 2004; Seite 24)}
+	\label{fig:Grafik3}
+\end{figure}
 
 \subsubsection{Abbildung von Assoziationen und OCL-Constraints}
 Wie bilden sich Assoziationen ab?
@@ -231,11 +239,19 @@ Wie bilden sich Constraints ab?
 \subsubsection{Generierter Code und zusätzliche Funktionalität}
 Der aus der USE-Definition generierte Code bedarf in den meisten Fällen einer manuellen Nachbearbeitung, um syntaktische Fehler der Generierung zu beheben. Diese äußern sich u.a. durch den Aufruf nicht deklarierter Variablen oder durch eine fehlerhafte Kommasetzung in Parameterlisten. 
 Ebenfalls zeigten sich Probleme bei der Konfiguration des Build Paths in Form von nicht hinzugefügten Libraries.\\
-Die Anwendung ist in aussagekräftigen Paketstruktur gegliedert \textbf{Bild} und hält die gängigen Code-Konventionen, wie beispielsweise \textit{camelcase} ein. Dabei bilden die Getter-Methoden eine Ausnahme, diese besitzen nicht das Get-Präfix.\textbf{Oracle zitieren} Negativ muss ebenfalls erwähnt werden, dass der Code nur geringfügig kommentiert wurde und teilweise verschiedene Sprachen für die Kommentare verwendet wurden. Alles in allem ist der Code für einen Fortgeschrittenen Java/Android Entwickler nachvollziehbar und verständlich. Nur nach der Generierung sind manuelle Anpassungen oder das Hinzufügen komplexerer Funktionalität möglich. Diese werden dementsprechend bei einer erneuten Generierung wieder überschrieben. Ebenfalls ist keine Möglichkeit vorgesehen, geschützte Bereiche zu definieren. Auch das Auslagern von manuellem Code in separate Dateien kann nicht vorgenommen werden, da der gesamte Code, mit Ausnahme von wenigen vordefinierten Standardklassen dynamisch durch die Applikation generiert wird. Somit ist eine Trennung von generiertem Code und manuellem Code nicht möglich. 
+Die Anwendung ist in aussagekräftigen Paketstruktur gegliedert, wie in Abbildung \ref{fig:Grafik4} zusehen ist. Außerdem hält sie die gängigen Code-Konventionen, wie beispielsweise die \textit{camelcase} Schreibweise ein. Dabei bilden die Getter-Methoden eine Ausnahme, diese besitzen nicht das Get-Präfix. Negativ muss ebenfalls erwähnt werden, dass der Code nur geringfügig kommentiert wurde und teilweise verschiedene Sprachen für die Kommentare verwendet wurden. Alles in allem ist der Code für einen Fortgeschrittenen Java/Android Entwickler nachvollziehbar und verständlich. Nur nach der Generierung sind manuelle Anpassungen oder das Hinzufügen komplexerer Funktionalität möglich. Diese werden dementsprechend bei einer erneuten Generierung wieder überschrieben. Ebenfalls ist keine Möglichkeit vorgesehen, geschützte Bereiche zu definieren. Auch das Auslagern von manuellem Code in separate Dateien kann nicht vorgenommen werden, da der gesamte Code, mit Ausnahme von wenigen vordefinierten Standardklassen dynamisch durch die Applikation generiert wird. Somit ist eine Trennung von generiertem Code und manuellem Code nicht möglich. 
+
+
+\begin{figure}[!h]
+	\includegraphics[scale=.6]{pics/Paket.png}
+	\caption{Paketstruktur einer von Juse4Android generierten App }
+	\label{fig:Grafik4}
+\end{figure}
+
 
 
 \subsubsection{Veränderungen der Benutzeroberfläche}
-Wie bereits in Abschnitt \ref{untApp} beschrieben, ist das verwendetet Entwurfsmuster MVVM nicht vollständig erfüllt, dennoch wurde festgestellt, dass es eine lose Kopplung zwischen der Business-Schicht und der Präsentations-Schicht gibt. Damit ist der Austausch vereinzelter Oberflächenkomponenten gewährleistet. Die Anpassung des Designs ist schon durch die Gestaltungsmechanismen des Betriebssystems Android ohne Probleme möglich. Ebenfalls können verwendete Grafiken einfach ausgetauscht werden. Theoretisch wäre der Austausch der gesamten Oberfläche auch möglich, jedoch entsteht dort ein Mehraufwand, durch die nicht konsequente Verwendung des MVVM Architekturmusters. Bei der Auswechselung der Oberfläche, müssten zum einen die die definierten in XML definierten Layout-Datein verändert oder ausgetauscht werden, zum anderen müssten auch die \textit{Activity-Klassen} mindestens angepasst werden. Durch die Verwendung des Master/Detail Flow Layouts, gehören zu jeder Oberflächenrepräsentation eines Objektes drei Klassen, welche die Anzeige steuern. Somit ist es nicht auszuschließen, dass es zu Inkonsistenzen im Programmfluss kommen könnte. Das Adaptieren einer neuen Oberflächengestaltung für eine durch Juse4Android generierte Applikation, ist demzufolge mit einem erheblichen Aufwand verbunden.\\
+Wie bereits in Abschnitt \ref{untApp} beschrieben, ist das verwendetet Entwurfsmuster MVVM nicht vollständig erfüllt, dennoch wurde festgestellt, dass es eine lose Kopplung zwischen der Business-Schicht und der Präsentations-Schicht gibt. Damit ist der Austausch vereinzelter Oberflächenkomponenten gewährleistet. Die Anpassung des Designs ist schon durch die Gestaltungsmechanismen des Betriebssystems Android ohne Probleme möglich. Ebenfalls können verwendete Grafiken einfach ausgetauscht werden. Theoretisch wäre der Austausch der gesamten Oberfläche auch möglich, jedoch entsteht dort ein Mehraufwand durch die nicht konsequente Verwendung des MVVM Architekturmusters. Bei der Auswechselung der Oberfläche müssten zum einen die die definierten in XML definierten Layout-Datein verändert oder ausgetauscht werden, zum anderen müssten auch die \textit{Activity-Klassen} mindestens angepasst werden. Durch die Verwendung des Master/Detail Flow Layouts, gehören zu jeder Oberflächenrepräsentation eines Objektes drei Klassen, welche die Anzeige steuern. Somit ist es nicht auszuschließen, dass es zu Inkonsistenzen im Programmfluss kommen könnte. Das Adaptieren einer neuen Oberflächengestaltung für eine durch Juse4Android generierte Applikation, ist demzufolge mit einem erheblichen Aufwand verbunden.\\
 Im Rahmen dieser Arbeit wurde exemplarisch gezeigt, wie die Anpassung der Oberfläche möglich ist. Dabei wurde die Darstellung für die Darstellung der Varianz leicht verändert. Wenn diese Außerhalb des tolerablen Bereichs ist, wird die das angezeigte Feld Rot eingefärbt, innerhalb des tolerablen Bereiches erscheint sie grün. Um dies umzusetzen bedarf es einen manuellen Eingriffes in die \textit{EntryDetailFragment-Klasse}. Es wurde lediglich  die Varianz mit dem Grenzwert verglichen und dann die Änderung der Textfarbe der Anzeigekomponente vorgenommen. Die Anpassung des ViewModel-Codes für die Umsetzung dieses Beispiels, zeigt ebenfalls, dass hier das MVVM-Muster verletzt wurde.
 
 JUSE4Android bietet Annotationen an, welche im USE-File verankert sind und durch welche geringfügig auf die View Einfluss genommen werden kann. SIEHE MASTERARBEIT Seite
@@ -243,6 +259,8 @@ JUSE4Android bietet Annotationen an, welche im USE-File verankert sind und durch
 
 \section{Zusammenfassung und Fazit}
 JUSE4Anroid zu starr; möglicherweise geht es in die Richtung der Generierung von Softwarekomponenten, im Gegensatz zur Generierung einer vollständigen Applikation
+
+ Da somit eine Menge moderne Mobilen Geräte mit den generierten BIS-Apps kompatibel sind, ist dies als erheblicher Nachteil ein zu schätzen.
 \vfill
 \bibliographystyle{apalike}
 {\small
