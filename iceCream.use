@@ -33,17 +33,17 @@ class Station
 	
 		entries(): Set(Entry) = self.records->asSet
 	  
-		calculateMeanActualValue() : Real = entries()->iterate(iterator : Entry; result : Real = 0 | result + iterator.actual)/(numberOfEntries) 
-		pre:numberOfEntries>0
+		calculateMeanActualValue() : Real = entries()->iterate(iterator : Entry; result : Real = 0 | result + iterator.actual)/(self.numberOfEntries) 
+		pre:self.numberOfEntries>0
 
-		calculateMeanVarianceValue() : Real = entries()->iterate(iterator :Entry; result : Real = 0 | result + iterator.variance)/(numberOfEntries) 
-		pre:numberOfEntries>0
+		calculateMeanVarianceValue() : Real = entries()->iterate(iterator :Entry; result : Real = 0 | result + iterator.variance)/(self.numberOfEntries) 
+		pre:self.numberOfEntries>0
 		
 	constraints
 	
 		@TargetValueCannotBeNegative(rationale="The defined target value of a station cannot be smaller than 0")
 		inv TargetValueCannotBeNegative:
-			target>=0
+			self.target>=0
 		
 		
 		
@@ -84,18 +84,18 @@ class Entry
 	  
 	operations
 
-		calculateVariance(): Integer = actual - station.target
-		pre:station <> null 
+		calculateVariance(): Integer = self.actual - self.station.target
+		pre:self.station <> null 
 		
 	constraints
 	
 		@ActualValueCannotBeNegative(rationale="The actual value measured at a station cannot be smaller than 0")
 		inv ActualValueCannotBeNegative:
-			actual>=0		
+			self.actual>=0		
 	
 		@SelectedDateCannotBeInTheFuture(rationale="The selected date cannot be in the future.")
 		inv SelectedDateCannotBeInTheFuture:
-			date.isBefore(date.today()) or date.isEqual(date.today())
+			self.date.isBefore(date.today()) or self.date.isEqual(date.today())
 end --Entry
 
 --------------------------------------------------------------
