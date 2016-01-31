@@ -149,13 +149,12 @@ Als Bestandteil der UML ist die OCL ebenfalls als Spezifikation zur Modellierung
 \item zur Definition von Invarianten
 \item zur Definition von Ableitungsregeln für Attribute
 \end{itemize} 
-Im Folgenden werden die OCL-Konstrukte erläutert, welche zur textuellen Beschreibung von Bedingungen im IceCream Beispiel verwendet wurden. Da diese innerhalb der Klassen spezifiziert werden, kann auf die Einleitung durch das Schlüsselwort \textit{context} verzichtet werden.  \\
-Zunächst werden die in den Klassen Station und Entry deklarierten Operationen näher durch die OCL definiert und es werden Vorbedingungen festgelegt. Listing \ref{lst:operations} zeigt, wie die Einträge zu einer Station durch die Methode \textit{entries()} gesammelt werden und wie einfache Berechnung des Mittelwerts für gemessene Werte (\textit{calculateMeanActualValue()} erfolgt.  
+Im Folgenden wird ein Teil derjenigen OCL-Konstrukte erläutert, welche zur textuellen Beschreibung von Bedingungen im IceCream Beispiel verwendet wurden. Da diese innerhalb der Klassen spezifiziert werden, kann auf die Einleitung durch das Schlüsselwort \textit{context} verzichtet werden.  \\
+Zunächst werden die in den Klassen Station und Entry deklarierten Operationen näher durch die OCL definiert und es werden Vorbedingungen festgelegt. Listing \ref{lst:operations} zeigt, wie die Einträge zu einer Station durch die Methode \textit{entries()} gesammelt werden und wie einfache Berechnung des Mittelwerts für gemessene Werte (\textit{calculateMeanActualValue()}) erfolgt.  
 \begin{lstlisting}[caption={OCL-erweiterte Operationen der Klasse Station},label=lst:operations]
 entries(): Set(Entry) = self.records->asSet
 
-calculateMeanActualValue() : Real = entries()->iterate(iterator : Entry; result : Real = 0 | result + iterator.actual)/(numberOfEntries) 
-	pre:numberOfEntries>0
+calculateMeanActualValue() : Real = entries()->iterate(iterator : Entry; result : Real = 0 | result + iterator.actual)/(self.numberOfEntries) 			pre:self.numberOfEntries>0
 \end{lstlisting}
 Das Schlüsselwort \textit{self} wird genutzt, um auf eine Instanz der Klasse Bezug zu nehmen. Die Einträge eines Objektes der Klasse Station werden über den Rollennamen \textit{records} referenziert. Die Kollektionsoperatoren \textit{asSet} und \textit{iterate} überführen die Einträge in eine Menge bzw. iterieren über diese, um die jeweiligen gemessenen Werte zu addieren. Um sicherzustellen, dass keine Teilung durch Null erfolgt, wird innerhalb einer Vorbedingung (eingeleitet durch \textit{pre}) festgelegt, dass mindestens ein Eintrag vorhanden sein muss. 
 
@@ -163,13 +162,13 @@ Für die Klassen Station und Entry werden die Invarianten \textit{TargetValueCan
 
 \begin{lstlisting}[caption={Invariante in der Klasse Station},label=lst:invariantsStation]
 inv TargetValueCannotBeNegative:
-	target>=0
+	self.target>=0
 \end{lstlisting}
 \begin{lstlisting}[caption={Invarianten in der Klasse Entry},label=lst:invariantsEntry]
 inv ActualValueCannotBeNegative:
-	actual>=0
+	self.actual>=0	
 inv SelectedDateCannotBeInTheFuture:
-	date.isBefore(date.today()) or date.isEqual(date.today())
+	self.date.isBefore(date.today()) or self.date.isEqual(date.today())
 \end{lstlisting}
 
 Nach dem Schlüsselwort \textit{inv} folgt der Bezeichner der Invariante und anschließend der OCL-Ausdruck. Auf diese Art und Weise kann formuliert werden, dass der Zielwert einer Station (\textit{target}) sowie der tatsächlich gemessene Wert (\textit{actual}) stets im positiven Zahlenbereich liegen sollen. Ebenfalls kann spezifiziert werden, dass ein Eintrag niemals in der Zukunft vorgenommen werden kann. Da OCL Sichtbarkeiten ignoriert, können problemlos Zugriffe auf Methoden anderer Klassen oder deren Objekte (in Listing \ref{lst:invariantsEntry} beispielsweise die Methoden der Klasse CalendarDate) definiert werden. \cite[S.71]{OCLFormal}\\
