@@ -219,7 +219,7 @@ FUNCTION {format.names}
 	      if$
 	      t "others" =
 		{ " et~al." * }
-		{ " and " * t * }
+		{ " und " * t * }
 	      if$
 	    }
 	  if$
@@ -845,7 +845,7 @@ FUNCTION {format.lab.names}
 	'skip$
 	{ s #2 "{ff }{vv }{ll}{ jj}" format.name$ "others" =
 	    { " et~al." * }
-	    { " and " * s #2 "{vv~}{ll}" format.name$ * }
+	    { " und " * s #2 "{vv~}{ll}" format.name$ * }
 	  if$
 	}
       if$
