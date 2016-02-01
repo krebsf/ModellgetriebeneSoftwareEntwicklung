@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="wrap_content"
+     android:layout_height="?android:attr/listPreferredItemHeight"
+     android:gravity="center_vertical"
+     android:background="@drawable/default_list_selector">
+    <RelativeLayout
+         android:id="@+id/worker_list_layout"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content">
+        <include
+             layout="@layout/worker_form_list" />
+    </RelativeLayout>
+    <RelativeLayout
+         android:id="@+id/member_associations"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/worker_list_layout">
+        <TextView
+             android:id="@+id/member_list_layout_divider_text_members"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/member_associationto_members" />
+        <ImageView
+             android:id="@+id/default_association_associative_class_list_divider"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:src="@drawable/ic_light_association_associative_class_list_divider"
+             android:layout_centerHorizontal="true"
+             android:layout_toRightOf="@+id/member_list_layout_divider_text_members" />
+        <TextView
+             android:id="@+id/member_list_layout_divider_text_projects"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/member_associationto_projects"
+             android:layout_toRightOf="@+id/default_association_associative_class_list_divider"
+             android:layout_alignBottom="@+id/default_association_associative_class_list_divider" />
+    </RelativeLayout>
+    <RelativeLayout
+         android:id="@+id/project_list_layout"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/member_associations">
+        <include
+             layout="@layout/project_form_list" />
+    </RelativeLayout>
+    <ImageView
+         android:id="@+id/default_list_invalid"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:src="@drawable/ic_contract_error"
+         android:layout_centerVertical="true"
+         android:layout_alignParentRight="true" />
+</RelativeLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content">
+    <include
+         layout="@layout/default_navigationbar" />
+    <View
+         android:layout_width="match_parent"
+         android:layout_height="1dp"
+         android:background="@drawable/navigationbar_divider" />
+    <HorizontalScrollView
+         android:id="@+id/entry_navigationbar_view"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_centerInParent="true"
+         android:layout_toLeftOf="@+id/navigation_bar_view_right_arrow"
+         android:layout_toRightOf="@+id/navigation_bar_view_left_arrow">
+        <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal">
+            <View
+                 android:layout_width="2dp"
+                 android:layout_height="match_parent"
+                 android:background="@drawable/navigationbar_divider" />
+            <include
+                 layout="@layout/entry_list_navigationbar" />
+        </LinearLayout>
+    </HorizontalScrollView>
+    <View
+         android:layout_width="match_parent"
+         android:layout_height="2dp"
+         android:background="@drawable/navigationbar_divider"
+         android:layout_below="@+id/entry_navigationbar_view" />
+</RelativeLayout>

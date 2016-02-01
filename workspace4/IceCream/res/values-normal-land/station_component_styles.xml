@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <style
+         name="station_detail_name_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="station_detail_name_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="station_insertupdate_name_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="station_insertupdate_name_value_style"
+         parent="@style/default_edittext_style" />
+    <style
+         name="station_insertupdate_target_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="station_insertupdate_target_value_style"
+         parent="@style/default_edittext_style" />
+    <style
+         name="station_list_name_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="station_navigationbar_association_records_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="station_navigationbar_association_records_numberobjects_style"
+         parent="@android:style/TextAppearance.Small" />
+    <style
+         name="station_navigationbar_association_place_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="station_navigationbar_association_place_numberobjects_style"
+         parent="@android:style/TextAppearance.Small" />
+</resources>

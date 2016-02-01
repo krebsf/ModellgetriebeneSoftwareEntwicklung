@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string
+         name="app_name">IceCream</string>
+    <string
+         name="tittle_master_address">Address</string>
+    <string
+         name="tittle_detail_address">Address Details</string>
+    <string
+         name="tittle_master_calendardate">CalendarDate</string>
+    <string
+         name="tittle_detail_calendardate">CalendarDate Details</string>
+    <string
+         name="tittle_master_entry">Entry</string>
+    <string
+         name="tittle_detail_entry">Entry Details</string>
+    <string
+         name="tittle_master_station">Station</string>
+    <string
+         name="tittle_detail_station">Station Details</string>
+</resources>

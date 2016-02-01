@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <style
+         name="worker_detail_nickname_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="worker_detail_nickname_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="worker_detail_salary_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="worker_detail_salary_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="worker_insertupdate_nickname_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="worker_insertupdate_nickname_value_style"
+         parent="@style/default_edittext_style" />
+    <style
+         name="worker_insertupdate_salary_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="worker_insertupdate_salary_value_style"
+         parent="@style/default_edittext_style" />
+    <style
+         name="worker_list_nickname_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="worker_navigationbar_association_qualifications_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="worker_navigationbar_association_qualifications_numberobjects_style"
+         parent="@android:style/TextAppearance.Small" />
+    <style
+         name="worker_navigationbar_association_member_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="worker_navigationbar_association_member_numberobjects_style"
+         parent="@android:style/TextAppearance.Small" />
+    <style
+         name="worker_navigationbar_association_projects_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="worker_navigationbar_association_projects_numberobjects_style"
+         parent="@android:style/TextAppearance.Small" />
+    <style
+         name="worker_navigationbar_association_employer_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="worker_navigationbar_association_employer_numberobjects_style"
+         parent="@android:style/TextAppearance.Small" />
+</resources>

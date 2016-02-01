@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
+    <FrameLayout
+         android:id="@+id/address_navigationbar_container"
+         style="@style/default_twopane_navigationbar_container" />
+    <LinearLayout
+         android:id="@+id/address_twopane_layout_container"
+         style="@style/default_twopane_layout_container"
+         android:layout_below="@+id/address_navigationbar_container">
+        <FrameLayout
+             android:id="@+id/address_list_container"
+             style="@style/default_twopane_list_container" />
+        <FrameLayout
+             android:id="@+id/address_detail_container"
+             style="@style/default_twopane_detail_container" />
+    </LinearLayout>
+</RelativeLayout>

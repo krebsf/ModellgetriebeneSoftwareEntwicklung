@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <style
+         name="training_navigationbar_association_member_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="training_navigationbar_association_member_numberobjects_style"
+         parent="@android:style/TextAppearance.Small" />
+    <style
+         name="training_navigationbar_association_members_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="training_navigationbar_association_members_numberobjects_style"
+         parent="@android:style/TextAppearance.Small" />
+    <style
+         name="training_navigationbar_association_requirements_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="training_navigationbar_association_requirements_numberobjects_style"
+         parent="@android:style/TextAppearance.Small" />
+    <style
+         name="training_navigationbar_association_company_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="training_navigationbar_association_company_numberobjects_style"
+         parent="@android:style/TextAppearance.Small" />
+    <style
+         name="training_navigationbar_association_trained_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="training_navigationbar_association_trained_numberobjects_style"
+         parent="@android:style/TextAppearance.Small" />
+    <style
+         name="training_navigationbar_association_project_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="training_navigationbar_association_project_numberobjects_style"
+         parent="@android:style/TextAppearance.Small" />
+</resources>

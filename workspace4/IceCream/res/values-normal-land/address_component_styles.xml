@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <style
+         name="address_detail_street_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="address_detail_street_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="address_detail_postcode_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="address_detail_postcode_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="address_insertupdate_street_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="address_insertupdate_street_value_style"
+         parent="@style/default_edittext_style" />
+    <style
+         name="address_insertupdate_postcode_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="address_insertupdate_postcode_value_style"
+         parent="@style/default_edittext_style" />
+    <style
+         name="address_list_street_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="address_list_postcode_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="address_navigationbar_association_station_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="address_navigationbar_association_station_numberobjects_style"
+         parent="@android:style/TextAppearance.Small" />
+</resources>

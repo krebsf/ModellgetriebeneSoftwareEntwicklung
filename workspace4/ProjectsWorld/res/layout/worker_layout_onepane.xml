@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:id="@+id/worker_layout_onepane">
+    <FrameLayout
+         android:id="@+id/worker_navigationbar_container"
+         style="@style/default_onepane_navigationbar_container" />
+    <FrameLayout
+         android:id="@+id/worker_list_container"
+         style="@style/default_onepane_list_container"
+         android:layout_below="@+id/worker_navigationbar_container" />
+    <FrameLayout
+         android:id="@+id/worker_detail_container"
+         style="@style/default_onepane_detail_container"
+         android:layout_below="@+id/worker_navigationbar_container" />
+</RelativeLayout>

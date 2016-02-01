@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+         android:id="@+id/entry_navigationbar_association_station"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:clickable="false"
+         android:longClickable="true">
+        <TextView
+             android:id="@+id/entry_navigationbar_association_station_descriptor"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             style="@style/entry_navigationbar_association_station_descriptor_style"
+             android:layout_gravity="center"
+             android:text="@string/entry_associationto_station" />
+        <ImageView
+             android:id="@+id/entry_navigationbar_association_station_image"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:src="@drawable/ic_light_association_one" />
+        <TextView
+             android:id="@+id/entry_navigationbar_association_station_numberobjects"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             style="@style/entry_navigationbar_association_station_numberobjects_style"
+             android:text="( 0 )"
+             android:background="@drawable/navigationbar_selector" />
+    </LinearLayout>
+    <View
+         android:layout_width="2dp"
+         android:layout_height="match_parent"
+         android:background="@drawable/navigationbar_divider" />
+</merge>

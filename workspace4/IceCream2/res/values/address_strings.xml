@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string
+         name="address_detail_postcode_descriptor">postCode:</string>
+    <string
+         name="address_insertupdate_postcode_descriptor">Choose a postCode:</string>
+    <string
+         name="address_detail_street_descriptor">street:</string>
+    <string
+         name="address_insertupdate_street_descriptor">Choose a street:</string>
+    <string
+         name="address_associationto_station">station</string>
+</resources>

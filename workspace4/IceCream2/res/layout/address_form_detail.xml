@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+         android:id="@+id/address_detail_layout"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+        <LinearLayout
+             android:id="@+id/address_detail_street"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal">
+            <TextView
+                 android:id="@+id/address_detail_street_descriptor"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="@string/address_detail_street_descriptor"
+                 style="@style/address_detail_street_descriptor_style" />
+            <TextView
+                 android:id="@+id/address_detail_street_value"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 style="@style/address_detail_street_value_style" />
+        </LinearLayout>
+        <LinearLayout
+             android:id="@+id/address_detail_postcode"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:layout_below="@+id/address_detail_street">
+            <TextView
+                 android:id="@+id/address_detail_postcode_descriptor"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="@string/address_detail_postcode_descriptor"
+                 style="@style/address_detail_postcode_descriptor_style" />
+            <TextView
+                 android:id="@+id/address_detail_postcode_value"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 style="@style/address_detail_postcode_value_style" />
+        </LinearLayout>
+    </RelativeLayout>
+</merge>

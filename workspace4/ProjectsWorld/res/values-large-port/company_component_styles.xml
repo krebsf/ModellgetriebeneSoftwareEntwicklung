@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <style
+         name="company_detail_name_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="company_detail_name_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="company_insertupdate_name_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="company_insertupdate_name_value_style"
+         parent="@style/default_edittext_style" />
+    <style
+         name="company_list_name_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="company_navigationbar_association_employees_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="company_navigationbar_association_employees_numberobjects_style"
+         parent="@android:style/TextAppearance.Medium" />
+    <style
+         name="company_navigationbar_association_projects_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="company_navigationbar_association_projects_numberobjects_style"
+         parent="@android:style/TextAppearance.Medium" />
+</resources>

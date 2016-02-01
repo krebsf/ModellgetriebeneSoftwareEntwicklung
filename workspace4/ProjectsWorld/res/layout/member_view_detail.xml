@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:fillViewport="true">
+    <RelativeLayout
+         android:id="@+id/member_detail_layout"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+        <RelativeLayout
+             android:id="@+id/member_view_detail"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+            <include
+                 layout="@layout/member_form_detail" />
+        </RelativeLayout>
+        <LinearLayout
+             android:id="@+id/member_associatives"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="vertical"
+             android:layout_below="@+id/member_view_detail">
+            <FrameLayout
+                 android:id="@+id/worker_detail_container"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content" />
+            <FrameLayout
+                 android:id="@+id/project_detail_container"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string
+         name="company_detail_name_descriptor">name:</string>
+    <string
+         name="company_insertupdate_name_descriptor">Choose a name:</string>
+    <string
+         name="company_associationto_employees">employees</string>
+    <string
+         name="company_associationto_projects">projects</string>
+</resources>

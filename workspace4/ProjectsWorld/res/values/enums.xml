@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string-array
+         name="projectstatus">
+        <item>planned</item>
+        <item>active</item>
+        <item>finished</item>
+        <item>suspended</item>
+    </string-array>
+    <string-array
+         name="projectsize">
+        <item>small</item>
+        <item>medium</item>
+        <item>big</item>
+    </string-array>
+</resources>

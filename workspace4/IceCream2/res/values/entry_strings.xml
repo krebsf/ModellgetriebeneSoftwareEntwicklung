@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string
+         name="entry_detail_actual_descriptor">actual:</string>
+    <string
+         name="entry_insertupdate_actual_descriptor">Choose a actual:</string>
+    <string
+         name="entry_detail_date_descriptor">date:</string>
+    <string
+         name="entry_insertupdate_date_descriptor">Choose a date:</string>
+    <string
+         name="entry_detail_variance_descriptor">variance:</string>
+    <string
+         name="entry_insertupdate_variance_descriptor">Choose a variance:</string>
+    <string
+         name="entry_associationto_station">station</string>
+</resources>

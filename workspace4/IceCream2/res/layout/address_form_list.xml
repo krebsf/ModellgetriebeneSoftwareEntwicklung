@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+         android:layout_width="wrap_content"
+         android:layout_height="?android:attr/listPreferredItemHeight"
+         android:gravity="center_vertical"
+         android:background="@drawable/default_list_selector">
+        <RelativeLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
+            <TextView
+                 android:id="@+id/address_list_street_value"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 style="@style/address_list_street_value_style" />
+            <TextView
+                 android:id="@+id/address_list_postcode_value"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 style="@style/address_list_postcode_value_style"
+                 android:layout_below="@+id/address_list_street_value" />
+        </RelativeLayout>
+    </RelativeLayout>
+</merge>
