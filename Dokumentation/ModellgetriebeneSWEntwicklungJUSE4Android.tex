@@ -23,6 +23,7 @@
 \usepackage{tabularx}
 \usepackage{array}
 
+
 \lstdefinestyle{myCustomUseStyle}{
   stepnumber=1,
   numbersep=10pt,
@@ -53,15 +54,14 @@
 
 \keywords{MDA, UML, USE, OCL, Android}
 
-\abstract{modellgetriebene Entwicklung vielversprechend;  Entwicklung einer Applikation, USE-Spezifikation zur Definition eines Klassendiagramms; OCL-Constraints oben drauf;Im Anschluss Generierung der Anwendung mit Hilfe von JUSE4Android. Untersuchung der Anwendung anhand bestimmter Fragestellungen   }
-
+\abstract{modellgetriebene Entwicklung vielversprechend;  Entwicklung einer Applikation, USE-Spezifikation zur Definition eines Klassendiagramms; OCL-Constraints oben drauf;Im Anschluss Generierung der Anwendung mit Hilfe von JUSE4Android. Untersuchung der Anwendung anhand bestimmter Fragestellungen}
 
 \onecolumn \maketitle \normalsize \vfill
-\pagestyle{plain}
-\section{\uppercase{Einleitung}}
-\label{sec:introduction}
-\noindent Zitat Test
-\cite{SilvaMasterThesis}
+%\pagestyle{plain}
+\section{\uppercase{Einleitung}}\label{sec:introduction}
+\noindent Modellgetriebene Software-Entwicklung (engl.: Model Driven Software Development (MDSD))  beschreibt einen Prozess zur vollständigen oder teilweisen Erstellung von Softwareartefakten, indem diese durch abstrakte, plattformunabhängige Modelle beschrieben und durch einen generativen Ansatz in Quellcode transformiert werden. Dieses Verfahren wird durch die von der Object Management Group (OMG) vorgestellte \textit{Model-driven architecture (MDA)} unter Zuhilfenahme internationaler Standards wie der \textit{Unified Modeling Language (UML)} oder des \textit{XML Metadata Interchange (XMI)} Formats spezifiziert. MDA verspricht eine Optimierung des Entwicklungsprozesses durch eine gesteigerte Portabilität der Anwendungen und eine erhöhte Produktivität der Entwickler.\cite{OMG_MDA}\\
+Verschiedene Arbeiten behandeln die Verwendung von MDA Ansätzen zur Generierung von Oberflächen. \cite{GUI_MDA} beschreibt die automatische Generierung einer GUI mithilfe des Tools AndroMDA. Von einem Klassendiagramm ausgehend erfolgt die Transformation in ein plattformspezifisches Modell (PSM), welches technologisch auf Java Server Faces ausgelegt ist. Die Arbeit bestätigt die positive Auswirkung des MDA-Ansatzes auf die Entwicklungs-Performance. Gleichzeitig wird empfohlen, eine manuelle Nachbarbeit vorzunehmen, um bspw. die Benutzerfreundlichkeit zu steigern.
+Im Bereich der mobilen Anwendungen existieren Arbeiten, welche die Generierung von GUI-Komponenten (siehe \cite{GUI_MDA_Android}) oder vollständiger Applikationen für das Betriebssystem Android (siehe \cite{JUSE}) thematisieren. 
 
 \section{\uppercase{Beschreibung der Anwendung}}
 \noindent
@@ -249,8 +249,9 @@ Die spezifizierten OCL-Ausdrücke finden sich auf Codeebene lediglich in Form vo
 \subsubsection{Generierter Code und zusätzliche Funktionalität}
 Der aus der USE-Definition generierte Code bedarf in den meisten Fällen einer manuellen Nachbearbeitung, um syntaktische Fehler der Generierung zu beheben. Diese äußern sich u.a. durch den Aufruf nicht deklarierter Variablen oder durch eine fehlerhafte Kommasetzung in Parameterlisten. 
 Ebenfalls zeigten sich Probleme bei der Konfiguration des Build Paths in Form von nicht hinzugefügten Libraries.\\
-Die Anwendung ist in eine aussagekräftige Paketstruktur gegliedert, wie Abbildung \ref{fig:Grafik4} zeigt. Außerdem hält sie die gängigen Code-Konventionen, wie beispielsweise die \textit{camelcase} Schreibweise ein. Dabei bilden die Getter-Methoden eine Ausnahme: diese besitzen nicht das Get-Präfix. Negativ muss ebenfalls erwähnt werden, dass der Code nur geringfügig kommentiert wurde und teilweise verschiedene Sprachen für die Kommentare verwendet wurden. Grundsätzlich erscheint der Code für einen fortgeschrittenen Java/Android Entwickler nachvollziehbar und verständlich. \\
+Die Anwendung ist in eine aussagekräftige Paketstruktur gegliedert, wie Abbildung \ref{fig:Grafik4} zeigt. Außerdem hält sie die gängigen Code-Konventionen, wie beispielsweise die \textit{camelcase} Schreibweise ein. Dabei bilden die Getter-Methoden eine Ausnahme: diese besitzen nicht das Get-Präfix. Negativ muss ebenfalls erwähnt werden, dass der Code nur geringfügig kommentiert wurde und teilweise verschiedene Sprachen für die Kommentare verwendet wurden. %Grundsätzlich erscheint der Code für einen fortgeschrittenen Java/Android Entwickler nachvollziehbar und verständlich. \\
 \begin{figure}[!h]
+	\centering
 	\includegraphics[scale=.6]{pics/Paket.png}
 	\caption{Paketstruktur einer mittels JUSE4Android generierten Applikation}
 	\label{fig:Grafik4}
@@ -260,15 +261,22 @@ Nur nach der Generierung sind manuelle Anpassungen oder das Hinzufügen komplexe
 
 \subsubsection{Veränderungen der Benutzeroberfläche}
 Wie bereits in Abschnitt \ref{untApp} beschrieben ist das verwendete Entwurfsmuster MVVM nicht vollständig erfüllt. Dennoch wurde festgestellt, dass es eine lose Kopplung zwischen der Business-Schicht und der Präsentations-Schicht gibt. Damit ist der Austausch vereinzelter Oberflächenkomponenten gewährleistet. Die Anpassung des Designs ist schon durch die Gestaltungsmechanismen des Betriebssystems Android ohne Probleme möglich. Ebenfalls können verwendete Grafiken einfach ausgetauscht werden. Theoretisch wäre der Austausch der gesamten Oberfläche auch möglich, jedoch entsteht dort ein Mehraufwand durch die nicht konsequente Verwendung des MVVM Architekturmusters. Bei der Auswechselung der Oberfläche müssten zum einen die in XML definierten Layout-Dateien verändert oder ausgetauscht werden, zum anderen müssten auch die \textit{Activity-Klassen} angepasst werden. Durch die Verwendung des Master/Detail Flow Layouts gehören zu jeder Oberflächenrepräsentation eines Objektes drei Klassen, welche die Anzeige steuern. Somit ist es nicht auszuschließen, dass es zu Inkonsistenzen im Programmfluss kommen könnte. Das Adaptieren einer neuen Oberflächengestaltung für eine durch JUSE4Android generierte Applikation ist demzufolge mit einem erheblichen Aufwand verbunden.\\
-Im Rahmen dieser Arbeit wurde exemplarisch gezeigt, wie die Anpassung der Oberfläche möglich ist. Dabei wurde die Präsentation für die Darstellung der Varianz-Attributes leicht verändert. Wenn diese außerhalb des tolerablen Bereichs \footnote{der tolerable Bereich wird exemplarisch für Varianzen x mit \(-5 \le x \le 5\) festgelegt} liegt, wird das anzeigende Feld rot eingefärbt, innerhalb des tolerablen Bereiches erscheint es grün. Um dies umzusetzen bedarf es eines manuellen Eingriffes in die \textit{EntryDetailFragment-Klasse}. Es wurde lediglich die Varianz mit dem Grenzwert verglichen und dann die Änderung der Textfarbe der Anzeigekomponente vorgenommen. Die Anpassung des ViewModel-Codes für die Umsetzung dieses Beispiels zeigt ebenfalls, dass hier das MVVM-Muster verletzt wurde.
-
-JUSE4Android bietet Annotationen an, welche im USE-File verankert sind und durch welche geringfügig auf die View Einfluss genommen werden kann. SIEHE MASTERARBEIT Seite
-
+Freiheitsgerade bei der Gestaltung der Oberfläche ergeben sich durch die Verwendung JUSE4Android spezifischer Annotation, welche im PIM definiert werden. Mögliche Einstellungen betreffen u.a. den anzuzeigenden Text des Start-Screens oder anzuzeigende Klassenattribute in der Detail-View. \cite[S.19]{SilvaMasterThesis} Abbildung \ref{fig:StationView} zeigt, wie sich die Präsentation eines Stations-Objektes durch die Annotation \texttt{@display(name = "1", meanActualValue = "2", meanVarianceValue = "3", numberOfEntries = "4", target = "5")} beeinflussen lässt. 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[scale=.6]{pics/StationView.png}
+	\caption{Präsentation einer Instanz der Klasse Station in der View}
+	\label{fig:StationView}
+\end{figure}
+Es gibt keine Möglichkeit, bevorzugte Bezeichnungen für die zu präsentierenden Attribute zu hinterlegen. Daher wird stets der Variablenname angezeigt.\\
+Um eine darüber hinausgehende Anpassung der Oberfläche exemplarisch zu demonstrieren, wurde das Präsentationselement für die Darstellung des Varianz-Attributes leicht verändert. Wenn der Wert des Attributes außerhalb des tolerablen Bereichs \footnote{der tolerable Bereich wird exemplarisch für Varianzen x mit \(-5 \le x \le 5\) festgelegt} liegt, wird das anzeigende Feld rot eingefärbt, innerhalb des tolerablen Bereiches erscheint es grün. Um dies umzusetzen, bedarf es eines manuellen Eingriffes in die \textit{EntryDetailFragment-Klasse}. Es wurde lediglich die Varianz mit dem Grenzwert verglichen und dann die Änderung der Textfarbe der Anzeigekomponente vorgenommen. Die Anpassung des ViewModel-Codes für die Umsetzung dieses Beispiels zeigt ebenfalls, dass hier das MVVM-Muster verletzt wurde.
 
 \section{Zusammenfassung und Fazit}
 JUSE4Anroid zu starr; möglicherweise geht es in die Richtung der Generierung von Softwarekomponenten, im Gegensatz zur Generierung einer vollständigen Applikation
 individuelle Verständnisse der Entwickler, z.B. verschiedene Auffassungen darüber, wie Architekturmuster umgesetzt werden, könnten dazu führen, dass der Code schwierig nachvollziehbar wird
+
  Da somit eine Menge moderne Mobilen Geräte mit den generierten BIS-Apps kompatibel sind, ist dies als erheblicher Nachteil ein zu schätzen.
+keine OCL-
 \vfill
 \bibliographystyle{apalike}
 {\small
