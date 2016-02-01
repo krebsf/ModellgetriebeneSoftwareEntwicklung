@@ -5,7 +5,7 @@ model IceCream
 -- description: Modified and extended version of the example for monitoring our ice-cream health,
 -- 		see "GUI Architectures", by Martin Fowler (http://martinfowler.com/eaaDev/uiArchs.html)
 -- author: Franziska Krebs, Tobias Franz, Jano Espenhahn; FH Brandenburg
--- last update: 21 January 2016
+-- last update: 31 January 2016
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
