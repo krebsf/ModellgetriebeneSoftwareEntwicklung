@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_cloud"
+        android:icon="@drawable/ic_dark_menu_cloud"
+        android:orderInCategory="0"
+        android:showAsAction="always"
+        android:title="synchronyze">
+        <menu>
+            <item
+                android:id="@+id/upload"
+                
+                android:title="Send Changes"/>
+            <item
+                android:id="@+id/download"
+                
+                android:title="Synchronize"/>
+        </menu>
+    </item>
+
+</menu>

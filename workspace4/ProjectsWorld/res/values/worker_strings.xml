@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string
+         name="worker_detail_nickname_descriptor">nickname:</string>
+    <string
+         name="worker_insertupdate_nickname_descriptor">Choose a nickname:</string>
+    <string
+         name="worker_detail_salary_descriptor">salary:</string>
+    <string
+         name="worker_insertupdate_salary_descriptor">Choose a salary:</string>
+    <string
+         name="worker_associationto_qualifications">qualifications</string>
+    <string
+         name="worker_associationto_employer">employer</string>
+    <string
+         name="worker_associationto_member">member</string>
+    <string
+         name="worker_associationto_projects">projects</string>
+</resources>

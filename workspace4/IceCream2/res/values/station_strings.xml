@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string
+         name="station_detail_meanactualvalue_descriptor">meanActualValue:</string>
+    <string
+         name="station_insertupdate_meanactualvalue_descriptor">Choose a meanActualValue:</string>
+    <string
+         name="station_detail_meanvariancevalue_descriptor">meanVarianceValue:</string>
+    <string
+         name="station_insertupdate_meanvariancevalue_descriptor">Choose a meanVarianceValue:</string>
+    <string
+         name="station_detail_name_descriptor">name:</string>
+    <string
+         name="station_insertupdate_name_descriptor">Choose a name:</string>
+    <string
+         name="station_detail_numberofentries_descriptor">numberOfEntries:</string>
+    <string
+         name="station_insertupdate_numberofentries_descriptor">Choose a numberOfEntries:</string>
+    <string
+         name="station_detail_target_descriptor">target:</string>
+    <string
+         name="station_insertupdate_target_descriptor">Choose a target:</string>
+    <string
+         name="station_associationto_records">records</string>
+    <string
+         name="station_associationto_place">place</string>
+</resources>

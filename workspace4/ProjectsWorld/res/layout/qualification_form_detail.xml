@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+         android:id="@+id/qualification_detail_layout"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+        <LinearLayout
+             android:id="@+id/qualification_detail_description"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal">
+            <TextView
+                 android:id="@+id/qualification_detail_description_descriptor"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="@string/qualification_detail_description_descriptor"
+                 style="@style/qualification_detail_description_descriptor_style" />
+            <TextView
+                 android:id="@+id/qualification_detail_description_value"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 style="@style/qualification_detail_description_value_style" />
+        </LinearLayout>
+    </RelativeLayout>
+</merge>

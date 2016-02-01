@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <style
+         name="calendardate_detail_calendardate_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="calendardate_detail_calendardate_value_style" />
+    <style
+         name="calendardate_insertupdate_calendardate_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="calendardate_insertupdate_calendardate_value_style" />
+    <style
+         name="calendardate_list_calendardate_value_style" />
+    <style
+         name="calendardate_detail_year_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="calendardate_detail_year_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="calendardate_detail_month_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="calendardate_detail_month_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="calendardate_detail_day_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="calendardate_detail_day_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="calendardate_insertupdate_year_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="calendardate_insertupdate_year_value_style"
+         parent="@style/default_edittext_style" />
+    <style
+         name="calendardate_insertupdate_month_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="calendardate_insertupdate_month_value_style"
+         parent="@style/default_edittext_style" />
+    <style
+         name="calendardate_insertupdate_day_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="calendardate_insertupdate_day_value_style"
+         parent="@style/default_edittext_style" />
+    <style
+         name="calendardate_list_year_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="calendardate_list_month_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="calendardate_list_day_value_style"
+         parent="@style/default_textview_style" />
+</resources>

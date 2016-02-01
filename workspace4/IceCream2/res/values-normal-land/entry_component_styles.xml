@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <style
+         name="entry_detail_date_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="entry_detail_date_value_style"
+         parent="@style/default_datepicker_style" />
+    <style
+         name="entry_detail_actual_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="entry_detail_actual_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="entry_detail_variance_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="entry_detail_variance_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="entry_insertupdate_date_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="entry_insertupdate_date_value_style"
+         parent="@style/default_datepicker_style" />
+    <style
+         name="entry_insertupdate_actual_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="entry_insertupdate_actual_value_style"
+         parent="@style/default_edittext_style" />
+    <style
+         name="entry_list_date_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="entry_navigationbar_association_station_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="entry_navigationbar_association_station_numberobjects_style"
+         parent="@android:style/TextAppearance.Small" />
+</resources>

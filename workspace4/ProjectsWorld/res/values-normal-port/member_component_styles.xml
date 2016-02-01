@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <style
+         name="member_detail_enddate_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="member_detail_enddate_value_style"
+         parent="@style/default_datepicker_style" />
+    <style
+         name="member_detail_startdate_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="member_detail_startdate_value_style"
+         parent="@style/default_datepicker_style" />
+    <style
+         name="member_insertupdate_enddate_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="member_insertupdate_enddate_value_style"
+         parent="@style/default_datepicker_style" />
+    <style
+         name="member_insertupdate_startdate_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="member_insertupdate_startdate_value_style"
+         parent="@style/default_datepicker_style" />
+    <style
+         name="member_list_enddate_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="member_list_startdate_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="member_navigationbar_association_members_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="member_navigationbar_association_members_numberobjects_style"
+         parent="@android:style/TextAppearance.Small" />
+    <style
+         name="member_navigationbar_association_projects_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="member_navigationbar_association_projects_numberobjects_style"
+         parent="@android:style/TextAppearance.Small" />
+</resources>

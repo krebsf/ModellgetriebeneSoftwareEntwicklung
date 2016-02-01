@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <RelativeLayout
+        android:id="@+id/entry_insertupdate_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:id="@+id/calendardate_detail_container_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/entry_insertupdate_date_descriptor"
+                style="@style/entry_insertupdate_date_descriptor_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/entry_insertupdate_date_descriptor" />
+
+            <include layout="@layout/calendardate_form_insertupdate" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/entry_insertupdate_actual"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/calendardate_detail_container_date"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/entry_insertupdate_actual_descriptor"
+                style="@style/entry_insertupdate_actual_descriptor_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/entry_insertupdate_actual_descriptor" />
+
+            <EditText
+                android:id="@+id/entry_insertupdate_actual_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</merge>

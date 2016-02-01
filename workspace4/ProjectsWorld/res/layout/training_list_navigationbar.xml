@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+         android:id="@+id/training_navigationbar_association_trained"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:clickable="false"
+         android:longClickable="true">
+        <TextView
+             android:id="@+id/training_navigationbar_association_trained_descriptor"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             style="@style/training_navigationbar_association_trained_descriptor_style"
+             android:layout_gravity="center"
+             android:text="@string/training_associationto_trained" />
+        <ImageView
+             android:id="@+id/training_navigationbar_association_trained_image"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:src="@drawable/ic_light_association_many" />
+        <TextView
+             android:id="@+id/training_navigationbar_association_trained_numberobjects"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             style="@style/training_navigationbar_association_trained_numberobjects_style"
+             android:text="( 0 )"
+             android:background="@drawable/navigationbar_selector" />
+    </LinearLayout>
+    <View
+         android:layout_width="2dp"
+         android:layout_height="match_parent"
+         android:background="@drawable/navigationbar_divider" />
+    <include
+         layout="@layout/project_list_navigationbar" />
+</merge>

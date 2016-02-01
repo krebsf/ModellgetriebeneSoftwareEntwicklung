@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:orientation="vertical">
+    <LinearLayout
+         android:id="@+id/member_generalizationoptions_projects"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal">
+        <TextView
+             android:id="@+id/member_generalizationoptions_projects_descriptor"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:text="@string/member_associationto_projects" />
+        <ImageView
+             android:id="@+id/member_generalizationoptions_projects_image"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:src="@drawable/ic_light_association_one" />
+    </LinearLayout>
+    <View
+         android:layout_height="2dp"
+         android:layout_width="match_parent"
+         android:background="@drawable/navigationbar_divider" />
+    <include
+         layout="@layout/project_generalizationoptions_offsprings" />
+</LinearLayout>

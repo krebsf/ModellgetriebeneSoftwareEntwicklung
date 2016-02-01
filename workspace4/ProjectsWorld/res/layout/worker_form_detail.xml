@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+         android:id="@+id/worker_detail_layout"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+        <LinearLayout
+             android:id="@+id/worker_detail_nickname"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal">
+            <TextView
+                 android:id="@+id/worker_detail_nickname_descriptor"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="@string/worker_detail_nickname_descriptor"
+                 style="@style/worker_detail_nickname_descriptor_style" />
+            <TextView
+                 android:id="@+id/worker_detail_nickname_value"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 style="@style/worker_detail_nickname_value_style" />
+        </LinearLayout>
+        <LinearLayout
+             android:id="@+id/worker_detail_salary"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:layout_below="@+id/worker_detail_nickname">
+            <TextView
+                 android:id="@+id/worker_detail_salary_descriptor"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="@string/worker_detail_salary_descriptor"
+                 style="@style/worker_detail_salary_descriptor_style" />
+            <TextView
+                 android:id="@+id/worker_detail_salary_value"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 style="@style/worker_detail_salary_value_style" />
+        </LinearLayout>
+    </RelativeLayout>
+</merge>

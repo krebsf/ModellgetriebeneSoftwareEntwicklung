@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <style
+         name="default_textview_style"
+         parent="@android:style/TextAppearance.Medium" />
+    <style
+         name="default_edittext_style"
+         parent="@android:style/TextAppearance.Medium" />
+    <style
+         name="default_datepicker_style">
+        <item
+             name="android:calendarViewShown">false</item>
+    </style>
+    <style
+         name="default_customtimepicker_style" />
+    <style
+         name="default_spinner_style" />
+    <style
+         name="default_CheckBox_style" />
+</resources>

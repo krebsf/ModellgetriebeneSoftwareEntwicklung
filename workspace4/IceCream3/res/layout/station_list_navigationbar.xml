@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+         android:id="@+id/station_navigationbar_association_records"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:clickable="false"
+         android:longClickable="true">
+        <TextView
+             android:id="@+id/station_navigationbar_association_records_descriptor"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             style="@style/station_navigationbar_association_records_descriptor_style"
+             android:layout_gravity="center"
+             android:text="@string/station_associationto_records" />
+        <ImageView
+             android:id="@+id/station_navigationbar_association_records_image"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:src="@drawable/ic_light_association_many" />
+        <TextView
+             android:id="@+id/station_navigationbar_association_records_numberobjects"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             style="@style/station_navigationbar_association_records_numberobjects_style"
+             android:text="( 0 )"
+             android:background="@drawable/navigationbar_selector" />
+    </LinearLayout>
+    <View
+         android:layout_width="2dp"
+         android:layout_height="match_parent"
+         android:background="@drawable/navigationbar_divider" />
+    <LinearLayout
+         android:id="@+id/station_navigationbar_association_place"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:clickable="false"
+         android:longClickable="true">
+        <TextView
+             android:id="@+id/station_navigationbar_association_place_descriptor"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             style="@style/station_navigationbar_association_place_descriptor_style"
+             android:layout_gravity="center"
+             android:text="@string/station_associationto_place" />
+        <ImageView
+             android:id="@+id/station_navigationbar_association_place_image"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:src="@drawable/ic_light_association_one" />
+        <TextView
+             android:id="@+id/station_navigationbar_association_place_numberobjects"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             style="@style/station_navigationbar_association_place_numberobjects_style"
+             android:text="( 0 )"
+             android:background="@drawable/navigationbar_selector" />
+    </LinearLayout>
+    <View
+         android:layout_width="2dp"
+         android:layout_height="match_parent"
+         android:background="@drawable/navigationbar_divider" />
+</merge>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+         android:id="@+id/address_insertupdate_layout"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+        <LinearLayout
+             android:id="@+id/address_insertupdate_street"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal">
+            <TextView
+                 android:id="@+id/address_insertupdate_street_descriptor"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="@string/address_insertupdate_street_descriptor"
+                 style="@style/address_insertupdate_street_descriptor_style" />
+            <EditText
+                 android:id="@+id/address_insertupdate_street_value"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+             android:id="@+id/address_insertupdate_postcode"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:layout_below="@+id/address_insertupdate_street">
+            <TextView
+                 android:id="@+id/address_insertupdate_postcode_descriptor"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="@string/address_insertupdate_postcode_descriptor"
+                 style="@style/address_insertupdate_postcode_descriptor_style" />
+            <EditText
+                 android:id="@+id/address_insertupdate_postcode_value"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:inputType="number" />
+        </LinearLayout>
+    </RelativeLayout>
+</merge>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+         android:id="@+id/worker_insertupdate_layout"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+        <LinearLayout
+             android:id="@+id/worker_insertupdate_nickname"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal">
+            <TextView
+                 android:id="@+id/worker_insertupdate_nickname_descriptor"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="@string/worker_insertupdate_nickname_descriptor"
+                 style="@style/worker_insertupdate_nickname_descriptor_style" />
+            <EditText
+                 android:id="@+id/worker_insertupdate_nickname_value"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+             android:id="@+id/worker_insertupdate_salary"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:layout_below="@+id/worker_insertupdate_nickname">
+            <TextView
+                 android:id="@+id/worker_insertupdate_salary_descriptor"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="@string/worker_insertupdate_salary_descriptor"
+                 style="@style/worker_insertupdate_salary_descriptor_style" />
+            <EditText
+                 android:id="@+id/worker_insertupdate_salary_value"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:inputType="number" />
+        </LinearLayout>
+    </RelativeLayout>
+</merge>

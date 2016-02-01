@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<merge>
+
+    <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/navigation_bar_view_left_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_light_navigation_bar_view_left_arrow" />
+
+    <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/navigation_bar_view_right_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_light_navigation_bar_view_right_arrow" />
+
+</merge>

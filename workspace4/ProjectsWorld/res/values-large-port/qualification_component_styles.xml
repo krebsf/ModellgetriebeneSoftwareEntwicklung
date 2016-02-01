@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <style
+         name="qualification_detail_description_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="qualification_detail_description_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="qualification_insertupdate_description_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="qualification_insertupdate_description_value_style"
+         parent="@style/default_edittext_style" />
+    <style
+         name="qualification_list_description_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="qualification_navigationbar_association_workers_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="qualification_navigationbar_association_workers_numberobjects_style"
+         parent="@android:style/TextAppearance.Medium" />
+    <style
+         name="qualification_navigationbar_association_projects_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="qualification_navigationbar_association_projects_numberobjects_style"
+         parent="@android:style/TextAppearance.Medium" />
+    <style
+         name="qualification_navigationbar_association_trainings_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="qualification_navigationbar_association_trainings_numberobjects_style"
+         parent="@android:style/TextAppearance.Medium" />
+</resources>

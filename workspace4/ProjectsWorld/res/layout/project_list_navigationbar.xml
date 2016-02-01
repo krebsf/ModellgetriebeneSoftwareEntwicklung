@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+         android:id="@+id/project_navigationbar_association_member"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:clickable="false"
+         android:longClickable="true">
+        <TextView
+             android:id="@+id/project_navigationbar_association_member_descriptor"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             style="@style/project_navigationbar_association_member_descriptor_style"
+             android:layout_gravity="center"
+             android:text="@string/project_associationto_member" />
+        <ImageView
+             android:id="@+id/project_navigationbar_association_member_image"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:src="@drawable/ic_light_association_associative_class" />
+        <TextView
+             android:id="@+id/project_navigationbar_association_member_numberobjects"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             style="@style/project_navigationbar_association_member_numberobjects_style"
+             android:text="( 0 )"
+             android:background="@drawable/navigationbar_selector" />
+    </LinearLayout>
+    <View
+         android:layout_width="2dp"
+         android:layout_height="match_parent"
+         android:background="@drawable/navigationbar_divider" />
+    <LinearLayout
+         android:id="@+id/project_navigationbar_association_members"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:clickable="false"
+         android:longClickable="true">
+        <TextView
+             android:id="@+id/project_navigationbar_association_members_descriptor"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             style="@style/project_navigationbar_association_members_descriptor_style"
+             android:layout_gravity="center"
+             android:text="@string/project_associationto_members" />
+        <ImageView
+             android:id="@+id/project_navigationbar_association_members_image"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:src="@drawable/ic_light_association_many" />
+        <TextView
+             android:id="@+id/project_navigationbar_association_members_numberobjects"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             style="@style/project_navigationbar_association_members_numberobjects_style"
+             android:text="( 0 )"
+             android:background="@drawable/navigationbar_selector" />
+    </LinearLayout>
+    <View
+         android:layout_width="2dp"
+         android:layout_height="match_parent"
+         android:background="@drawable/navigationbar_divider" />
+    <LinearLayout
+         android:id="@+id/project_navigationbar_association_requirements"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:clickable="false"
+         android:longClickable="true">
+        <TextView
+             android:id="@+id/project_navigationbar_association_requirements_descriptor"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             style="@style/project_navigationbar_association_requirements_descriptor_style"
+             android:layout_gravity="center"
+             android:text="@string/project_associationto_requirements" />
+        <ImageView
+             android:id="@+id/project_navigationbar_association_requirements_image"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:src="@drawable/ic_light_association_many" />
+        <TextView
+             android:id="@+id/project_navigationbar_association_requirements_numberobjects"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             style="@style/project_navigationbar_association_requirements_numberobjects_style"
+             android:text="( 0 )"
+             android:background="@drawable/navigationbar_selector" />
+    </LinearLayout>
+    <View
+         android:layout_width="2dp"
+         android:layout_height="match_parent"
+         android:background="@drawable/navigationbar_divider" />
+    <LinearLayout
+         android:id="@+id/project_navigationbar_association_company"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:clickable="false"
+         android:longClickable="true">
+        <TextView
+             android:id="@+id/project_navigationbar_association_company_descriptor"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             style="@style/project_navigationbar_association_company_descriptor_style"
+             android:layout_gravity="center"
+             android:text="@string/project_associationto_company" />
+        <ImageView
+             android:id="@+id/project_navigationbar_association_company_image"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:src="@drawable/ic_light_association_one" />
+        <TextView
+             android:id="@+id/project_navigationbar_association_company_numberobjects"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             style="@style/project_navigationbar_association_company_numberobjects_style"
+             android:text="( 0 )"
+             android:background="@drawable/navigationbar_selector" />
+    </LinearLayout>
+    <View
+         android:layout_width="2dp"
+         android:layout_height="match_parent"
+         android:background="@drawable/navigationbar_divider" />
+</merge>

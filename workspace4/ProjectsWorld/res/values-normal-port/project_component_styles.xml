@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <style
+         name="project_detail_name_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="project_detail_name_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="project_detail_size_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="project_detail_size_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="project_detail_status_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="project_detail_status_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="project_detail_months_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="project_detail_months_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="project_insertupdate_name_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="project_insertupdate_name_value_style"
+         parent="@style/default_edittext_style" />
+    <style
+         name="project_insertupdate_months_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="project_insertupdate_months_value_style"
+         parent="@style/default_edittext_style" />
+    <style
+         name="project_insertupdate_size_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="project_insertupdate_size_value_style"
+         parent="default_spinner_style" />
+    <style
+         name="project_insertupdate_status_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="project_insertupdate_status_value_style"
+         parent="default_spinner_style" />
+    <style
+         name="project_list_name_value_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="project_navigationbar_association_member_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="project_navigationbar_association_member_numberobjects_style"
+         parent="@android:style/TextAppearance.Small" />
+    <style
+         name="project_navigationbar_association_members_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="project_navigationbar_association_members_numberobjects_style"
+         parent="@android:style/TextAppearance.Small" />
+    <style
+         name="project_navigationbar_association_requirements_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="project_navigationbar_association_requirements_numberobjects_style"
+         parent="@android:style/TextAppearance.Small" />
+    <style
+         name="project_navigationbar_association_company_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="project_navigationbar_association_company_numberobjects_style"
+         parent="@android:style/TextAppearance.Small" />
+    <style
+         name="project_navigationbar_association_training_descriptor_style"
+         parent="@style/default_textview_style" />
+    <style
+         name="project_navigationbar_association_training_numberobjects_style"
+         parent="@android:style/TextAppearance.Small" />
+</resources>

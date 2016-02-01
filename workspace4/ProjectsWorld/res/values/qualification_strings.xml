@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string
+         name="qualification_detail_description_descriptor">description:</string>
+    <string
+         name="qualification_insertupdate_description_descriptor">Choose a description:</string>
+    <string
+         name="qualification_associationto_workers">workers</string>
+    <string
+         name="qualification_associationto_projects">projects</string>
+    <string
+         name="qualification_associationto_trainings">trainings</string>
+</resources>

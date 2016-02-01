@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string
+         name="project_detail_months_descriptor">months:</string>
+    <string
+         name="project_insertupdate_months_descriptor">Choose a months:</string>
+    <string
+         name="project_detail_name_descriptor">name:</string>
+    <string
+         name="project_insertupdate_name_descriptor">Choose a name:</string>
+    <string
+         name="project_detail_size_descriptor">size:</string>
+    <string
+         name="project_insertupdate_size_descriptor">Choose a size:</string>
+    <string
+         name="project_detail_status_descriptor">status:</string>
+    <string
+         name="project_insertupdate_status_descriptor">Choose a status:</string>
+    <string
+         name="project_associationto_member">member</string>
+    <string
+         name="project_associationto_members">members</string>
+    <string
+         name="project_associationto_requirements">requirements</string>
+    <string
+         name="project_associationto_company">company</string>
+    <string
+         name="project_tosub_training">Training</string>
+</resources>

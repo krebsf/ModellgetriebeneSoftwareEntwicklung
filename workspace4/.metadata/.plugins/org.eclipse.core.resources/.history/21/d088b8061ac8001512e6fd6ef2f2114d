@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+         android:id="@+id/member_detail_layout"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+        <LinearLayout
+             android:id="@+id/calendardate_detail_container_enddate"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="vertical">
+            <TextView
+                 android:id="@+id/member_detail_enddate_descriptor"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="@string/member_detail_enddate_descriptor"
+                 style="@style/member_detail_enddate_descriptor_style" />
+            <include
+                 layout="@layout/calendardate_form_detail" />
+        </LinearLayout>
+        <LinearLayout
+             android:id="@+id/calendardate_detail_container_startdate"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="vertical"
+             android:layout_below="@+id/calendardate_detail_container_enddate">
+            <TextView
+                 android:id="@+id/member_detail_startdate_descriptor"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="@string/member_detail_startdate_descriptor"
+                 style="@style/member_detail_startdate_descriptor_style" />
+            <include
+                 layout="@layout/calendardate_form_detail" />
+        </LinearLayout>
+    </RelativeLayout>
+</merge>
