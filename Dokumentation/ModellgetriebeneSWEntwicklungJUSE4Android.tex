@@ -59,27 +59,32 @@
 \abstract{modellgetriebene Entwicklung vielversprechend;  Entwicklung einer Applikation, USE-Spezifikation zur Definition eines Klassendiagramms; OCL-Constraints oben drauf;Im Anschluss Generierung der Anwendung mit Hilfe von JUSE4Android. Untersuchung der Anwendung anhand bestimmter Fragestellungen}
 
 \onecolumn \maketitle \normalsize \vfill
-%\pagestyle{plain}
-\section{\uppercase{Einleitung}}\label{sec:introduction}
-\noindent Modellgetriebene Software-Entwicklung (engl.: Model Driven Software Development (MDSD))  beschreibt einen Prozess zur vollständigen oder teilweisen Erstellung von Softwareartefakten, indem diese durch abstrakte, plattformunabhängige Modelle (PIM) beschrieben und durch einen generativen Ansatz in Quellcode transformiert werden. Dieses Verfahren wird durch die von der Object Management Group (OMG) vorgestellte \textit{Model-driven architecture (MDA)} unter Zuhilfenahme internationaler Standards wie der \textit{Unified Modeling Language (UML)} oder des \textit{XML Metadata Interchange (XMI)} Formats spezifiziert. MDA verspricht eine Optimierung des Entwicklungsprozesses durch eine gesteigerte Portabilität der Anwendungen und eine erhöhte Produktivität der Entwickler. \citep{OMG_MDA}\\
+
+\section{\uppercase{Einleitung}}
+\label{sec:introduction}
+\noindent Modellgetriebene Software-Entwicklung (engl.: Model Driven Software Development (MDSD))  beschreibt einen Prozess zur vollständigen oder teilweisen Erstellung von Softwareartefakten, indem diese durch abstrakte, plattformunabhängige Modelle (PIM) beschrieben und durch einen generativen Ansatz in Quellcode transformiert werden. Dieses Verfahren wird durch die von der Object Management Group (OMG) vorgestellte \textit{Model-driven architecture (MDA)} unter Zuhilfenahme internationaler Standards wie der \textit{Unified Modeling Language (UML)} oder des \textit{XML Metadata Interchange (XMI)} Formats spezifiziert. MDA verspricht eine Optimierung des Entwicklungsprozesses durch eine gesteigerte Portabilität der Anwendungen und eine erhöhte Produktivität der Entwickler.\citep{OMG_MDA}
 Verschiedene Arbeiten behandeln die Verwendung von MDA Ansätzen zur Generierung von Oberflächen. \cite{GUI_MDA} beschreiben die automatische Generierung einer GUI mithilfe des Tools AndroMDA. Von einem Klassendiagramm ausgehend erfolgt die Transformation in ein plattformspezifisches Modell (PSM), welches technologisch auf Java Server Faces ausgelegt ist. Die Arbeit bestätigt die positive Auswirkung des MDA-Ansatzes auf die Entwicklungs-Performance. Gleichzeitig wird empfohlen, eine manuelle Nachbarbeit vorzunehmen, um bspw. die Benutzerfreundlichkeit zu steigern.
 Im Bereich der mobilen Anwendungen existieren Arbeiten, welche die Generierung von GUI-Komponenten (siehe \cite{GUI_MDA_Android}) oder vollständiger Applikationen für das Betriebssystem Android (siehe \cite{JUSE}) thematisieren. Letztere dient als Ausgangspunkt für die im Rahmen dieser Arbeit durchgeführten Tätigkeiten und Untersuchungen. Vorgestellt wird das Tool \textit{JUSE4Android}, welches ein Klassendiagramm in eine Android-Applikation überführt. Anhand eines einfachen Beispiels wird die Generierung nachvollzogen und die erstellte Applikation analysiert. Dieser Artikel gliedert sich wie folgt: Abschnitt \ref{sec:iceCream} stellt das zu generierende Beispiel vor. Die Formulierung des PIMs gemäß der    
 USE-Spezifikation und die Anreicherung des Modells mit OCL-Constraints werden in Abschnitt \ref{sec:use} erläutert. Ein Werkzeug zur Validierung des Modells wird im darauffolgenden Abschnitt \ref{sec:use_tool} vorgestellt. Abschnitt \ref{JUSE4Android} präsentiert das Tool JUSE4Android sowie die Ergebnisse der untersuchten Fragestellungen. Im letzten Abschnitt wird die Arbeit zusammengefasst und die Ergebnisse werden reflektiert.
 
-\section{\uppercase{Beschreibung der Anwendung}}\label{sec:iceCream}
+\section{\uppercase{Beschreibung der Anwendung}}
+\label{sec:iceCream}
 \noindent
 Das Beispiel wurde aus dem Artikel \cite{Gui06} entnommen. Es handelt sich um ein fiktives Programm der Regierung zur Kontrolle der Eispartikel in der Luft. Wenn die Konzentration zu niedrig ist, bedeutet das, dass die Bevölkerung zu wenig Eiscreme isst, was eine Menge an Risiken für die Umwelt und die öffentliche Ordnung darstellt. Um die Eispartikel in der Luft zu überwachen, hat der Staat Kontrollstationen im gesamten Land verteilt aufgestellt. Für jede Station gibt es einen festgelegten Zielwert der Eispartikel. Der aktuelle Wert weicht in der Regel vom Zielwert ab. 
 \\
+
 Die Anwendung ermöglicht es, neue Stationen mit Zielwerten aufzunehmen und alte Stationen zu löschen. Außerdem gibt es die Möglichkeit, eine Adresse zu einer Station anzugeben. Eine Adresse ist im Nachhinein auch wieder entfernbar. Die Erfassung von beliebig vielen Einträgen zu einer Station ist ebenfalls möglich. Auch Einträge lassen sich im Nachhinein wieder entfernen. Zudem wird für jeden Eintrag nach Eingabe des aktuellen Wertes die Abweichung zum Zielwert (im Folgenden als Varianz bezeichnet) angezeigt.
 
 
-\section{\uppercase{Vorstellung USE}}\label{sec:use}
+\section{\uppercase{Grundlagen}}
 \noindent
-UML based Specifiation Environment (USE) wird zur Spezifikation von Informationssystemen verwendet und wurde an der Universität Bremen entwickelt. Neben dem Einsatz für Fallstudien wird USE vor allem in der Lehre an Hochschule wie z. B. MIT, Cambridge, University of Edinburgh und University of Lisbon eingesetzt. USE basiert auf einer Teilmenge der Unified Modeling Language (UML) und der Object Constraint Language (OCL). Eine USE-Spezifikation besteht aus einer textuellen Beschreibung eines Modells, bei der Eigenschaften aus UML-Diagrammen verwendet werden. Weitere Integritätsausdrücke für ein Modell können durch die OCL definiert werden. \citep{Use07}
-%Die OCL wird im späteren Kapitel (TODO) vorgestellt. 
+
+\subsection{Vorstellung USE} 
+\label{ssec:use}
+UML based Specifiation Environment (USE) wird zur Spezifikation von Informationssystemen verwendet und wurde an der Universität Bremen entwickelt. Neben dem Einsatz für Fallstudien wird USE vor allem in der Lehre an Hochschulen wie z. B. das Massachusetts Institute of Technology, die University of Cambridge, die University of Edinburgh und die University of Lisbon eingesetzt. USE basiert auf einer Teilmenge der Unified Modeling Language (UML) und der Object Constraint Language (OCL). Eine USE-Spezifikation besteht aus einer textuellen Beschreibung eines Modells, bei der Eigenschaften aus UML-Diagrammen verwendet werden. Weitere Integritätsausdrücke für ein Modell können durch OCL-Ausdrücke, die im Kapitel~\ref{ssec:ocl} vorgestellt werden, definiert werden. \cite{Use07} 
 \\
 
-Die Abbildung~\ref{fig:Grafik1} veranschaulicht den Workflow für eine USE-Spezifikation. Ein Entwickler spezifiziert ein plattformunabhängiges  USE-Modell, welches ein System beschreibt und nutzt dafür UML- und OCL-Ausdrücke. Mithilfe von USE ist es ihm möglich, die bestimmten Anforderungen an sein System auf Erfüllung mit dem Modell zu validieren.
+Die Abbildung~\ref{fig:Grafik1} veranschaulicht den Workflow für eine USE-Spezifikation. Ein Entwickler spezifiziert ein plattformunabhängiges (PIM) USE-Modell, das ein System beschreibt und nutzt dafür UML- und OCL-Ausdrücke. Mithilfe von USE ist es ihm möglich, die bestimmten Anforderungen an sein System auf Erfüllung mit dem Modell zu validieren.
 
 \begin{figure}[!h]
 	\includegraphics[scale=.7]{pics/USE_workflow.jpg}
@@ -87,10 +92,10 @@ Die Abbildung~\ref{fig:Grafik1} veranschaulicht den Workflow für eine USE-Spezi
 	\label{fig:Grafik1}
 \end{figure}
 
-\subsection{Spezifikation} 
+\subsection{USE-Syntax} 
 \label{ssec:specification}
 
-Die textuelle Beschreibung eines Modells mit USE beginnt immer mit der Definition eines Modell-Namens. In diesem Fall ist das \textit{IceCream}. Im Anschluss folgen Klassendefinitionen mit ihren jeweiligen Attributen und Methoden. Im Beispiel hat die Klasse \textit{Station} das Attribut \textit{name} und die Operation \textit{entries} ohne Übergabeparameter. Die nachfolgenden Code-Ausschnitte verwenden lediglich UML.
+Die textuelle Beschreibung eines Modells mit USE beginnt immer mit der Definition eines Modell-Namens. In diesem Fall ist das \textit{IceCream}. Im Anschluss folgen Klassendefinitionen mit ihren jeweiligen Attributen und Methoden. Im Beispiel hat die Klasse \textit{Station} fünf Attribute und drei Operation. Die nachfolgenden Code-Ausschnitte verwenden lediglich UML.
 
 \lstset{basicstyle=\tiny,style=myCustomUseStyle}
 \begin{lstlisting}[caption={USE-Spezifikation der Klasse Station im Modell IceCream},label=lst:use1]
@@ -98,14 +103,14 @@ model IceCream
 
 class Station
 	attributes
-		name			: String
-		target		: Integer
-		numberOfEntries : Integer
-		meanActualValue : Real 
-		meanVarianceValue :Real
+		name					: String
+		target				: Integer
+		numberOfEntries 	: Integer
+		meanActualValue 	: Real 
+		meanVarianceValue	: Real
 	operations
-		entries()	: Set(Entry) 
-		calculateMeanActualValue() : Real
+		entries()			: Set(Entry) 
+		calculateMeanActualValue()	: Real
 		calculateMeanVarianceValue() : Real
 		
 end
@@ -158,7 +163,9 @@ Als Bestandteil der UML ist die OCL ebenfalls als Spezifikation zur Modellierung
 \item zur Definition von Invarianten
 \item zur Definition von Ableitungsregeln für Attribute
 \end{itemize} 
-Im Folgenden werden die OCL-Konstrukte erläutert, welche zur textuellen Beschreibung von Bedingungen im IceCream Beispiel verwendet wurden. Da diese innerhalb der Klassen spezifiziert werden, kann auf die Einleitung durch das Schlüsselwort \textit{context} verzichtet werden.  \\
+Im Folgenden werden die OCL-Konstrukte erläutert, welche zur textuellen Beschreibung von Bedingungen im IceCream Beispiel verwendet wurden. Da diese innerhalb der Klassen spezifiziert werden, kann auf die Einleitung durch das Schlüsselwort \textit{context} verzichtet werden.
+\\
+
 Zunächst werden die in den Klassen Station und Entry deklarierten Operationen näher durch die OCL definiert und es werden Vorbedingungen festgelegt. Listing \ref{lst:operations} zeigt, wie die Einträge zu einer Station durch die Methode \textit{entries()} gesammelt werden und wie eine einfache Berechnung des Mittelwerts für gemessene Werte (\textit{calculateMeanActualValue()} erfolgt.  
 \begin{lstlisting}[caption={OCL-erweiterte Operationen der Klasse Station},label=lst:operations]
 entries(): Set(Entry) = self.records->asSet
@@ -181,7 +188,9 @@ inv SelectedDateCannotBeInTheFuture:
 	date.isBefore(date.today()) or date.isEqual(date.today())
 \end{lstlisting}
 
-Nach dem Schlüsselwort \textit{inv} folgt der Bezeichner der Invariante und anschließend der OCL-Ausdruck. Auf diese Art und Weise kann formuliert werden, dass der Zielwert einer Station (\textit{target}) sowie der tatsächlich gemessene Wert (\textit{actual}) stets im positiven Zahlenbereich liegen müssen. Ebenfalls kann spezifiziert werden, dass ein Eintrag niemals in der Zukunft vorgenommen werden kann. Da die OCL Sichtbarkeiten ignoriert, können problemlos Zugriffe auf Methoden anderer Klassen oder deren Objekte (in Listing \ref{lst:invariantsEntry} beispielsweise die Methoden der Klasse CalendarDate) definiert werden. \cite[S.71]{OCLFormal}\\
+Nach dem Schlüsselwort \textit{inv} folgt der Bezeichner der Invariante und anschließend der OCL-Ausdruck. Auf diese Art und Weise kann formuliert werden, dass der Zielwert einer Station (\textit{target}) sowie der tatsächlich gemessene Wert (\textit{actual}) stets im positiven Zahlenbereich liegen müssen. Ebenfalls kann spezifiziert werden, dass ein Eintrag niemals in der Zukunft vorgenommen werden kann. Da die OCL Sichtbarkeiten ignoriert, können problemlos Zugriffe auf Methoden anderer Klassen oder deren Objekte (in Listing \ref{lst:invariantsEntry} beispielsweise die Methoden der Klasse CalendarDate) definiert werden. \cite[S.71]{OCLFormal}
+\\
+
 Mit Hilfe des \textit{derive}-Konstruktes können Ableitungen für Attribute formalisiert werden. Listing \ref{lst:derivedAttributes} zeigt, wie sich die Attributwerte \textit{numberOfEntries} und \textit{meanActualValue} entweder aus dem Rückgabewert einer Methode oder durch darauf angewandte Operationen ergeben.
 \begin{lstlisting}[caption={Abgeleitete Attribute der Klasse Station},label=lst:derivedAttributes]
 numberOfEntries : Integer derive:entries()->size()
@@ -189,7 +198,8 @@ meanActualValue : Real derive:calculateMeanActualValue()
 \end{lstlisting}
 
 Die vollständige USE-Spezifikation kann in Listing \ref{lst:completeUSE} im Anhang eingesehen werden.
-\subsection{USE-Tool}\label{sec:use_tool}
+\subsection{USE-Tool}
+\label{sec:use_tool}
 
 Um eine Spezifikation auf nicht-formale Anforderungen zu validieren, kann ein Modell mithilfe des USE-Tools animiert werden. Direkt nach dem Import eines Modells erhält man vom Tool ein Feedback über die Validität der UML- und OCL-Definitionen. Neben der Validierung bietet das Tool weitere Möglichkeiten, wie z. B. die Visualisierung eines Klassen-, Sequenz- oder Objektdiagramms. In der Abbildung~\ref{fig:Grafik2} finden sich die im Kapitel~\ref{ssec:specification} definierten Klassen und Assoziationen als Klassendiagramm wieder.
 
@@ -200,7 +210,8 @@ Um eine Spezifikation auf nicht-formale Anforderungen zu validieren, kann ein Mo
 \end{figure}
 
 
-\section{\uppercase{JUSE4Android}}\label{JUSE4Android}
+\section{\uppercase{JUSE4Android}}
+\label{JUSE4Android}
 Dieser Abschnitt befasst sich mit der Anwendung JUSE4Android und untersucht die erstellte Anwendung sowie deren Quellcode. 
 
 %\begin{enumerate}[I]
@@ -219,14 +230,22 @@ Dieser Abschnitt befasst sich mit der Anwendung JUSE4Android und untersucht die 
 
 
 \subsection{Vorstellung}
-Das Tool JUSE4Android ist im Rahmen der Master-Arbeit \textit{Model-Driven Generative Programming for BIS Mobile Applications} von Luís Miguel Pires Teixeira da Silva entstanden und ermöglicht die Erstellung eine mobilen Business Information System (BIS) Anwendung für das Betriebssystem Android aus einer USE-Datei. Zum Persistieren von Daten wird das Objekt-Orientierte Datenbank-Framework \textit{db40} verwendet. Dieses wird nur bis zur Java-Version 1.6 unterstützt und stellt dementsprechend spezielle Anforderungen an das \textit{Android Software Development Kit}. Konkret bedeutet das, dass generierte BIS-Apps nur bis zum Android API-Level 17 lauffähig sind und mit der Betriebssystemversion Android 4.2 (\textit{Jelly Bean}) betrieben werden müssen. Da somit eine Menge moderner mobilen Geräte mit den generierten BIS-Apps nicht betrieben werden kann, ist dies als erheblicher Nachteil einzuschätzen.
+Das Tool JUSE4Android ist im Rahmen der Master-Arbeit \textit{Model-Driven Generative Programming for BIS Mobile Applications} von Luís Miguel Pires Teixeira da Silva entstanden und ermöglicht die Erstellung einer mobilen Business Information System (BIS) Anwendung für das Betriebssystem Android aus einer USE-Datei. Zum Persistieren von Daten wird das Objekt-Orientierte Datenbank-Framework \textit{db40} verwendet. Dieses wird nur bis zur Java-Version 1.6 unterstützt und stellt dementsprechend spezielle Anforderungen an das \textit{Android Software Development Kit}. Konkret bedeutet das, dass generierte BIS-Apps nur bis zum Android API-Level 17 lauffähig sind und mit der Betriebssystemversion Android 4.2 (\textit{Jelly Bean}) betrieben werden müssen. Da somit eine Menge moderner mobilen Geräte mit den generierten BIS-Apps nicht betrieben werden kann, ist dies als erheblicher Nachteil einzuschätzen.
 
 \subsection{Untersuchung der erstellten Applikation}
-\label{untApp}
-Die generierte Anwendung wird durch die folgenden Schichten definiert: Persistenz-Schicht, Model-Schicht (Business Logik) und Präsentations-Schicht. Wie eine tiefere Analyse des Codes zeigte wurden die Funktionen der Schichten nicht durchgängig eingehalten, was zu Brüchen der Schichtenarchitektur führt. So sind die eigentlichen Datenhaltungsobjekte (POJOs\footnote{POJO = Plain Old Java Object}) selbst für das Speichern und Löschen ihrer Daten aus der Datenbank verantwortlich und greifen dafür auf entsprechende Zugriffsobjekte zu. Bei einem lesenden Zugriff wird gänzlich auf die De­le­gie­rung an Zugriffsobjekte verzichtet und die Datenbank direkt angesprochen. Das Einbringen einer zusätzlichen Datenzugriffsschicht sowie die Verwendung des Fabrikmethoden-Entwurfsmuster zur Erstellung der POJOs würde die Lesbarkeit deutlich erhöhen. %\textbf{Ein entwickler hätte es anders gemacht???}
-Laut des Entwicklers wird konsequent das Model-View-View-Model Entwurfsmuster verwendet. Jedoch ist dies bei genauerer Betrachtung nicht nachvollziehbar. Zwar wird die Business-Logik von der View getrennt, jedoch werden die \textit{Activity Klassen\footnote{Klassen, die vom Typ Activity erben; übernehmen die Interaktionslogik für die Oberfläche und sind vergleichbar mit den sog. CodeBehind Klassen der xaml-Oberflächendefinitionen in Microsofts WPF-Framework }} als ViewModel verwendet. Diese beherbergen allerdings die Interaktionslogik für die korrespondierenden XML-Oberflächen Definitionen, genannt Layouts. Somit sind die vom Entwickler gewählten ViewModels Teil der Präsentations-Schicht, was im engeren Sinne der MVVM Definition widerspricht.
-Dennoch wird eine lose Kopplung zwischen der eigentlichen Oberfläche und dem Model geschaffen. Diese eröffnet die Möglichkeit, Teile der Oberfläche zu ändern oder auszutauschen.\\
-Das vorherrschende Architekturmuster ist das Naked-Object-Pattern. Dieses definiert 3 Prinzipien: 1.) Die gesamte Geschäftslogik wird in Domänen-Objekten gekapselt, 2.) Die Benutzeroberfläche ist eine direkte Repräsentation dieser Objekte und 3.) die Benutzeroberfläche kann oder wird direkt aus der Definition dieser Objekte erstellt. Diese 3 Prinzipien werden durch JUSE4Android vollständig umgesetzt. Zudem werden die Domänen-Objekte direkt in eine Objekt-Orientierte Datenbank gespeichert. Die Abbildung \ref{fig:Grafik3} verdeutlicht die Grundarchitektur des Naked-Objects-Patterns.\\
+\label{ssec:untApp}
+Die generierte Anwendung wird durch die folgenden Schichten definiert: Persistenz-Schicht, Model-Schicht (Business Logik) und Präsentations-Schicht. Wie eine tiefere Analyse des Codes zeigte wurden die Funktionen der Schichten nicht durchgängig eingehalten, was zu Brüchen der Schichtenarchitektur führt. So sind die eigentlichen Datenhaltungsobjekte (POJOs\footnote{POJO steht für Plain Old Java Object}) selbst für das Speichern und Löschen ihrer Daten aus der Datenbank verantwortlich und greifen dafür auf entsprechende Zugriffsobjekte zu. Bei einem lesenden Zugriff wird gänzlich auf die De­le­gie­rung an Zugriffsobjekte verzichtet und die Datenbank direkt angesprochen. Das Einbringen einer zusätzlichen Datenzugriffsschicht sowie die Verwendung des Fabrikmethoden-Entwurfsmuster zur Erstellung der POJOs würde die Lesbarkeit deutlich erhöhen. %\textbf{Ein entwickler hätte es anders gemacht???}
+Laut des Entwicklers wird konsequent das Model-View-View-Model Entwurfsmuster verwendet. Jedoch ist dies bei genauerer Betrachtung nicht nachvollziehbar. Zwar wird die Business-Logik von der View getrennt, jedoch werden die \textit{Activity Klassen\footnote{Klassen, die vom Typ Activity erben; übernehmen die Interaktionslogik für die Oberfläche und sind vergleichbar mit den sog. CodeBehind Klassen der xaml-Oberflächendefinitionen in Microsofts WPF-Framework }} als ViewModel verwendet. Diese beherbergen allerdings die Interaktionslogik für die korrespondierenden XML-Oberflächen-Definitionen, genannt Layouts. Somit sind die vom Entwickler gewählten ViewModels Teil der Präsentations-Schicht, was im engeren Sinne der MVVM Definition widerspricht.
+Dennoch wird eine lose Kopplung zwischen der eigentlichen Oberfläche und dem Model geschaffen. Diese eröffnet die Möglichkeit, Teile der Oberfläche zu ändern oder auszutauschen.
+\\
+
+Das vorherrschende Architekturmuster ist das \textit{Naked-Object-Pattern}. Dieses definiert drei Prinzipien: \begin{itemize}
+\item die gesamte Geschäftslogik wird in Domänen-Objekten gekapselt
+\item die Benutzeroberfläche ist eine direkte Repräsentation dieser Objekte 
+\item die Benutzeroberfläche kann oder wird direkt aus der Definition dieser Objekte erstellt
+\end{itemize}
+
+Diese drei Prinzipien werden durch JUSE4Android vollständig umgesetzt. Zudem werden die Domänen-Objekte direkt in eine Objekt-Orientierte Datenbank gespeichert. Die Abbildung \ref{fig:Grafik3} verdeutlicht die Grundarchitektur des Naked-Objects-Patterns.\\
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=.5]{pics/NakedObjectPattern.png}
@@ -238,13 +257,14 @@ Der Programmfluss wird über die 4 grundlegenden Datenbankoperationen \textbf{C}
 Die generierten Oberflächen verwenden das \textit{Master/Detail Flow} Layout, welches in der Lage ist, eine Liste von Items auf dem sogenannten \textit{Master} anzuzeigen. Bei der Auswahl eines Items erfolgt ein Übergang in die sogenannten \textit{Detail} Ansicht, in welcher Daten zu dem dazugehörigen Item präsentiert werden. Dieses Layout ermöglicht eine Anpassung der Oberfläche an verschiedene  Display-Größen.\\
 In der generierten Anwendung sind die Oberflächen eine Eins-zu-eins Repräsentation der Business-Objekte. Dies entspricht den Forderungen des Naked-Object-Patterns.
 
-
-
 \subsubsection{Abbildung von Assoziationen und OCL-Constraints}
-Eine Stärke modellgetriebener Entwicklungsprozesse liegt gemäß \cite{SWOT} in der Möglichkeit, Constraints formal mit Hilfe etablierter Standards auszudrücken. Bei generativen Ansätzen stellt sich die Frage, ob und in welchem Umfang ein Tool die Überprüfung der in einem abstrakten Modell beschriebenen Integritätsbedingungen umsetzt. Im Folgenden wird dieser Aspekt für die in der USE-Syntax spezifizierten Beziehungen und Constraints betrachtet. \\
-Die Grundlage für etwaige Konsistenzprüfungen bilden POJOs, welche für jede definierte Klasse generiert werden.  
-Für jede Assoziation, an der die entsprechende Klasse beteiligt ist, wird ein boolescher Zustand angelegt. Dieser drückt aus, ob ein Objekt die durch die Assoziation beschriebenen Kardinalitäten erfüllt. Für die Klasse Station ergeben sich beispielsweise die Zustände \textit{validPlace} (aus der Relation \textit{Station\_Address}) und \textit{validRecords} (aus der Relation \textit{Station\_Entry}). Ferner wird ein Zustand \textit{AssociationRestrictionsValid} zur Kennzeichnung der globalen Validität einer Objektes gespeichert. Diese ist gegeben, wenn alle Relationen modellkonform erfüllt werden. Bei der Ausführung von Create und Update-Operationen wird eine Verifikation durchgeführt; jedoch führt ein inkonsistenter Zustand nicht zum Abbruch der Operation. Objekte, welche nicht dem spezifizierten Schema entsprechen, werden von der Präsentations-Schicht als nicht valide gekennzeichnet.\\
-Die im Abschnitt \ref{ssec:ocl} beschriebenen OCL-Bedingungen werden von JUSE4Android nicht auf algorithmischer Ebene abgebildet und folglich nicht überprüft. \cite[S.59]{SilvaMasterThesis} Dieser Umstand wird dadurch begründet, dass aktuelle Forschungsfragen auf diesem Gebiet noch nicht beantwortet sind. Beispielsweise ist unklar, welche Schicht die Umsetzung dieser Regeln übernehmen sollte oder ob ein Verifikation client- oder serverseitig erfolgen sollte. \cite[S.107]{SilvaMasterThesis} 
+Eine Stärke des modellgetriebenen Entwicklungsprozesses liegt gemäß \cite{SWOT} in der Möglichkeit, Constraints formal mit Hilfe etablierter Standards auszudrücken. Bei generativen Ansätzen stellt sich die Frage, ob und in welchem Umfang ein Tool die Überprüfung der in einem abstrakten Modell beschriebenen Integritätsbedingungen umsetzt. Im Folgenden wird dieser Aspekt für die in der USE-Syntax spezifizierten Beziehungen und Constraints betrachtet. 
+\\
+
+Die Grundlage für etwaige Konsistenzprüfungen bilden POJOs, welche für jede definierte Klasse generiert werden. Für jede Assoziation, an der die entsprechende Klasse beteiligt ist, wird ein boolescher Zustand angelegt. Dieser drückt aus, ob ein Objekt die durch die Assoziation beschriebenen Kardinalitäten erfüllt. Für die Klasse Station ergeben sich beispielsweise die Zustände \textit{validPlace} (aus der Relation \textit{Station\_Address}) und \textit{validRecords} (aus der Relation \textit{Station\_Entry}). Ferner wird ein Zustand \textit{AssociationRestrictionsValid} zur Kennzeichnung der globalen Validität einer Objektes gespeichert. Diese ist gegeben, wenn alle Relationen modellkonform erfüllt werden. Bei der Ausführung von Create und Update-Operationen wird eine Verifikation durchgeführt, jedoch führt ein inkonsistenter Zustand nicht zum Abbruch der Operation. Objekte, welche nicht dem spezifizierten Schema entsprechen, werden von der Präsentations-Schicht als nicht valide gekennzeichnet.
+\\
+
+Die im Abschnitt \ref{ssec:ocl} beschriebenen OCL-Bedingungen werden von JUSE4Android nicht auf algorithmischer Ebene abgebildet und folglich nicht überprüft. \cite[S.59]{SilvaMasterThesis} Dieser Umstand wird dadurch begründet, dass aktuelle Forschungsfragen auf diesem Gebiet noch nicht beantwortet sind. Beispielsweise ist unklar, welche Schicht die Umsetzung dieser Regeln übernehmen sollte oder ob eine Verifikation client- oder serverseitig erfolgen sollte. \cite[S.107]{SilvaMasterThesis} 
 Die spezifizierten OCL-Ausdrücke finden sich auf Codeebene lediglich in Form von Kommentaren (oft mit dem Präfix \textit{TODO}) wieder. Beispielsweise erscheint Berechnungslogik als Java-Kommentar im Rumpf der entsprechenden Methode, während definierte Invarianten am Ende der Klasse eingefügt werden. Die in der USE-Syntax spezifizierten Ableitungen für Attribute können vom Tool nicht verarbeitet werden und wurden somit vor der Generierung aus dem PIM-Modell entfernt. 
 
 %Im Falle der 1..* Assoziation zwischen den Klassen Station und Entry fungiert letztere als sogenannte \textit{Holder-Klasse}, da diese nur eine Instanz der Klasse Station beinhalten muss. \cite[S.86]{SilvaMasterThesis} Jedes POJO definiert die Methoden \textit{checkModelRestrictions()} und \textit{checkRestrictions()}, wobei erstere die Validität jeder einzelnen Relation und  Teilkomponenten  in welcher die jeweilig einzuhaltenden Kardinalitäten überprüft 
@@ -252,6 +272,7 @@ Die spezifizierten OCL-Ausdrücke finden sich auf Codeebene lediglich in Form vo
 \subsubsection{Generierter Code und zusätzliche Funktionalität}
 Der aus der USE-Definition generierte Code bedarf in den meisten Fällen einer manuellen Nachbearbeitung, um syntaktische Fehler der Generierung zu beheben. Diese äußern sich u.a. durch den Aufruf nicht deklarierter Variablen oder durch eine fehlerhafte Kommasetzung in Parameterlisten. 
 Ebenfalls zeigten sich Probleme bei der Konfiguration des Build Paths in Form von nicht hinzugefügten Libraries.\\
+
 Die Anwendung ist in eine aussagekräftige Paketstruktur gegliedert, wie Abbildung \ref{fig:Grafik4} zeigt. Außerdem hält sie die gängigen Code-Konventionen, wie beispielsweise die \textit{camelcase} Schreibweise ein. Dabei bilden die Getter-Methoden eine Ausnahme: diese besitzen nicht das Get-Präfix. Negativ muss ebenfalls erwähnt werden, dass der Code nur geringfügig kommentiert wurde und teilweise verschiedene Sprachen für die Kommentare verwendet wurden. %Grundsätzlich erscheint der Code für einen fortgeschrittenen Java/Android Entwickler nachvollziehbar und verständlich. \\
 \begin{figure}[!h]
 	\centering
@@ -259,20 +280,22 @@ Die Anwendung ist in eine aussagekräftige Paketstruktur gegliedert, wie Abbildu
 	\caption{Paketstruktur einer mittels JUSE4Android generierten Applikation}
 	\label{fig:Grafik4}
 \end{figure}
-
-Nur nach der Generierung sind manuelle Anpassungen oder das Hinzufügen komplexerer Funktionalität möglich. Diese werden dementsprechend bei einer erneuten Generierung wieder überschrieben. Ebenfalls ist keine Möglichkeit vorgesehen, geschützte Bereiche zu definieren. Auch das Auslagern von manuellem Code in separate Dateien kann nicht vorgenommen werden, da der gesamte Code - mit Ausnahme von wenigen vordefinierten Standardklassen - dynamisch durch die Applikation generiert wird. Somit ist eine Trennung von generiertem Code und manuellem Code nicht möglich. 
+Nur nach der Generierung sind manuelle Anpassungen oder das Hinzufügen komplexer Funktionalitäten möglich. Diese werden dementsprechend bei einer erneuten Generierung wieder überschrieben. Ebenfalls ist keine Möglichkeit vorgesehen, geschützte Bereiche zu definieren. Auch das Auslagern von manuellem Code in separate Dateien kann nicht vorgenommen werden, da der gesamte Code - mit Ausnahme von wenigen vordefinierten Standardklassen - dynamisch durch die Applikation generiert wird. Somit ist eine Trennung von generiertem Code und manuellem Code nicht möglich. 
 
 \subsubsection{Veränderungen der Benutzeroberfläche}
-Wie bereits in Abschnitt \ref{untApp} beschrieben ist das verwendete Entwurfsmuster MVVM nicht vollständig erfüllt. Dennoch wurde festgestellt, dass es eine lose Kopplung zwischen der Business-Schicht und der Präsentations-Schicht gibt. Damit ist der Austausch vereinzelter Oberflächenkomponenten gewährleistet. Die Anpassung des Designs ist schon durch die Gestaltungsmechanismen des Betriebssystems Android ohne Probleme möglich. Ebenfalls können verwendete Grafiken einfach ausgetauscht werden. Theoretisch wäre der Austausch der gesamten Oberfläche auch möglich, jedoch entsteht dort ein Mehraufwand durch die nicht konsequente Verwendung des MVVM Architekturmusters. Bei der Auswechselung der Oberfläche müssten zum einen die in XML definierten Layout-Dateien verändert oder ausgetauscht werden, zum anderen müssten auch die \textit{Activity-Klassen} angepasst werden. Durch die Verwendung des Master/Detail Flow Layouts gehören zu jeder Oberflächenrepräsentation eines Objektes drei Klassen, welche die Anzeige steuern. Somit ist es nicht auszuschließen, dass es zu Inkonsistenzen im Programmfluss kommen könnte. Das Adaptieren einer neuen Oberflächengestaltung für eine durch JUSE4Android generierte Applikation ist demzufolge mit einem erheblichen Aufwand verbunden.\\
-Freiheitsgerade bei der Gestaltung der Oberfläche ergeben sich durch die Verwendung JUSE4Android spezifischer Annotation, welche im PIM definiert werden. Mögliche Einstellungen betreffen u.a. den anzuzeigenden Text des Start-Screens oder anzuzeigende Klassenattribute in der Detail-View. \cite[S.19]{SilvaMasterThesis} Abbildung \ref{fig:StationView} zeigt, wie sich die Präsentation eines Stations-Objektes durch die Annotation \texttt{@display(name = "1", meanActualValue = "2", meanVarianceValue = "3", numberOfEntries = "4", target = "5")} beeinflussen lässt. 
+Wie bereits in Abschnitt \ref{ssec:untApp} beschrieben ist das verwendete Entwurfsmuster MVVM nicht vollständig erfüllt. Dennoch wurde festgestellt, dass es eine lose Kopplung zwischen der Business-Schicht und der Präsentations-Schicht gibt. Damit ist der Austausch vereinzelter Oberflächenkomponenten gewährleistet. Die Anpassung des Designs ist durch die von der Android API bereitgestellten Mittel ohne Probleme möglich. Ebenfalls können verwendete Grafiken einfach ausgetauscht werden. Theoretisch wäre der Austausch der gesamten Oberfläche auch möglich, jedoch entsteht dadurch ein Mehraufwand durch die nicht konsequente Verwendung des MVVM-Architekturmusters. Bei der Auswechselung der Oberfläche müssten zum einen die in XML definierten Layout-Dateien verändert oder ausgetauscht werden, zum anderen müssten auch die \textit{Activity-Klassen} angepasst werden. Durch die Verwendung des \textit{Master/Detail-Flow-Layouts} gehören zu jeder Oberflächenrepräsentation eines Objektes drei Klassen, welche die Anzeige steuern. Somit ist es nicht auszuschließen, dass es zu Inkonsistenzen im Programmfluss kommen könnte. Das Adaptieren einer neuen Oberflächengestaltung für eine durch JUSE4Android generierte Applikation ist demzufolge mit einem erheblichen Aufwand verbunden.
+\\
+
+Freiheitsgerade bei der Gestaltung der Oberfläche ergeben sich durch die Verwendung JUSE4Android spezifischer Annotation, welche im PIM definiert werden. Mögliche Einstellungen betreffen u.a. den anzuzeigenden Text des Start-Screens oder anzuzeigende Klassenattribute in der Detail-View. \cite[S.19]{SilvaMasterThesis} Abbildung \ref{fig:StationView} zeigt, wie sich die Präsentation eines Stations-Objektes durch die Annotation \texttt{@display(name = "1", meanActualValue = "2", meanVarianceValue = "3", numberOfEntries = "4", target = "5")} beeinflussen lässt.
+ 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=.6]{pics/StationView.png}
 	\caption{Präsentation einer Instanz der Klasse Station in der View}
 	\label{fig:StationView}
 \end{figure}
-Es gibt keine Möglichkeit, bevorzugte Bezeichnungen für die zu präsentierenden Attribute zu hinterlegen. Daher wird stets der Variablenname angezeigt.\\
-Um eine darüber hinausgehende Anpassung der Oberfläche exemplarisch zu demonstrieren, wurde das Präsentationselement für die Darstellung des Varianz-Attributes leicht verändert. Wenn der Wert des Attributes außerhalb des tolerablen Bereichs \footnote{der tolerable Bereich wird exemplarisch für Varianzen x mit \(-5 \le x \le 5\) festgelegt} liegt, wird das anzeigende Feld rot eingefärbt, innerhalb des tolerablen Bereiches erscheint es grün. Um dies umzusetzen, bedarf es eines manuellen Eingriffes in die \textit{EntryDetailFragment-Klasse}. Es wurde lediglich die Varianz mit dem Grenzwert verglichen und dann die Änderung der Textfarbe der Anzeigekomponente vorgenommen. Die Anpassung des ViewModel-Codes für die Umsetzung dieses Beispiels zeigt ebenfalls, dass hier das MVVM-Muster verletzt wurde.
+
+Es gibt keine Möglichkeit, bevorzugte Bezeichnungen für die zu präsentierenden Attribute zu hinterlegen. Daher wird stets der Variablenname angezeigt. Um eine darüber hinausgehende Anpassung der Oberfläche exemplarisch zu demonstrieren, wurde das Präsentationselement für die Darstellung des Varianz-Attributes leicht verändert. Wenn der Wert des Attributes außerhalb des tolerablen Bereichs \footnote{der tolerable Bereich wird exemplarisch für Varianzen x mit \(-5 \le x \le 5\) festgelegt} liegt, wird das anzeigende Feld rot eingefärbt, innerhalb des to­le­rier­baren Bereiches erscheint es grün. Um dies umzusetzen, bedarf es eines manuellen Eingriffes in die \textit{EntryDetailFragment-Klasse}. Es wurde lediglich die Varianz mit dem Grenzwert verglichen und dann die Änderung der Textfarbe der Anzeigekomponente vorgenommen. Die Anpassung des ViewModel-Codes für die Umsetzung dieses Beispiels zeigt ebenfalls, dass hier das MVVM-Muster verletzt wurde.
 
 \section{Zusammenfassung und Fazit}
 JUSE4Anroid zu starr; möglicherweise geht es in die Richtung der Generierung von Softwarekomponenten, im Gegensatz zur Generierung einer vollständigen Applikation
@@ -543,4 +566,3 @@ Diese weicht ab von der tatsächlich zur Generierung verwendeten USE-Spezifikati
 
 \vfill
 \end{document}
-
