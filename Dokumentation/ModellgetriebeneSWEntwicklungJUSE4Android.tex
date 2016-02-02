@@ -206,11 +206,11 @@ Die vollständige USE-Spezifikation kann in Listing \ref{lst:completeUSE} im Anh
 \subsection{USE-Tool}
 \label{sec:use_tool}
 
-Um eine Spezifikation auf nicht-formale Anforderungen zu validieren, kann ein Modell mithilfe des USE-Tools animiert werden. Direkt nach dem Import eines Modells erhält der Nutzer vom Tool ein Feedback über die Validität der UML- und OCL-Definitionen. Bei einer nicht gegebenen Validität werden Aussagen zur Zeile des Fehlers und ggf. über erwartete Ausdrücke gegeben. Neben der Validierung bietet das Tool weitere Möglichkeiten, wie z. B. die Visualisierung eines Klassen-, Sequenz- oder Objektdiagramms. In der Abbildung~\ref{fig:Grafik2} finden sich die im Kapitel~\ref{ssec:specification} definierten Klassen und Assoziationen als Klassendiagramm wieder. Mit dem USE-Tool ist jedoch ausschließlich eine Visualisierung und keine Bearbeitung des definierten Modells möglich.
+Um eine Spezifikation auf nicht-formale Anforderungen zu validieren, kann ein Modell mithilfe des USE-Tools animiert werden. Direkt nach dem Import eines Modells erhält der Nutzer vom Tool ein Feedback über die Validität der UML- und OCL-Definitionen. Bei einer nicht gegebenen Validität werden Aussagen zur Zeile des Fehlers und ggf. über erwartete Ausdrücke gegeben. Annotationen, die nicht aus der Spezifikation von USE stammen, bleiben vom USE-Tool unbeachtet. Das im Anhang aufgeführte Listing~\ref{lst:completeUSE} hat Annotationen und wird dennoch vom Tool als valide erkannt. Neben der Validierung bietet das Tool weitere Möglichkeiten, wie z. B. die Visualisierung eines Klassen-, Sequenz- oder Objektdiagramms. Mit dem USE-Tool ist jedoch ausschließlich eine Visualisierung und keine Bearbeitung des definierten Modells möglich. In der Abbildung~\ref{fig:Grafik2} finden sich die im Kapitel~\ref{ssec:specification} definierten Klassen und Assoziationen als Klassendiagramm wieder.
 
 \begin{figure}[!h]
 	\includegraphics[scale=.325]{pics/USE_class_diagram_v2.pdf}
-	\caption{Klassendiagramm für das Beispiel}
+	\caption{Visualisierung des Klassendiagramms mit USE-Tool}
 	\label{fig:Grafik2}
 \end{figure}
 
@@ -565,8 +565,7 @@ end
 
 \end{lstlisting}
 
-Diese weicht von der tatsächlich zur Generierung verwendeten USE-Spezifikation ab.
- Annotationen sind für JUSE4Android spezifisch und nicht Bestandteil der OCL.
+Die Spezifikation weicht von der tatsächlich zur Generierung verwendeten USE-Spezifikation ab. Annotationen sind für JUSE4Android spezifisch und nicht Bestandteil des USE-Modells.
 
 
 \twocolumn
