@@ -73,7 +73,7 @@ USE-Spezifikation und die Anreicherung des Modells mit OCL-Constraints werden in
 \label{sec:iceCream}
 \noindent
 Das Beispiel wurde aus dem Artikel \cite{Gui06} entnommen. Es handelt sich um ein fiktives Programm der Regierung zur Kontrolle der Eispartikel in der Luft. Wenn die Konzentration zu niedrig ist, bedeutet das, dass die Bevölkerung zu wenig Eiscreme isst, was eine Menge an Risiken für die Umwelt und die öffentliche Ordnung darstellt. Um die Eispartikel in der Luft zu überwachen, hat der Staat Kontrollstationen im gesamten Land verteilt aufgestellt. Für jede Station gibt es einen festgelegten Zielwert der Eispartikel. Der aktuelle Wert weicht in der Regel vom Zielwert ab. 
-
+\\
 
 Die Anwendung ermöglicht es, neue Stationen mit Zielwerten aufzunehmen und alte Stationen zu löschen. Außerdem gibt es die Möglichkeit, eine Adresse zu einer Station anzugeben. Eine Adresse ist im Nachhinein auch wieder entfernbar. Die Erfassung von beliebig vielen Einträgen zu einer Station ist ebenfalls möglich. Auch Einträge lassen sich im Nachhinein wieder entfernen. Zudem wird für jeden Eintrag nach Eingabe des aktuellen Wertes die Abweichung zum Zielwert (im Folgenden als Varianz bezeichnet) angezeigt.
 
@@ -204,7 +204,7 @@ Die vollständige USE-Spezifikation kann in Listing \ref{lst:completeUSE} im Anh
 \subsection{USE-Tool}
 \label{sec:use_tool}
 
-Um eine Spezifikation auf nicht-formale Anforderungen zu validieren, kann ein Modell mithilfe des USE-Tools animiert werden. Direkt nach dem Import eines Modells erhält man vom Tool ein Feedback über die Validität der UML- und OCL-Definitionen. Neben der Validierung bietet das Tool weitere Möglichkeiten, wie z. B. die Visualisierung eines Klassen-, Sequenz- oder Objektdiagramms. In der Abbildung~\ref{fig:Grafik2} finden sich die im Kapitel~\ref{ssec:specification} definierten Klassen und Assoziationen als Klassendiagramm wieder.
+Um eine Spezifikation auf nicht-formale Anforderungen zu validieren, kann ein Modell mithilfe des USE-Tools animiert werden. Direkt nach dem Import eines Modells erhält der Nutzer vom Tool ein Feedback über die Validität der UML- und OCL-Definitionen. Bei einer nicht gegebenen Validität werden Aussagen zur Zeile des Fehlers und ggf. über erwartete Ausdrücke gegeben. Neben der Validierung bietet das Tool weitere Möglichkeiten, wie z. B. die Visualisierung eines Klassen-, Sequenz- oder Objektdiagramms. In der Abbildung~\ref{fig:Grafik2} finden sich die im Kapitel~\ref{ssec:specification} definierten Klassen und Assoziationen als Klassendiagramm wieder.
 
 \begin{figure}[!h]
 	\includegraphics[scale=.325]{pics/USE_class_diagram_v2.pdf}
@@ -300,20 +300,21 @@ Es gibt keine Möglichkeit, bevorzugte Bezeichnungen für die zu präsentierende
 Um eine darüber hinausgehende Anpassung der Oberfläche exemplarisch zu demonstrieren, wurde das Präsentationselement für die Darstellung des Varianz-Attributes leicht verändert. Wenn der Wert des Attributes außerhalb des Toleranzbereichs \footnote{der tolerable Bereich wird exemplarisch für Varianzen x mit \(-5 \le x \le 5\) festgelegt} liegt, wird das anzuzeigende Feld rot eingefärbt, innerhalb des zu tolerierbaren Bereiches erscheint es grün. Um dies umzusetzen, bedarf es eines manuellen Eingriffes in die \textit{EntryDetailFragment-Klasse}. Es wurde lediglich die Varianz mit dem Grenzwert verglichen und dann die Änderung der Textfarbe der Anzeigekomponente vorgenommen. Die Anpassung des ViewModel-Codes für die Umsetzung dieses Beispiels zeigt ebenfalls, dass hier das MVVM-Muster verletzt wurde.
 
 \section{Zusammenfassung und Fazit}
-Die vorliegende Artikel verfolgt den Ansatz der \textit{Model-driven architecture} über die Entwicklung eines USE-Modells mit OCL-Ausdrücken und der Generierung einer Android-Applikation mit dem Werkzeug JUSE4Android. Es ist festzustellen, dass JUSE4Anroid den Ansatz starr verfolgt und dem Nutzer wenig Möglichkeiten geboten werden, um die Generierung zu beeinflussen. Als Beispiel für die Einschränkung des Nutzers ist die immer gleich erscheinende Benutzeroberfläche oder im Detail auch die Unerfüllbarkeit der Umbenennung von Variablennamen für die Nutzerschnittstelle. 
+Der vorliegende Artikel verfolgt den Ansatz der \textit{Model-driven architecture} über die Entwicklung eines USE-Modells mit OCL-Ausdrücken und der Generierung einer Android-Applikation mit dem Werkzeug JUSE4Android. Bei der Entwicklung der Applikation werden mehrere Fragen gestellt, die sich insbesondere mit der Möglichkeit der Beeinflussung der Generierung befassen. Weiterhin werden Softwarearchitektur und Entwurfsmuster untersucht. 
+\\
 
-möglicherweise geht es in die Richtung der Generierung von Softwarekomponenten, im Gegensatz zur Generierung einer vollständigen Applikation
-individuelle Verständnisse der Entwickler, z.B. verschiedene Auffassungen darüber, wie Architekturmuster umgesetzt werden, könnten dazu führen, dass der Code schwierig nachvollziehbar wird
+Im Großen und Ganzen ist festzustellen, dass JUSE4Anroid den Ansatz der MDA starr verfolgt. Wesentliche Programmierparadigmen und Code-Konventionen werden eingehalten. Zudem ist die Realisierung einer schlichten App mit einfachen Mitteln möglich. Die Einhaltung eines Entwurfsmuster wird vorgegeben, allerdings nicht bis ins Detail erfüllt. Hier liegt auch eins der wesentlichen Probleme. Das individuelle Verständnisse der Softwareentwickler weicht in der Praxis oft ab. Es gibt verschiedene Auffassungen darüber wie Entwurfsmuster oder Softwarearchitekturen umgesetzt werden. Hinzukommt, dass Nutzer des JUSE4Anroid wenig Möglichkeiten geboten werden, um die Generierung des Programmcodes zu beeinflussen. Als ein Beispiel, für die Einschränkung des Nutzers, ist die immer gleich erscheinende Benutzeroberfläche oder im Detail auch die Unerfüllbarkeit der Umbenennung von Bezeichnungen der Variablennamen für die Nutzerschnittstelle zu nennen. Weiterhin ist ein wesentlicher Nachteil, dass das Projekt nicht weiter verfolgt wird und genutzte Bibliotheken dementsprechend veraltet sind. Eine Portierung der Applikation auf neuere Android-Versionen ist nicht möglich und die Nutzung auf modernen mobilen Geräten bleibt damit verwehrt.
+\\
 
- Da somit eine Menge moderne Mobilen Geräte mit den generierten BIS-Apps kompatibel sind, ist dies als erheblicher Nachteil ein zu schätzen.
-keine OCL-
+Für die Entwicklung einer nach individuellen Wünschen gestalteten, vollständigen Software ist die Verfolgung des Ansatzes von MDA über JUSE4Android ungeeignet. Allerdings könnte eine Möglichkeit der verwendbaren Nutzung darin bestehen, dass Softwarekomponenten und keine kompletten Applikationen generiert werden.
+
 \vfill
 \bibliographystyle{apalike}
 {\small
 \bibliography{bib/literature}}
 \newpage
-\section*{\uppercase{Anhang}}
 \onecolumn
+\section*{\uppercase{Anhang}}
 \begin{lstlisting}[caption={Vollständige USE-Spezifikation des IceCream Modells},label=lst:completeUSE]
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
